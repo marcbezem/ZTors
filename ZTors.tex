@@ -69,7 +69,8 @@ We have formalized the result in \UniMath{}, a name which refers both to a (univ
 language and to a particular repository \cite{UniMath} of formalized proofs, encoded in the language of the proof assistant {\em Coq}.
 
 The other standard way to construct a circle in type theory uses {\em higher inductive types}, where one posits a new type, an element of it, a
-path from the element to itself, and nothing more.  Since {\UniMath}, by a conservative convention aimed at minimizing the burden of proving
+path from the element to itself, an induction principle (for defining functions from it),
+and nothing more.  Because {\UniMath}, by a conservative convention aimed at minimizing the burden of proving
 consistency of the formal system, does not use higher inductive types, the construction presented here is the only way to construct a circle in
 \UniMath{}.  Adding higher inductive types to the system would give another construction of the circle, equivalent to the one described above.
 
@@ -221,7 +222,7 @@ The formalized construction does not use any higher inductive types,
 relying instead on the construction of propositional truncation as
 (the propositional resizing of)
 $\Trunc X \defeq \prod_{P:\Prop}((X \to P) \to P)$.
-Nor of course, and this is the whole point, do we
+Nor, of course, and this is the whole point, do we
 depend on the previous existence of a type satisfying the induction principle of the circle. 
 
 In a type theory where higher inductive types are admitted,
@@ -239,7 +240,7 @@ The induction principle \cref{circleinductionequation} for $\TorZ$ then follows 
 One can construct models of type theory with univalent universes and propositional resizing
 (viz., essentially of \UniMath{})
 that do not have higher inductive types, not even suspensions.
-Indeed, we can take any model and restrict the $n$th universe, $n=0,1,\dots$,
+We can take any model and restrict the $n$th universe, $n=0,1,\dots$,
 to consist of homotopy $n$-types:
 the new zeroth universe $\UU'_0$ consists of the sets of the old universe $\UU_0$,
 the new universe $\UU'_1$ consists of the groupoids of $\UU_1$ (hence including $\UU'_0$),
@@ -248,8 +249,8 @@ This construction keeps all the propositions, so it preserves propositional resi
 By our construction, $\UU'_1$ will contain a circle $\TorZ$,
 but it cannot contain the $2$-sphere (the suspension of the circle),
 as this is not a groupoid.
-And, assuming we can verify that the $2$-sphere is not an $n$-type for any $n$,
-then no universe in the new model will contain a $2$-sphere.
+Because the $2$-sphere in topology is not an $n$-type for any $n$,
+the new model will not contain a $2$-sphere.
 
 \section{The integers}
 \label{sec:integers}
@@ -423,6 +424,10 @@ We formulate this precisely as follows.
   \]
   that sends $(h,q)$ to $h(0)$ is an equivalence.
 \end{theorem}
+
+See \cite{Z-induction-formalized,Z-induction-torsor-formalized} for the formalization of the proof, as well as the formalization of a version
+for $\zet$-torsors.
+
 \begin{proof}
   We prove that the fiber over any $p : P(0)$ is contractible.
   We simplify notations a bit by leaving out the types of $h$ and $q$.
