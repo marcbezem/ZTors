@@ -68,9 +68,8 @@ $$ \cdots FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF \cdots $$
 We have formalized the result in \UniMath{}, a name which refers both to a (univalent) foundation of mathematics based on a formal type theoretic
 language and to a particular repository \cite{UniMath} of formalized proofs, encoded in the language of the proof assistant {\em Coq}.
 
-The other standard way to construct a circle in type theory uses {\em higher inductive types}, where one posits a new type, an element of it, a
-path from the element to itself, an induction principle (for defining functions from it),
-and nothing more.  Because {\UniMath}, by a conservative convention aimed at minimizing the burden of proving
+The other standard way to construct a circle in type theory uses {\em higher inductive types}, where one posits a new type $\Sc$, an element $\pt : \Sc$, a path $\Sloop : \pt = \pt$, an induction principle (for defining functions from it), and nothing more.
+Because {\UniMath}, by a conservative convention aimed at minimizing the burden of proving
 consistency of the formal system, does not use higher inductive types, the construction presented here is the only way to construct a circle in
 \UniMath{}.  Adding higher inductive types to the system would give another construction of the circle, equivalent to the one described above.
 
@@ -95,7 +94,8 @@ and a successor function $s:\zet\to\zet$
 that is an equivalence.
 Considering pairs $(X,f)$ of type $\sum_{X:\UU}(X\to X)$,
 we can introduce \emph{the 
-pointed type of $\zet$-torsors} by adopting the following definitions.
+pointed type of $\zet$-torsors} by adopting the following definitions
+(cf.~\cref{def:TorZ}).
 \begin{align*}
   \TorZ &\defeq \sum_{(X,f)}\Trunc{(\zet,s)=(X,f)}  \\
   \pt & \defeq ((\zet,s),\trunc{\refl{(\zet,s)}}) : \TorZ
@@ -127,13 +127,15 @@ such that $f(\pt)\jdeq a$ and $\ap{f}(\Zloop)=l$.
 in 2014, see \cite{circlerec-Dan}; our construction here uses the 
 same basic idea but manages the computations involved in establishing the
 induction principle better.)  We call the resulting function
+(\cref{def:TorZrecursor} below)
 \[
 {\rec}_A : \sum_{a:A}(a=a) ~~\to~~ (\TorZ \to A).
 \]
 
 The universal property of the circle for $\TorZ$
 states that ${\rec}_A$ above is an equivalence, for all types $A$.
-In order to prove this universal property one needs an induction
+In order to prove this universal property (which we do in \cref{sec:TorZ-induction} below)
+one needs an induction
 principle, in which $A$ is not a type but a type family over $\TorZ$.
 On the basis of Grayson's construction of the recursion principle,
 Shulman sketched an approach to the induction principle, see \cite{circleind-Mike}. 
