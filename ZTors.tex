@@ -103,8 +103,10 @@ pointed type of $\zet$-torsors} by adopting the following definitions
   \TorZ &\defeq \sum_{(X,f)}\Trunc{(\zet,s)=(X,f)}  \\
   \pt & \defeq ((\zet,s),\trunc{\refl{(\zet,s)}}) : \TorZ
 \end{align*}
+
 It is not difficult to see 
-that the type $\pt =_\TorZ \pt$ is equivalent to $\zet$.  To see that,
+that the type $\pt =_\TorZ \pt$ is equivalent to $\zet$.
+To see that,
 begin by observing that every function $f:\zet\to\zet$ commuting with $s$
 is propositionally equal to $s^{f(0)}$.  The first projection
 acting on $p : \pt =_\TorZ \pt$ gives a path $\mathsf{pr}_1(p) : \zet=\zet$
@@ -113,6 +115,10 @@ is a bijection commuting with $s$. We evaluate this bijection in $0$.
 Let $\ev_0(p) \defeq \mathsf{pr}_1(p)_*(0)$ for all $p : \pt =_\TorZ \pt$,
 then $\ev_0 : (\pt =_\TorZ \pt) \to \zet$.  Combining these observations,
 using the univalence axiom, one proves that $\ev_0$ is an equivalence.
+
+Since $\zet$ is a set, it follows that the underlying set of the fundamental group of $(\TorZ,\pt$) is equivalent to $\zet$,
+and with a bit more work, that the fundamental group of $(\TorZ,\pt)$ is isomorphic to $\ZZ$.
+However, we do not need this fact here.
 
 We define $1 \defeq s(0)$.
 The preimage of $1$ under the equivalence $\ev_0$ is a
