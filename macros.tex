@@ -81,23 +81,23 @@
 \newcommand{\arxiv}[1]{preprint available at \href{http://arxiv.org/abs/#1}{arXiv:#1}}
 
 % Should these be roman or italic?!
-\newcommand{\bool}{\mathop{\mathit{Bool}}}
-\newcommand{\yes}{\mathop{\mathit{yes}}}
-\newcommand{\no}{\mathop{\mathit{no}}}
+\newcommand{\bool}{\mathop{\mathrm{Bool}}}
+\newcommand{\yes}{\mathop{\mathrm{yes}}}
+\newcommand{\no}{\mathop{\mathrm{no}}}
 \newcommand{\set}[1]{\{#1\}}
-\newcommand{\refl}[1]{\mathop{{\it refl}_{#1}}}
-\newcommand{\refloi}[1]{\mathop{\mathit{refl}^{-o}_{#1}}}
+\newcommand{\refl}[1]{\mathop{{\mathrm{refl}}_{#1}}}
+\newcommand{\refloi}[1]{\mathop{\mathrm{refl}^{-o}_{#1}}}
 \newcommand{\inl}[1]{\mathop{{\it inl}_{#1}}}
 \newcommand{\inr}[1]{\mathop{{\it inr}_{#1}}}
-\newcommand{\true}{\mathop{\mathit{True}}}
-\newcommand{\false}{\mathop{\mathit{False}}}
-\newcommand{\triv}{\mathop{\mathit{triv}}}
-\newcommand{\symm}{\mathop{\mathit{symm}}}
-\newcommand{\trans}{\mathop{\mathit{trans}}}
-\newcommand{\fact}{\mathop{\mathit{fact}}}
-\newcommand{\trp}[1]{\mathop{\mathit{trp}_{#1}}}
-\newcommand{\fst}{\mathop{\mathit{fst}}}
-\newcommand{\snd}{\mathop{\mathit{snd}}}
+\newcommand{\true}{\mathop{\mathrm{True}}}
+\newcommand{\false}{\mathop{\mathrm{False}}}
+\newcommand{\triv}{\mathop{\mathrm{triv}}}
+\newcommand{\symm}{\mathop{\mathrm{symm}}}
+\newcommand{\trans}{\mathop{\mathrm{trans}}}
+\newcommand{\fact}{\mathop{\mathrm{fact}}}
+\newcommand{\trp}[1]{\mathop{\mathrm{trp}_{#1}}}
+\newcommand{\fst}{\mathop{\mathrm{fst}}}
+\newcommand{\snd}{\mathop{\mathrm{snd}}}
 \newcommand{\zpos}{\mathop{\mathrm{pos}}}
 \newcommand{\zneg}{\mathop{\mathrm{neg}}}
 \newcommand{\zzero}{\mathop{\mathrm{zero}}}
@@ -106,9 +106,9 @@
 \newcommand{\tot}{\mathop{\mathrm{tot}}}
 \newcommand{\funext}{\mathop{\mathrm{funext}}}
 \newcommand{\ptw}{\mathop{\mathrm{ptw}}}
-\newcommand{\ap}[1]{\mathop{{\it ap}_{#1}}}
-\newcommand{\apd}[1]{\mathop{{\it apd}_{#1}}}
-\newcommand{\apap}[3]{\mathop{{\it apap}_{#1}(#2)(#3)}}
+\newcommand{\ap}[1]{\mathop{{\mathrm{ap}}_{#1}}}
+\newcommand{\apd}[1]{\mathop{{\mathrm{apd}}_{#1}}}
+\newcommand{\apap}[3]{\mathop{{\mathrm{apap}}_{#1}(#2)(#3)}}
 \newcommand{\apc}{\mathop{{\it ap}{\ct}}}
 
 \newcommand{\id}{\mathord{\mathrm{id}}}
@@ -135,8 +135,8 @@
 \newcommand{\isom}{\cong}
 \newcommand{\ct}{*}
 \newcommand{\cto}{*_{\mathrm{o}}}
-\newcommand{\rrfl}{\mathit{rrfl}}
-\newcommand{\cp}[1]{\mathit{cp}_{#1}}
+\newcommand{\rrfl}{\mathrm{rrfl}}
+\newcommand{\cp}[1]{\mathrm{cp}_{#1}}
 \newcommand*{\dblslash}{\mathbin{/\kern-3pt/}}
 
 \renewcommand{\equiv}{\simeq}
@@ -215,6 +215,7 @@
 \newcommand{\inftygps}{$\infty$-groups\xspace}
 \newcommand{\princ}[1]{\mathrm{Pr}_{{#1}}}%{\mathrm{Princ}}
 \newcommand{\pathsp}[1]{\mathrm{P}_{#1}}
+\DeclareMathOperator\pr{pr}
 \DeclareMathOperator\abstrOp{abst}
 \newcommand{\abstr}{\mathrm{abs}}
 \newcommand{\Ad}{\mathrm{Ad}}
@@ -243,8 +244,8 @@
 \newcommand{\typemonoid}{\mathbf{Monoid}}
 \newcommand{\typetorsor}{\mathbf{Tors}}
 \newcommand{\BSigma}{B\Sigma}%previously \Set_{(S)} - the component of S:\Set
-\newcommand{\revers}{\mathit{r}}
-\newcommand{\twist}{\mathit{twist}}%loop in BC_2
+\newcommand{\revers}{\mathrm{r}}
+\newcommand{\twist}{\mathrm{twist}}%loop in BC_2
 \newcommand{\Sc}{{\mathbb{S}^1}}%the circle
 \newcommand{\sbt}{\begin{picture}(-1,1)(-1,-3)\circle*{2}\end{picture}}
 \newcommand{\base}{{\,\sbt\ }}%point in circle
@@ -328,5 +329,6 @@
 
 %%% Local Variables:
 %%% mode: latex
+%%% TeX-master: "ZTors.tex"
 %%% compile-command: "latexmk -pdf ZTors"
 %%% End:

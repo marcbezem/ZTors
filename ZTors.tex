@@ -109,10 +109,10 @@ that the type $\pt =_\TorZ \pt$ is equivalent to $\zet$.
 To see that,
 begin by observing that every function $f:\zet\to\zet$ commuting with $s$
 is propositionally equal to $s^{f(0)}$.  The first projection
-acting on $p : \pt =_\TorZ \pt$ gives a path $\mathsf{pr}_1(p) : \zet=\zet$
-such that the corresponding transport function $\mathsf{pr}_1(p)_* : \zet\to\zet$
+acting on $p : \pt =_\TorZ \pt$ gives a path $\pr_1(p) : \zet=\zet$
+such that the corresponding transport function $\pr_1(p)_* : \zet\to\zet$
 is a bijection commuting with $s$. We evaluate this bijection in $0$.
-Let $\ev_0(p) \defeq \mathsf{pr}_1(p)_*(0)$ for all $p : \pt =_\TorZ \pt$,
+Let $\ev_0(p) \defeq \pr_1(p)_*(0)$ for all $p : \pt =_\TorZ \pt$,
 then $\ev_0 : (\pt =_\TorZ \pt) \to \zet$.  Combining these observations,
 using the univalence axiom, one proves that $\ev_0$ is an equivalence.
 
@@ -352,17 +352,7 @@ is one of the benefits of the univalent approach.)
 \section{Some induction principles for the integers}
 \label{sec:integers-induction}
 
-The definition of $\zet$ yields the following induction principle.
-Given $P : \zet \to \UU$, to construct elements $h(z) : P(z)$ for every $z : \zet$,
-it suffices to give $h(0): P(0)$ and functions
-$f : \prod_{n:\NN}(P(n) \to P(n+1))$ and
-$g : \prod_{n:\NN}(P(-n) \to P(-n-1))$, 
-as illustrated in \cref{fig:integers-induction-asymmetric}.
-
-The function $h:\prod_{z:\ZZ}(P(z)$ thus defined satisfies
-$h(n+1)\jdeq f(n,h(n))$ and $h(-n-1)\jdeq g(n,h(-n))$ for all $n:\NN$.
-
-\begin{figure}[h]
+\begin{figure}[b]
   \centering
   \begin{tikzpicture}
     \foreach \x in {-2,-1,0,1,2} {
@@ -394,6 +384,15 @@ $h(n+1)\jdeq f(n,h(n))$ and $h(-n-1)\jdeq g(n,h(-n))$ for all $n:\NN$.
   \label{fig:integers-induction-asymmetric}
 \end{figure}
 
+The definition of $\zet$ yields the following induction principle.
+Given $P : \zet \to \UU$, to construct elements $h(z) : P(z)$ for every $z : \zet$,
+it suffices to give $h(0): P(0)$ and functions
+$f : \prod_{n:\NN}(P(n) \to P(n+1))$ and
+$g : \prod_{n:\NN}(P(-n) \to P(-n-1))$,
+as illustrated in \cref{fig:integers-induction-asymmetric}.
+
+The function $h:\prod_{z:\ZZ}(P(z)$ thus defined satisfies
+$h(n+1)\jdeq f(n,h(n))$ and $h(-n-1)\jdeq g(n,h(-n))$ for all $n:\NN$.
 
 It is possible to give a more symmetric, but less general induction principle,
 if we assume that the functions are equivalences.
@@ -628,10 +627,10 @@ With these notational simplifications, we rephrase some definitions from the int
   The equivalence $\ev_0$ is defined by
   \begin{align*}
     \ev_0: (\pt =_\TorZ \pt) & \to\zet \\
-    p & \mapsto \mathsf{pr}_1(p)_*(0).
+    p & \mapsto \pr_1(p)_*(0).
   \end{align*}
   The loop of $\TorZ$ is defined as ${\Zloop}\defeq\ev_0^{-1}(1)$,
-  satisfying $\mathsf{pr}_1(\Zloop)_* = s$.
+  satisfying $\pr_1(\Zloop)_* = s$.
 \end{definition}
 
 The type $\TorZ$ is equivalent to the more traditionally defined 
@@ -784,7 +783,7 @@ namely that $c_p$ acting on $\Zloop$ yields $p$.
 \begin{lemma}\label{lem:ap-c-tilde-c}
 For all $X,Y:\TorZ$, $e: X=Y$ and $x:X$ we have
 $\ap{c_p}(e) = \tilde c_p(X,x)^{-1}\ct \tilde c_p(Y,\ptoe{e}(x))$,
-where $\ptoe{e}\defeq \mathsf{pr}_1(e)_* : X\to Y$.
+where $\ptoe{e}\defeq \pr_1(e)_* : X\to Y$.
 \end{lemma}
 \begin{proof}
 By using induction on $e$ we only have to check the case where
@@ -828,7 +827,7 @@ and $s: \zet\to\zet$ is an equivalence.
 
 \begin{lemma}\label{lem:paths-in-TorZ}
   Suppose $p : (\zet,s)=(X,f)$.  Then $X$ is a set and $f: X\to X$ is an equivalence.
-  Morever, with $\ptoe{p}\defeq \mathsf{pr}_1(p)_*$ the equivalence induced by $p$, we have 
+  Morever, with $\ptoe{p}\defeq \pr_1(p)_*$ the equivalence induced by $p$, we have 
   $f^n(x) = (\ptoe{p}\circ s^n \circ \ptoe{p}^{-1})(x) = \ptoe{p}(\ptoe{p}^{-1}(x)+n)$, 
   for all $n:\zet$ and $x:X$.
 \end{lemma}
@@ -926,13 +925,13 @@ elaborate $\apd{c_p}(\Zloop)$ (see \cite[Ch. 2.3]{hottbook} for $\apd{\_}$).
 \begin{lemma}\label{lem:s-X-x-*-e}
   For all $X,Y:\TorZ$, $e: X=Y$ and $x:X$ we have a path 
   $\varepsilon_{e,x} : (s^X_x)^{-1} \ct s^Y_{\ptoe{e}(x)} = e$,
-  where $\ptoe{e}\defeq \mathsf{pr}_1(e)_* : X\to Y$.
+  where $\ptoe{e}\defeq \pr_1(e)_* : X\to Y$.
 % Moreover, $\varepsilon_{\refl{X},x} \defeq \iota(s^X_x)$.
 \end{lemma}
 \begin{proof}
 By induction on $e$ it suffices to give
 $\varepsilon_{\refl{X},x} : (s^X_x)^{-1} \ct s^X_x = \refl{X}$,
-since $\mathsf{pr}_1(\refl{X})_*(x) \jdeq x$.
+since $\pr_1(\refl{X})_*(x) \jdeq x$.
 Hence we set $\varepsilon_{\refl{X},x} \defeq \iota(s^X_x)$,
 with $\iota$ as in \cref{lem:invlaw-change-path}. 
 \end{proof}
