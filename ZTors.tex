@@ -200,6 +200,7 @@ composition $\cto'$ of paths over paths and the \emph{right recursive} $\cto$ co
                       .. controls ++(190:-.3) and ++(140:.4) .. (3,1.6);
         \node at (2,1.5) {$l$};
         \node at (2,-.3) {$\Zloop$};
+        \node at (2.2,2.65) {$\scriptstyle \apd{f}(\Zloop)$};
       \end{scope} }
     \foreach \y in {0,2} {
       \node at (-.5,\y) {$\cdots$};
@@ -217,9 +218,12 @@ The type in \cref{circleinductionequation} is illustrated in \cref{fig:circle-in
 We think of $\TorZ$ as a circle (and prove that it is),
 but we illustrate it (and objects depending on it) as periodically recurring,
 in order to make clearer diagrams.
-The type $\apd{f}(\Zloop) = r\cto' l \cto r^{-1}$ is equivalent to
+We draw the type family $A$ as a periodic fibration over this circle,
+and the goal is the to produce from the point $a$ and the path $l$ over $\Sloop$,
+the section $f$, the path $r$, and a final element inhabiting
+the type $\apd{f}(\Zloop) = r\cto' l \cto r^{-1}$, which is equivalent to
 $\apd{f}(\Zloop) =^{\lambda z, z=^A_{\Zloop}z}_r l$,
-and corresponds to filling the inside of the curvilinear quadrilateral in \cref{fig:circle-induction}.
+and which corresponds to filling the inside of the curvilinear quadrilateral in \cref{fig:circle-induction}.
 
 If the underlying type theory has propositional truncation with a dependent eliminator that computes judgmentally on the point constructor, as
 in \cite[Ch. 6.9]{hottbook}, then the path $r : f(\pt)= a$ above is a reflexivity path.
