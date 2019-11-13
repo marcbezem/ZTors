@@ -88,10 +88,13 @@ We use this principle in \cref{lem:dep-elim-TorZ}, and the paragraph after
 its proof gives some extra attention to the computational aspect.
 
 For convenience we give a direct inductive
-definition of the set of integers in \cref{sec:integers}.
+definition of the set of integers in \cref{sec:integers},
+and we give an alternative induction principle in \cref{sec:integers-induction}.
 Thus we get a set of integers $\zet$, a constant $0:\zet$,
 and a successor function $s:\zet\to\zet$
-that is an equivalence.
+that is an equivalence.\footnote{%
+  For clarity, we distinguish between the \emph{group} $\ZZ$
+  and the \emph{underlying set} $\zet$.}
 Considering pairs $(X,f)$ of type $\sum_{X:\UU}(X\to X)$,
 we can introduce \emph{the 
 pointed type of $\zet$-torsors} by adopting the following definitions
@@ -156,7 +159,8 @@ function of the following type:
   \sum_{r: f(\pt)= a}
   {\apd{f}(\Zloop) = r\cto' l \cto r^{-1}}
 \end{equation}
-Here $\apd{}$ is as defined in \cite[Ch. 2.3]{hottbook}.
+Here $\apd{}$ is as defined in \cite[Ch. 2.3]{hottbook};
+we recall the basics of paths over a path and $\apd{}$ in \cref{sec:pathovers}.
 Note that $r$ above is a path between two elements of the same fiber $A(\pt)$.
 Hence $r$ and $r^{-1}$ are paths over $\refl{\pt}$ and can be composed with $l$.
 To simplify the statement, we use the \emph{left recursive} 
