@@ -485,6 +485,8 @@ is the function that takes $z:\zet$ to $f^z(p):P(z)$, where
 
 In this section we present some additional results that are needed in the sequel.
 % and that cannot be found in \cite{hottbook}.
+Proofs are by (nested) induction as indicated in the text,
+and can moreover be found in \cite{paths-over-formalized}.
 
 Let $A : \UU$, $B : A \to \UU$, $a_i:A$, $b_i:B(a_i)$ for $i=1,2$, and $p : a_1 = a_2$.
 We are interested in identifications of $b_1$ and $b_2$ relative to this data.
@@ -703,7 +705,7 @@ of this proof, as illustrated in \cref{fig:TorZ-recursion}.
     \&
     \&  
     \vphantom{\sum\limits_{a':A} ~
-      \prod\limits_{h: X\to a=a'} ~
+      \sum\limits_{h: X\to a=a'} ~
       \prod\limits_{x:X} ~ h(f(x))=p\ct h(x)}
     A
 \\
