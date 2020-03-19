@@ -50,13 +50,17 @@ space.
 many of the most basic results of standard homotopy theory have true analogues for types, even though the framework, based purely on logical
 principles, is devoid of the features one normally associates with topology, such as the topology of the real numbers.
 
-In standard homotopy theory it is well known that the {\em classifying space} of the group $\ZZ$ of integers is homotopy equivalent to the
-circle.  The traditional algebraic notion of $\ZZ$-torsor yields a category all of whose arrows are isomorphisms, all of whose objects are
-isomorphic to each other, and a trivial $\ZZ$-torsor whose automorphism group is $\ZZ$.  Due to univalence, the type $B\ZZ$ of all $\ZZ$-torsors
-is a connected pointed type whose fundamental group is $\ZZ$; we may call it the {\em classifying type} of $\ZZ$.  In this paper we show that
-$B\ZZ$ behaves the way a circle ought to behave, by establishing that maps from it to other types (or families of types) are freely determined
-by the destinations of the base point and the canonical loop at the base point (corresponding to the element $1$ of $\ZZ$).  The proof is
-constructive, in that it does not appeal to the axiom of choice or the law of the excluded middle.
+In standard homotopy theory it is well known that the {\em classifying space} of the group $\ZZ$ of integers is 
+homotopy equivalent to the circle.  
+The traditional algebraic notion of $\ZZ$-torsor yields a category {\color{red}whose objects are the $\ZZ$-torsors.
+Moreover, all the arrows of this category are isomorphisms, and
+one specific object  -- namely $\ZZ$ itself -- is the canonical $\ZZ$-torsor, whose automorphism group is $\ZZ$.}
+Due to univalence, the type $\color{red}\TorZ$ of all $\ZZ$-torsors
+is a connected pointed type whose fundamental group is $\ZZ$; we may call it the {\em classifying type} of $\ZZ$.  
+In this paper we show that $\color{red}\TorZ$ behaves the way a circle ought to behave, 
+by establishing that maps from it to other types (or families of types) are freely determined
+by the destinations of the base point and the canonical loop at the base point (corresponding to the element $1$ of $\ZZ$).  
+The proof is constructive, in that it does not appeal to the axiom of choice or the law of the excluded middle.
 
 There are various types equivalent to the type of $\ZZ$-torsors, and thus they also provide constructions of circles: all one needs is a
 connected pointed type whose automorphism groups are isomorphic to $\ZZ$.  For example, if one arising from geometry is desired, one may
@@ -95,9 +99,33 @@ and a successor function $s:\zet\to\zet$
 that is an equivalence.\footnote{%
   For clarity, we distinguish between the \emph{group} $\ZZ$
   and the \emph{underlying set} $\zet$.}
-Considering pairs $(X,f)$ of type $\sum_{X:\UU}(X\to X)$,
-we can introduce \emph{the 
-pointed type of $\zet$-torsors} by adopting the following definitions
+
+{\color{red} Recall that a $\ZZ$-torsor \cite{XYZ} consists of a set $X$ and 
+a $\ZZ$-action ${\cdot} : (\zet\times X) \to X$ that is free and transitive. 
+This means that for all $x,y$ in $X$ there is a unique integer $n$ such
+that $n\cdot x = y$. By fixing $x$, say as $x_0$, we get a bijection $e: \zet\to X$. 
+Furthermore, since $\ZZ$ has one generator, the $\ZZ$-action is completely 
+determined  by the action of the integer $1$.
+This action of $1$ is a bijection $X\to X$ which we denote by $f$.
+Then we have $e(s(n)) = (1+n)\cdot x_0 = 1\cdot(n\cdot x_0) = f(e(n))$ for all
+integers $n$. So the following diagram commutes:
+% the transport of $s$ along (the path coming by univalence from) $e$ equals $f$.
+\[
+\begin{tikzpicture} %\large
+   \matrix (m) 
+   [matrix of math nodes, row sep=2em, column sep=2em, ampersand replacement=\&]
+    {\zet \& \zet \\ X \& X \\ };
+\draw[->](m-1-1) -- (m-1-2) node[midway,above] {$s$};
+\draw[->] (m-1-1) -- (m-2-1) node[midway,left] {$e$};
+\draw[->] (m-1-2) -- (m-2-2) node[midway,right] {$e$};
+\draw[->] (m-2-1) -- (m-2-2) node[midway,above] {$f$};
+\end{tikzpicture}
+\]
+Conversely, we get a $\ZZ$-torsor from any pair $(X,f)$ such that the diagram
+above commutes, and this is independent of the choice of $x_0$.
+
+We the above considerations in mind we consider pairs $(X,f)$ of type $\sum_{X:\UU}(X\to X)$,}
+and introduce \emph{the pointed type of $\zet$-torsors} by adopting the following definitions
 (cf.~\cref{def:TorZ}).
 \begin{align*}
   \TorZ &\defeq \sum_{(X,f)}\Trunc{(\zet,s)=(X,f)}  \\
@@ -603,7 +631,7 @@ The proof is by induction on $\beta$ (for right-recursive composition).
   For every  $p,p':a_1=a_2$, $q,q':a_2=a_3$ and 2-paths 
   $\alpha : p = p'$, $\beta : q = q'$, we have
   $\cp{\apc(\alpha,\beta)}(\hat p \cto \hat q) = 
-   \cp{\alpha}(\hat p) \cto  \cp{\beta}(\hat q),$
+   \cp{\alpha}(\hat p) \cto  \cp{\beta}(\hat q),$
   for every $\hat p: b_1=^B_p b_2$ and $\hat q: b_2=^B_q b_3$.
 \end{lemma}
  The proof is by induction first on $\beta$, then on $q$, and finally on $\hat q$.
