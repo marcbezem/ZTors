@@ -124,7 +124,7 @@ integers $n$. So the following diagram commutes:
 Conversely, we get a $\ZZ$-torsor from any pair $(X,f)$ such that the diagram
 above commutes, and this is independent of the choice of $x_0$.
 
-We the above considerations in mind we consider pairs $(X,f)$ of type $\sum_{X:\UU}(X\to X)$,}
+With the above considerations in mind we consider pairs $(X,f)$ of type $\sum_{X:\UU}(X\to X)$,}
 and introduce \emph{the pointed type of $\zet$-torsors} by adopting the following definitions
 (cf.~\cref{def:TorZ}).
 \begin{align*}
@@ -160,10 +160,10 @@ With this in hand, we can formulate a recursion principle for $\TorZ$.
 It states that, given a type $A$, an element $a$ of $A$ and a
 path $l:a=_A a$, one can construct a function $f:\TorZ\to A$
 such that $f(\pt)\jdeq a$ and $\ap{f}(\Zloop)=l$.
-(This construction was formalised by Grayson 
+\footnote{\color{red}This construction was formalised by Grayson 
 in 2014, see \cite{circlerec-Dan}; our construction here uses the 
 same basic idea but manages the computations involved in establishing the
-induction principle better.)  We call the resulting function
+induction principle better.}  We call the resulting function
 (\cref{def:TorZrecursor} below)
 \[
 {\rec}_A : \sum_{a:A}(a=a) ~~\to~~ (\TorZ \to A).
@@ -265,7 +265,7 @@ slightly different from the construction presented below.
 The formalized construction does not use any higher inductive types,
 relying instead on the construction of propositional truncation as
 (the propositional resizing of)
-$\Trunc X \defeq \prod_{P:\Prop}((X \to P) \to P)$.
+$$\Trunc X \defeq \prod_{P:\Prop}((X \to P) \to P).$$
 Nor, of course, and this is the whole point, do we
 depend on the previous existence of a type satisfying the induction principle of the circle. 
 
@@ -306,9 +306,9 @@ Let $\zet$ be the inductive type with the following three constructors:
 \begin{enumerate}[topsep=0pt]
 \item $\zzero: \zet$ for the integer number zero, 
 $0 \defeq \zzero$
-\item $\zpos: \NN \to \zet$ for positive numbers,
+\item $\zpos: \NN \to \zet$ for positive {\color{red}integers},
 $1 \defeq \zpos(0),\ldots$.
-\item $\zneg: \NN \to \zet$ for negative numbers, 
+\item $\zneg: \NN \to \zet$ for negative {\color{red}integers}, 
 $-1 \defeq \zneg(0),\ldots$
 \end{enumerate}
 \end{definition}
@@ -331,6 +331,7 @@ $s(\zzero)\defeq \zpos(0)$,
 $s(\zpos(n))\defeq \zpos(S(n))$,
 $s(\zneg(n))\defeq -i(n)$. For example, we have
 $s(-1)\jdeq s(\zneg(0))\jdeq -i(0) \jdeq \zzero \jdeq 0$.
+{\color{red}Let's denote the successor function on $\NN$ by $S$,}
 By induction on $n:\NN$ one proves $s(i(n))=i(S(n))$, 
 so that one can say that $s$ extends $S$ on the $i$-image of $\NN$. 
 From now on we will identify $i(n):\zet$ with $n$,
@@ -359,7 +360,8 @@ From addition and unary $-$ one can define a binary
 %Show that $i(n+m)=i(n)+i(m)$ for all $n,m:\NN$.
 %\end{xca}
 
-Recall the equivalence $\ev_0 : (\pt=_\TorZ \pt)\to\zet$ from the introduction.
+Recall the equivalence $\ev_0 : (\pt=_\TorZ \pt)\to\zet$ from the introduction,
+{\color{red}mapping $p$ to $\pr_1(p)_*(0)$}.
 We have $\refl{\pt} : \pt=_\TorZ \pt$, as well as the operations
 of \emph{path reversal} and \emph{path composition} as defined
 in \cite[Ch. 2.1]{hottbook}. These satisfy the laws as stated
@@ -419,7 +421,7 @@ $f : \prod_{n:\NN}(P(n) \to P(n+1))$ and
 $g : \prod_{n:\NN}(P(-n) \to P(-n-1))$,
 as illustrated in \cref{fig:integers-induction-asymmetric}.
 
-The function $h:\prod_{z:\ZZ}(P(z)$ thus defined satisfies
+The function $h:\prod_{z:\ZZ}(P(z)\color{red})$ thus defined satisfies
 $h(n+1)\jdeq f(n,h(n))$ and $h(-n-1)\jdeq g(n,h(-n))$ for all $n:\NN$.
 
 It is possible to give a more symmetric, but less general induction principle,
@@ -479,19 +481,17 @@ for $\zet$-torsors.
   with $h_0 : P(0)$, $h_+ : \prod_{n:\NN}P(n+1)$,  and $h_- : \prod_{n:\NN} P(-n-1)$. 
   Since $h(0)=p$ only depends on $h_0$ the pair $(h_0,r)$ with  $r : h_0 = p$
   contracts away, so we're left with the type
-  \begin{align*}
+ {\color{red} 
+  \begin{align*}  
     \varphi^{-1}(p)
-    &\equiv
-      \Biggl(\sum_{h_+ : \prod_{n:\NN}P(n+1)}
-      \bigl(h_+(0) = f_0(p)\bigr) \\
-    &\qquad\qquad\qquad
-      \times \biggl(\prod_{n:\NN}h_+(n+1) = f_n(h_+(n))\biggr)\Biggr) \\
-    &\quad\times
-      \Biggl(\sum_{h_- : \prod_{n:\NN}P(-n-1)}
-      \bigl(h_-(0) = f_{-1}^{-1}(p)\bigr) \\
-    &\qquad\qquad\qquad
-      \times \biggl(\prod_{n:\NN}h_-(n+1) = f_{-n-2}^{-1}(h_-(n))\biggr)\Biggr).
-  \end{align*}
+    &\equiv \Phi_+(p) \times \Phi_-(p),\text{~where $\Phi_+(p),\Phi_-(p)$ are}
+ \end{align*}
+ \begin{align*}
+  \sum_{h_+ : \prod_{n:\NN}P(n+1)} \bigl(  (h_+(0) = f_0(p))  &
+                          \times \prod_{n:\NN}h_+(n+1) = f_n(h_+(n))\bigr),\text{and}\\
+  \sum_{h_- : \prod_{n:\NN}P(-n-1)} \bigl(   (h_-(0) = f_{-1}^{-1}(p))  &
+                          \times \prod_{n:\NN}h_-(n+1) = f_{-n-2}^{-1}(h_-(n))\bigr),
+  \end{align*} repectively.}
   The latter type is contractible, because it is the product of two contractible types,
   each specifying a certain function $h_{\pm}:\prod_{n:\NN}Q_{\pm}(n)$,
   and saying that this function has a certain value at $0$
