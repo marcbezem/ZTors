@@ -296,218 +296,6 @@ as this is not a groupoid.
 Because the $2$-sphere in topology is not an $n$-type for any $n$,
 the new model will not contain a $2$-sphere.
 
-\section{The integers}
-\label{sec:integers}
-
-We define the type of integers in one of the many possible ways.
-
-\begin{definition}\label{def:integers}
-Let $\zet$ be the inductive type with the following three constructors:
-\begin{enumerate}[topsep=0pt]
-\item $\zzero: \zet$ for the integer number zero, 
-$0 \defeq \zzero$
-\item $\zpos: \NN \to \zet$ for positive {\color{red}integers},
-$1 \defeq \zpos(0),\ldots$.
-\item $\zneg: \NN \to \zet$ for negative {\color{red}integers}, 
-$-1 \defeq \zneg(0),\ldots$
-\end{enumerate}
-\end{definition}
-
-The \emph{embedding} function $i:\NN\to\zet$ is defined by induction,
-setting $i(0)\defeq \zzero$, $i(S(n))\defeq \zpos(n)$.
-Like the type $\NN$, the type $\zet$ is a set with decidable equality
-and ordering relations,
-and we denote its elements often in the usual way as $\ldots,-1,0,1,\ldots$.
-
-One well-known equivalence is \emph{negation} ${-}:\zet\to\zet$, 
-also called \emph{complement}, inductively defined by setting 
-$-\zzero\defeq \zzero$, 
-$-\zpos(n)\defeq \zneg(n)$, 
-$-\zneg(n)\defeq \zpos(n)$.
-Negation is its own inverse.
-
-The \emph{successor} function $s:\zet\to\zet$ is defined inductively setting 
-$s(\zzero)\defeq \zpos(0)$, 
-$s(\zpos(n))\defeq \zpos(S(n))$,
-$s(\zneg(n))\defeq -i(n)$. For example, we have
-$s(-1)\jdeq s(\zneg(0))\jdeq -i(0) \jdeq \zzero \jdeq 0$.
-{\color{red}Let's denote the successor function on $\NN$ by $S$,}
-By induction on $n:\NN$ one proves $s(i(n))=i(S(n))$, 
-so that one can say that $s$ extends $S$ on the $i$-image of $\NN$. 
-From now on we will identify $i(n):\zet$ with $n$,
-and $-i(n):\zet$ with $-n$, for all $n:\NN$.
-
-The successor function $s$ is an equivalence.
-%It is instructive to depict iterating $s$ in both directions as 
-%a doubly infinite sequence containing all integers:
-%\[
-%\ldots \mapsto \zneg(1) \mapsto \zneg(0) \mapsto \zzero \mapsto \zpos(0) \mapsto \zpos(1) \mapsto \ldots
-%\]
-The inverse $s^{-1}$ of $s$ is called the \emph{predecessor} function.
-We denote the $n$-fold iteration of $s$ as $s^n$, and
-the $n$-fold iteration of $s^{-1}$ as $s^{-n}$.
-
-Addition of integers is defined inductively by setting
-$z + \zzero\defeq z$, 
-$z + \zpos(n)\defeq s^{n+1}(z)$, 
-$z + \zneg(n)\defeq s^{-(n+1)}(z)$.
-%Again, addition extends $+$ on the $i$-image of $\NN$,
-%see \cref{xca:addition-on-Z-and-N}. 
-From addition and unary $-$ one can define a binary
-\emph{substraction} function setting $z-y \defeq z+(-y)$.
-
-%\begin{xca}\label{xca:addition-on-Z-and-N}
-%Show that $i(n+m)=i(n)+i(m)$ for all $n,m:\NN$.
-%\end{xca}
-
-Recall the equivalence $\ev_0 : (\pt=_\TorZ \pt)\to\zet$ from the introduction,
-{\color{red}mapping $p$ to $\pr_1(p)_*(0)$}.
-We have $\refl{\pt} : \pt=_\TorZ \pt$, as well as the operations
-of \emph{path reversal} and \emph{path composition} as defined
-in \cite[Ch. 2.1]{hottbook}. These satisfy the laws as stated
-and proved in \cite[Lemma 2.1.4]{hottbook}, equipping $\pt=_\TorZ \pt$
-with a group structure.
-The equivalence $\ev_0$ maps $\refl{\pt}$ via $\id_\zet : \zet\to\zet$ to $0$.
-As explained in the introduction, $\ev_0$ maps any $p : \pt=_\TorZ \pt$
-via $s^k : \zet\to\zet$ to some $k:\zet$. Since $(s^k)^{-1} = s^{-k}$
-and $s^k \circ s^l = s^{k+l}$, $\ev_0$ transports path reversal 
-and path composition to negation and addition, respectively.
-This means that the entire group structure of $\pt=_\TorZ \pt$
-is transported to the usual group structure on $\zet$,
-including all the proofs of the group laws in $\zet$.
-(The fact that we do not have to reprove the group laws
-is one of the benefits of the univalent approach.)
-
-
-\section{Some induction principles for the integers}
-\label{sec:integers-induction}
-
-\begin{figure}[b]
-  \centering
-  \begin{tikzpicture}
-    \foreach \x in {-2,-1,0,1,2} {
-      \begin{scope}[shift={(\x,0)}]
-        \draw (0,0) ellipse (0.2 and 0.8);
-        \node[fill,circle,inner sep=1pt,label=below:{$\x$}] (P\x) at (0,-1.2) {};
-      \end{scope}
-    }
-    \foreach \x in {0,1,2} {
-      \begin{scope}[shift={(\x,0)}]
-        \draw[->] (0.3,0) -- node[below] {\scriptsize$f\strut$} (0.7,00);
-      \end{scope}
-    }
-    \foreach \x in {-3,-2,-1} {
-      \begin{scope}[shift={(\x,0)}]
-        \draw[->] (0.7,0) -- node[below] {\scriptsize$g\strut$} (0.3,00);
-      \end{scope}
-    }
-    \node[fill,circle,inner sep=.8pt] at (0,0) {};
-    \node at (-4,0) {$P$};
-    \node at (-4,-1.4) {$\ZZ$};
-    \foreach \x in {-3,3.1} {
-      \foreach \y in {0,-1.2} {
-        \node at (\x,\y) {$\cdots$};
-      }
-    }
-  \end{tikzpicture}
-  \caption{Asymmetric integer induction principle}
-  \label{fig:integers-induction-asymmetric}
-\end{figure}
-
-The definition of $\zet$ yields the following induction principle.
-Given $P : \zet \to \UU$, to construct elements $h(z) : P(z)$ for every $z : \zet$,
-it suffices to give $h(0): P(0)$ and functions
-$f : \prod_{n:\NN}(P(n) \to P(n+1))$ and
-$g : \prod_{n:\NN}(P(-n) \to P(-n-1))$,
-as illustrated in \cref{fig:integers-induction-asymmetric}.
-
-The function $h:\prod_{z:\ZZ}(P(z)\color{red})$ thus defined satisfies
-$h(n+1)\jdeq f(n,h(n))$ and $h(-n-1)\jdeq g(n,h(-n))$ for all $n:\NN$.
-
-It is possible to give a more symmetric, but less general induction principle,
-if we assume that the functions are equivalences.
-In that case we can reorient the $g$'s to point in the same direction as the $f$'s,
-allowing us to combine them into a single family $f : \prod_{z:\zet}P(z) \equiv P(z+1)$ of equivalences, 
-as illustrated in \cref{fig:integers-induction-symmetric}.
-
-\begin{figure}[h]
-  \centering
-  \begin{tikzpicture}
-    \foreach \x in {-2,-1,0,1,2} {
-      \begin{scope}[shift={(\x,0)}]
-        \draw (0,0) ellipse (0.2 and 0.8);
-        \node[fill,circle,inner sep=1pt,label=below:{$\x$}] (P\x) at (0,-1.2) {};
-      \end{scope}
-    }
-    \foreach \x in {-3,-2,-1,0,1,2} {
-      \begin{scope}[shift={(\x,0)}]
-        \draw[->] (0.3,0) -- node[above] {\scriptsize$\sim$} node[below] {\scriptsize$f$} (0.7,00);
-      \end{scope}
-    }
-    \node[fill,circle,inner sep=.8pt] at (0,0) {};
-    \node at (-4,0) {$P$};
-    \node at (-4,-1.4) {$\ZZ$};
-    \foreach \x in {-3,3.1} {
-      \foreach \y in {0,-1.2} {
-        \node at (\x,\y) {$\cdots$};
-      }
-    }
-  \end{tikzpicture}
-  \caption{Symmetric integer induction principle}
-  \label{fig:integers-induction-symmetric}
-\end{figure}
-
-We shall need that in this case, giving an element $h:\prod_{z:\zet}P(z)$
-together with identities of type $h(z+1) = f_z(h(z))$ for all $z:\zet$
-is equivalent to giving the single element $h(0)$.
-We formulate this precisely as follows.
-
-\begin{theorem}\label{thm:integers-univ-symm}
-  Let $P : \zet \to \UU$ and $f : \prod_{z:\zet}P(z) \equiv P(z+1)$. The function
-  \[
-    \varphi : \biggl(\sum_{h:\prod_{z:\zet}P(z)}\prod_{z:\zet}h(z+1) = f_z(h(z))\biggr) \to P(0)
-  \]
-  that sends $(h,q)$ to $h(0)$ is an equivalence.
-\end{theorem}
-
-See \cite{Z-induction-formalized,Z-induction-torsor-formalized} for the formalization of the proof, as well as the formalization of a version
-for $\zet$-torsors.
-
-\begin{proof}
-  We prove that the fiber over any $p : P(0)$ is contractible.
-  We simplify notations a bit by leaving out the types of $h$ and $q$.
-  The fiber $\sum_{(h,q)} h(0)=p$ consists of triples $(h,q,r)$ with $r : h(0) = p$.
-  By case distinction, $h$ can (equivalently) be split in three parts $(h_-,h_0,h_+)$
-  with $h_0 : P(0)$, $h_+ : \prod_{n:\NN}P(n+1)$,  and $h_- : \prod_{n:\NN} P(-n-1)$. 
-  Since $h(0)=p$ only depends on $h_0$ the pair $(h_0,r)$ with  $r : h_0 = p$
-  contracts away, so we're left with the type
- {\color{red} 
-  \begin{align*}  
-    \varphi^{-1}(p)
-    &\equiv \Phi_+(p) \times \Phi_-(p),\text{~where $\Phi_+(p),\Phi_-(p)$ are}
- \end{align*}
- \begin{align*}
-  \sum_{h_+ : \prod_{n:\NN}P(n+1)} \bigl(  (h_+(0) = f_0(p))  &
-                          \times \prod_{n:\NN}h_+(n+1) = f_n(h_+(n))\bigr),\text{and}\\
-  \sum_{h_- : \prod_{n:\NN}P(-n-1)} \bigl(   (h_-(0) = f_{-1}^{-1}(p))  &
-                          \times \prod_{n:\NN}h_-(n+1) = f_{-n-2}^{-1}(h_-(n))\bigr),
-  \end{align*} repectively.}
-  The latter type is contractible, because it is the product of two contractible types,
-  each specifying a certain function $h_{\pm}:\prod_{n:\NN}Q_{\pm}(n)$,
-  and saying that this function has a certain value at $0$
-  and prescribing the values at successors.
-  But such a specification is unique by the universal property (induction!) of $\NN$.
-\end{proof}
-Let us spell out the inverse function produced in the proof.
-It maps $p : P(0)$ to a pair whose first component
-is the function that takes $z:\zet$ to $f^z(p):P(z)$, where
-\begin{alignat*}2
-  f^0(p) &\defeq p, && \\
-  f^{n+1}(p) &\defeq f_n(f^n(p)),&\quad&\text{for $n:\NN$,} \\
-  f^{-n-1}(p) &\defeq f_{-n-1}^{-1}(f^{-n}(p)),&\quad&\text{for $n:\NN$.}
-\end{alignat*}
-
-
 \section{Identifying elements in members of families of types}
 \label{sec:pathovers}
 
@@ -638,13 +426,229 @@ The proof is by induction on $\beta$ (for right-recursive composition).
 
 
 
+\section{The integers}
+\label{sec:integers}
+
+We define the type of integers in one of the many possible ways.
+
+\begin{definition}\label{def:integers}
+Let $\zet$ be the inductive type with the following three constructors:
+\begin{enumerate}[topsep=0pt]
+\item $\zzero: \zet$ for the integer number zero, 
+$0 \defeq \zzero$
+\item $\zpos: \NN \to \zet$ for positive {\color{red}integers},
+$1 \defeq \zpos(0),\ldots$.
+\item $\zneg: \NN \to \zet$ for negative {\color{red}integers}, 
+$-1 \defeq \zneg(0),\ldots$
+\end{enumerate}
+\end{definition}
+
+The \emph{embedding} function $i:\NN\to\zet$ is defined by induction,
+setting $i(0)\defeq \zzero$, $i(S(n))\defeq \zpos(n)$.
+Like the type $\NN$, the type $\zet$ is a set with decidable equality
+and ordering relations,
+and we denote its elements often in the usual way as $\ldots,-1,0,1,\ldots$.
+
+One well-known equivalence is \emph{negation} ${-}:\zet\to\zet$, 
+also called \emph{complement}, inductively defined by setting 
+$-\zzero\defeq \zzero$, 
+$-\zpos(n)\defeq \zneg(n)$, 
+$-\zneg(n)\defeq \zpos(n)$.
+Negation is its own inverse.
+
+The \emph{successor} function $s:\zet\to\zet$ is defined inductively setting 
+$s(\zzero)\defeq \zpos(0)$, 
+$s(\zpos(n))\defeq \zpos(S(n))$,
+$s(\zneg(n))\defeq -i(n)$. For example, we have
+$s(-1)\jdeq s(\zneg(0))\jdeq -i(0) \jdeq \zzero \jdeq 0$.
+{\color{red}Let's denote the successor function on $\NN$ by $S$,}
+By induction on $n:\NN$ one proves $s(i(n))=i(S(n))$, 
+so that one can say that $s$ extends $S$ on the $i$-image of $\NN$. 
+From now on we will identify $i(n):\zet$ with $n$,
+and $-i(n):\zet$ with $-n$, for all $n:\NN$.
+
+The successor function $s$ is an equivalence.
+%It is instructive to depict iterating $s$ in both directions as 
+%a doubly infinite sequence containing all integers:
+%\[
+%\ldots \mapsto \zneg(1) \mapsto \zneg(0) \mapsto \zzero \mapsto \zpos(0) \mapsto \zpos(1) \mapsto \ldots
+%\]
+The inverse $s^{-1}$ of $s$ is called the \emph{predecessor} function.
+We denote the $n$-fold iteration of $s$ as $s^n$, and
+the $n$-fold iteration of $s^{-1}$ as $s^{-n}$.
+
+Addition of integers is defined inductively by setting
+$z + \zzero\defeq z$, 
+$z + \zpos(n)\defeq s^{n+1}(z)$, 
+$z + \zneg(n)\defeq s^{-(n+1)}(z)$.
+%Again, addition extends $+$ on the $i$-image of $\NN$,
+%see \cref{xca:addition-on-Z-and-N}. 
+From addition and unary $-$ one can define a binary
+\emph{substraction} function setting $z-y \defeq z+(-y)$.
+
+%\begin{xca}\label{xca:addition-on-Z-and-N}
+%Show that $i(n+m)=i(n)+i(m)$ for all $n,m:\NN$.
+%\end{xca}
+
+Recall the equivalence $\ev_0 : (\pt=_\TorZ \pt)\to\zet$ from the introduction,
+{\color{red}mapping $p$ to $\pr_1(p)_*(0)$}.
+We have $\refl{\pt} : \pt=_\TorZ \pt$, as well as the operations
+of \emph{path reversal} and \emph{path composition} as defined
+in \cite[Ch. 2.1]{hottbook}. These satisfy the laws as stated
+and proved in \cite[Lemma 2.1.4]{hottbook}, equipping $\pt=_\TorZ \pt$
+with a group structure.
+The equivalence $\ev_0$ maps $\refl{\pt}$ via $\id_\zet : \zet\to\zet$ to $0$.
+As explained in the introduction, $\ev_0$ maps any $p : \pt=_\TorZ \pt$
+via $s^k : \zet\to\zet$ to some $k:\zet$. Since $(s^k)^{-1} = s^{-k}$
+and $s^k \circ s^l = s^{k+l}$, $\ev_0$ transports path reversal 
+and path composition to negation and addition, respectively.
+This means that the entire group structure of $\pt=_\TorZ \pt$
+is transported to the usual group structure on $\zet$,
+including all the proofs of the group laws in $\zet$.
+(The fact that we do not have to reprove the group laws
+is one of the benefits of the univalent approach.)
+
+
+
+\section{Some induction principles for the integers}
+\label{sec:integers-induction}
+
+\begin{figure}[b]
+  \centering
+  \begin{tikzpicture}
+    \foreach \x in {-2,-1,0,1,2} {
+      \begin{scope}[shift={(\x,0)}]
+        \draw (0,0) ellipse (0.2 and 0.8);
+        \node[fill,circle,inner sep=1pt,label=below:{$\x$}] (P\x) at (0,-1.2) {};
+      \end{scope}
+    }
+    \foreach \x in {0,1,2} {
+      \begin{scope}[shift={(\x,0)}]
+        \draw[->] (0.3,0) -- node[below] {\scriptsize$f\strut$} (0.7,00);
+      \end{scope}
+    }
+    \foreach \x in {-3,-2,-1} {
+      \begin{scope}[shift={(\x,0)}]
+        \draw[->] (0.7,0) -- node[below] {\scriptsize$g\strut$} (0.3,00);
+      \end{scope}
+    }
+    \node[fill,circle,inner sep=.8pt] at (0,0) {};
+    \node at (-4,0) {$P$};
+    \node at (-4,-1.4) {$\ZZ$};
+    \foreach \x in {-3,3.1} {
+      \foreach \y in {0,-1.2} {
+        \node at (\x,\y) {$\cdots$};
+      }
+    }
+  \end{tikzpicture}
+  \caption{Asymmetric integer induction principle}
+  \label{fig:integers-induction-asymmetric}
+\end{figure}
+
+The definition of $\zet$ yields the following induction principle.
+Given $P : \zet \to \UU$, to construct elements $h(z) : P(z)$ for every $z : \zet$,
+it suffices to give $h(0): P(0)$ and functions
+$f : \prod_{n:\NN}(P(n) \to P(n+1))$ and
+$g : \prod_{n:\NN}(P(-n) \to P(-n-1))$,
+as illustrated in \cref{fig:integers-induction-asymmetric}.
+
+The function $h:\prod_{z:\ZZ}(P(z)\color{red})$ thus defined satisfies
+$h(n+1)\jdeq f(n,h(n))$ and $h(-n-1)\jdeq g(n,h(-n))$ for all $n:\NN$.
+
+It is possible to give a more symmetric, but less general induction principle,
+if we assume that the functions are equivalences.
+In that case we can reorient the $g$'s to point in the same direction as the $f$'s,
+allowing us to combine them into a single family $f : \prod_{z:\zet}P(z) \equiv P(z+1)$ of equivalences, 
+as illustrated in \cref{fig:integers-induction-symmetric}.
+
+\begin{figure}[h]
+  \centering
+  \begin{tikzpicture}
+    \foreach \x in {-2,-1,0,1,2} {
+      \begin{scope}[shift={(\x,0)}]
+        \draw (0,0) ellipse (0.2 and 0.8);
+        \node[fill,circle,inner sep=1pt,label=below:{$\x$}] (P\x) at (0,-1.2) {};
+      \end{scope}
+    }
+    \foreach \x in {-3,-2,-1,0,1,2} {
+      \begin{scope}[shift={(\x,0)}]
+        \draw[->] (0.3,0) -- node[above] {\scriptsize$\sim$} node[below] {\scriptsize$f$} (0.7,00);
+      \end{scope}
+    }
+    \node[fill,circle,inner sep=.8pt] at (0,0) {};
+    \node at (-4,0) {$P$};
+    \node at (-4,-1.4) {$\ZZ$};
+    \foreach \x in {-3,3.1} {
+      \foreach \y in {0,-1.2} {
+        \node at (\x,\y) {$\cdots$};
+      }
+    }
+  \end{tikzpicture}
+  \caption{Symmetric integer induction principle}
+  \label{fig:integers-induction-symmetric}
+\end{figure}
+
+We shall need that in this case, giving an element $h:\prod_{z:\zet}P(z)$
+together with identities of type $h(z+1) = f_z(h(z))$ for all $z:\zet$
+is equivalent to giving the single element $h(0)$.
+We formulate this precisely as follows.
+
+\begin{theorem}\label{thm:integers-univ-symm}
+  Let $P : \zet \to \UU$ and $f : \prod_{z:\zet}P(z) \equiv P(z+1)$. The function
+  \[
+    \varphi : \biggl(\sum_{h:\prod_{z:\zet}P(z)}\prod_{z:\zet}h(z+1) = f_z(h(z))\biggr) \to P(0)
+  \]
+  that sends $(h,q)$ to $h(0)$ is an equivalence.
+\end{theorem}
+
+See \cite{Z-induction-formalized,Z-induction-torsor-formalized} for the formalization of the proof, as well as the formalization of a version
+for $\zet$-torsors.
+
+\begin{proof}
+  We prove that the fiber over any $p : P(0)$ is contractible.
+  We simplify notations a bit by leaving out the types of $h$ and $q$.
+  The fiber $\sum_{(h,q)} h(0)=p$ consists of triples $(h,q,r)$ with $r : h(0) = p$.
+  By case distinction, $h$ can (equivalently) be split in three parts $(h_-,h_0,h_+)$
+  with $h_0 : P(0)$, $h_+ : \prod_{n:\NN}P(n+1)$,  and $h_- : \prod_{n:\NN} P(-n-1)$. 
+  Since $h(0)=p$ only depends on $h_0$ the pair $(h_0,r)$ with  $r : h_0 = p$
+  contracts away, so we're left with the type
+ {\color{red} 
+  \begin{align*}  
+    \varphi^{-1}(p)
+    &\equiv \psi_+(p) \times \psi_-(p),\text{~where $\psi_+(p),\psi_-(p)$ are}
+ \end{align*}
+ \begin{align*}
+  \sum_{h_+ : \prod_{n:\NN}P(n+1)} \bigl(  (h_+(0) = f_0(p))  &
+                          \times \prod_{n:\NN}h_+(n+1) = f_n(h_+(n))\bigr),\text{and}\\
+  \sum_{h_- : \prod_{n:\NN}P(-n-1)} \bigl(   (h_-(0) = f_{-1}^{-1}(p))  &
+                          \times \prod_{n:\NN}h_-(n+1) = f_{-n-2}^{-1}(h_-(n))\bigr),
+  \end{align*} repectively.
+The type  $\varphi^{-1}(p)$ is contractible, because $\psi_+(p)$ and
+$\psi_-(p)$ are  contractible,}
+  each specifying a certain function $h_{\pm}:\prod_{n:\NN}Q_{\pm}(n)$,
+  and saying that this function has a certain value at $0$
+  and prescribing the values at successors.
+  But such a specification is unique by the universal property (induction!) of $\NN$.
+\end{proof}
+Let us spell out the inverse function produced in the proof.
+It maps $p : P(0)$ to a pair whose first component
+is the function that takes $z:\zet$ to $f^z(p):P(z)$, where
+\begin{alignat*}2
+  f^0(p) &\defeq p, && \\
+  f^{n+1}(p) &\defeq f_n(f^n(p)),&\quad&\text{for $n:\NN$,} \\
+  f^{-n-1}(p) &\defeq f_{-n-1}^{-1}(f^{-n}(p)),&\quad&\text{for $n:\NN$.}
+\end{alignat*}
+
+
 
 \section{Z-Torsors}\label{sec:ZTorsors}
 
-Recall that pairs $(X,f)$ will be taken to be of type $\sum_{X:\UU}(X\to X)$.
+{\color{red}In this section, pairs $(X,f)$ will be of type $\sum_{X:\UU}(X\to X)$.}
 Moreover, terms of propositional type whose precise form does not interest us are denoted by ``$!$''.
 Nested pairs may be written as tuples.
 With these notational simplifications, we rephrase some definitions from the introduction.
+{\color{red}The formalization of \cref{sec:TorZ-recursion} can be found in \cite{circlerec-Dan},
+that of \cref{sec:TorZ-recursion} in \cite{circleind-Dan}.}
 
 \begin{definition}\label{def:TorZ}
   The pointed type of $\zet$-torsors is defined by
@@ -948,9 +952,6 @@ for the center of contraction of $Q_p(Z)$.
 We immediately get $c_p(\pt)\defeq a$ and will proceed to
 elaborate $\apd{c_p}(\Zloop)$ (see \cite[Ch. 2.3]{hottbook} for $\apd{\_}$).
 
-%\begin{figure}
-%\caption{\label{fig:TorZ-induction}LET'S HAVE SOME INFORMATIVE PICTURE}
-%\end{figure}
 
 \begin{lemma}\label{lem:s-X-x-*-e}
   For all $X,Y:\TorZ$, $e: X=Y$ and $x:X$ we have a path 
