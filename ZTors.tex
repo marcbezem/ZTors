@@ -70,7 +70,7 @@ consider the type consisting of all frieze patterns in a Euclidean plane\footnot
 linear collection of evenly spaced copies of the letter $F$.
 $$ \cdots FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF \cdots $$
 
-We have formalized the result in \UniMath{}, a name which refers both to Voevodsky's (univalent) foundation of mathematics based on a formal
+{\color{red}We have formalized the result in \UniMath{}, a name which refers both to Voevodsky's (univalent) foundation of mathematics based on a formal
 type theoretic language and to a particular repository \cite{UniMath} of formalized proofs, initiated by him, encoded in the language of the
 proof assistant {\em Coq}.  See \cite{VV-UniMath-1} for an overview by Voevodsky of it.
 
@@ -87,7 +87,7 @@ construction: a context is interpreted as a fibrant simplicial set, a type in a 
 sets, an element of a type is interpreted as a section of such a fibration, and so on.  At his death the series was well underway but far from
 complete: \cite{103,109,VV-relmonad,112,39,MR3607209,MR3607210}.
 
-We turn now to the content of this paper.
+We turn now to the content of this paper.}
 
 As a prerequisite we require, of the reader, a working knowledge of homotopy type theory
 as described in, for example, the first four chapters of \cite{hottbook}.
@@ -611,8 +611,8 @@ We formulate this precisely as follows.
   that sends $(h,q)$ to $h(0)$ is an equivalence.
 \end{theorem}
 
-See \cite{Z-induction-formalized,Z-induction-torsor-formalized} for the formalization of the proof, as well as the formalization of a version
-for $\zet$-torsors.
+See \cite{Z-induction-formalized,Z-induction-torsor-formalized} for the formalization of the proof, 
+as well as the formalization of a version for $\zet$-torsors.
 
 \begin{proof}
   We prove that the fiber over any $p : P(0)$ is contractible.
@@ -658,7 +658,7 @@ Moreover, terms of propositional type whose precise form does not interest us ar
 Nested pairs may be written as tuples.
 With these notational simplifications, we rephrase some definitions from the introduction.
 {\color{red}The formalization of \cref{sec:TorZ-recursion} can be found in \cite{circlerec-Dan},
-that of \cref{sec:TorZ-recursion} in \cite{circleind-Dan}.}
+that of \cref{sec:TorZ-induction} in \cite{circleind-Dan}.}
 
 \begin{definition}\label{def:TorZ}
   The pointed type of $\zet$-torsors is defined by
@@ -684,7 +684,9 @@ Another way to think of it is as the type of Cayley diagrams for $\ZZ$.
 
 We remark that the pointed type $\TorZ$ is connected, that is, $\Trunc{\pt=Z}$ for all $Z:\TorZ$.
 
-We introduce the induction principle for propositional truncation in the following form (compare with \cite[6.9]{hottbook}).
+We introduce the induction principle for propositional truncation in the following form 
+(compare with \cite[6.9]{hottbook}, {\color{red}$\trunc\_: A\to\Trunc A$ is 
+the point constructor).}
 
 \begin{definition}\label{def:proptruncind}
   If $A$ is a type and $B(x)$ is a family of propositions parametrized by the elements $a$ of $\Trunc A$,
