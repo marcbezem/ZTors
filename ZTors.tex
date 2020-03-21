@@ -82,7 +82,7 @@ Now we give a few more details.
 As a prerequisite we require, of the reader, a working knowledge of homotopy type theory
 as described in, for example, the first four chapters of \cite{hottbook}.
 One extra piece of knowledge we use here is the \emph{dependent} elimination
-principle for propositional truncation, mentioned in \cite[Ch. 6.9]{hottbook},
+principle for propositional truncation, mentioned in \cite[6.9]{hottbook},
 and qualified as `not really useful'%
 \footnote{The dependent elimination principle appears to 
   be used later in \cite{hottbook}, though.
@@ -193,7 +193,7 @@ function of the following type:
   \sum_{r: f(\pt)= a}
   {\apd{f}(\Zloop) = r\cto' l \cto r^{-1}}
 \end{equation}
-Here $\apd{}$ is as defined in \cite[Ch. 2.3]{hottbook};
+Here $\apd{}$ is as defined in \cite[2.3]{hottbook};
 we recall the basics of paths over a path and $\apd{}$ in \cref{sec:pathovers}.
 Note that $r$ above is a path between two elements of the same fiber $A(\pt)$.
 Hence $r$ and $r^{-1}$ are paths over $\refl{\pt}$ and can be composed with $l$.
@@ -254,7 +254,7 @@ $\apd{f}(\Zloop) =^{\lambda z, z=^A_{\Zloop}z}_r l$,
 and which corresponds to filling the inside of the curvilinear quadrilateral in \cref{fig:circle-induction}.
 
 If the underlying type theory has propositional truncation with a dependent eliminator that computes judgmentally on the point constructor, as
-in \cite[Ch. 6.9]{hottbook}, then the path $r : f(\pt)= a$ above is a reflexivity path.
+in \cite[6.9]{hottbook}, then the path $r : f(\pt)= a$ above is a reflexivity path.
 It then follows
 from the care with which we chose the expression $r\cto' l \cto r^{-1}$, that it has the same type as $l$, and, moreover, the two terms are
 judgmentally equal.  Thus the right side of the equation \ref{circleinductionequation} can be replaced by $l$.
@@ -271,7 +271,7 @@ depend on the previous existence of a type satisfying the induction principle of
 
 In a type theory where higher inductive types are admitted,
 one can introduce a circle $\Sc$ as a higher inductive type, 
-as in \cite[Ch. 6.1]{hottbook}, and it will easily be shown to be equivalent to $\TorZ$.
+as in \cite[6.1]{hottbook}, and it will easily be shown to be equivalent to $\TorZ$.
 The equivalence can be established by observing that $\TorZ$ and $\Sc$ 
 are pointed connected types with loop spaces equivalent to $\zet$.
 (For the interested reader: apply \cite[Lemma 7.6.2]{hottbook} with $n=-2$
@@ -494,7 +494,7 @@ Recall the equivalence $\ev_0 : (\pt=_\TorZ \pt)\to\zet$ from the introduction,
 {\color{red}mapping $p$ to $\pr_1(p)_*(0)$}.
 We have $\refl{\pt} : \pt=_\TorZ \pt$, as well as the operations
 of \emph{path reversal} and \emph{path composition} as defined
-in \cite[Ch. 2.1]{hottbook}. These satisfy the laws as stated
+in \cite[2.1]{hottbook}. These satisfy the laws as stated
 and proved in \cite[Lemma 2.1.4]{hottbook}, equipping $\pt=_\TorZ \pt$
 with a group structure.
 The equivalence $\ev_0$ maps $\refl{\pt}$ via $\id_\zet : \zet\to\zet$ to $0$.
@@ -674,7 +674,7 @@ Another way to think of it is as the type of Cayley diagrams for $\ZZ$.
 
 We remark that the pointed type $\TorZ$ is connected, that is, $\Trunc{\pt=Z}$ for all $Z:\TorZ$.
 
-We introduce the induction principle for propositional truncation in the following form (compare with \cite[Ch. 6.9]{hottbook}).
+We introduce the induction principle for propositional truncation in the following form (compare with \cite[6.9]{hottbook}).
 
 \begin{definition}\label{def:proptruncind}
   If $A$ is a type and $B(x)$ is a family of propositions parametrized by the elements $a$ of $\Trunc A$,
@@ -950,7 +950,7 @@ which is again a triple $(a,h,q)$. In general we write
 $\vec{c}_p(Z)\defeq(c_p(Z),\tilde{c}_p(Z),\hat{c}_p(Z))$
 for the center of contraction of $Q_p(Z)$.
 We immediately get $c_p(\pt)\defeq a$ and will proceed to
-elaborate $\apd{c_p}(\Zloop)$ (see \cite[Ch. 2.3]{hottbook} for $\apd{\_}$).
+elaborate $\apd{c_p}(\Zloop)$ (see \cite[2.3]{hottbook} for $\apd{\_}$).
 
 
 \begin{lemma}\label{lem:s-X-x-*-e}
