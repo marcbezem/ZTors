@@ -70,15 +70,24 @@ consider the type consisting of all frieze patterns in a Euclidean plane\footnot
 linear collection of evenly spaced copies of the letter $F$.
 $$ \cdots FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF \cdots $$
 
-We have formalized the result in \UniMath{}, a name which refers both to a (univalent) foundation of mathematics based on a formal type theoretic
-language and to a particular repository \cite{UniMath} of formalized proofs, encoded in the language of the proof assistant {\em Coq}.
+We have formalized the result in \UniMath{}, a name which refers both to Voevodsky's (univalent) foundation of mathematics based on a formal
+type theoretic language and to a particular repository \cite{UniMath} of formalized proofs, initiated by him, encoded in the language of the
+proof assistant {\em Coq}.  See \cite{VV-UniMath-1} for an overview by Voevodsky of it.
 
-The other standard way to construct a circle in type theory uses {\em higher inductive types}, where one posits a new type $\Sc$, an element $\pt : \Sc$, a path $\Sloop : \pt = \pt$, an induction principle (for defining functions from it), and nothing more.
-Because {\UniMath}, by a conservative convention aimed at minimizing the burden of proving
-consistency of the formal system, does not use higher inductive types, the construction presented here is the only way to construct a circle in
-\UniMath{}.  Adding higher inductive types to the system would give another construction of the circle, equivalent to the one described above.
+The other standard way to construct a circle in type theory uses {\em higher inductive types}, where one posits a new type $\Sc$, an element
+$\pt : \Sc$, a path $\Sloop : \pt = \pt$, an induction principle (for defining functions from it), and nothing more.  Adding higher inductive
+types to the system would give another construction of the circle, equivalent to the one described above.  Voevodsky chose not to include higher
+inductive types to {\em UniMath} for two chief reasons.  Firstly, it was (and still is) not clear how to specify precisely what a definition of
+a higher inductive type consists of: see \cite{1705.07088,HoTT-Agda-HIT} for two approaches.  Secondly, Voevodsky planned to prove consistency
+of {\sl UniMath} in a series of papers\footnote{Early work \cite{1211.2851} with Kapulkin and Lumsdaine to establish consistency left him
+  unsatisfied, so he embarked on his series of papers, to be realized with more details exposed.} and realized that adding higher inductive
+types to the system would dramatically increase the length of the series and the burden of writing them; as it was, he died before completing
+the project.  The approach in this series is to interpret each of the basic constructions of the formal system as a traditional mathematical
+construction: a context is interpreted as a fibrant simplicial set, a type in a context is interpreted as a fibration of fibrant simplicial
+sets, an element of a type is interpreted as a section of such a fibration, and so on.  At his death the series was well underway but far from
+complete: \cite{103,109,VV-relmonad,112,39,MR3607209,MR3607210}.
 
-Now we give a few more details.
+We turn now to the content of this paper.
 
 As a prerequisite we require, of the reader, a working knowledge of homotopy type theory
 as described in, for example, the first four chapters of \cite{hottbook}.
@@ -160,7 +169,7 @@ directly from $s: \zet\equiv\zet$ by applying the univalence axiom
 With this in hand, we can formulate a recursion principle for $\TorZ$.
 It states that, given a type $A$, an element $a$ of $A$ and a
 path $l:a=_A a$, one can construct a function $f:\TorZ\to A$
-such that $f(\pt)\jdeq a$ and $\ap{f}(\Zloop)=l$.
+such that $f(\pt)\jdeq a$ and $\ap{f}(\Zloop)=l$.%
 \footnote{\color{red}This construction was formalised by Grayson 
 in 2014, see \cite{circlerec-Dan}; our construction here uses the 
 same basic idea but manages the computations involved in establishing the
