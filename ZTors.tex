@@ -911,6 +911,7 @@ and maps $\Zloop$ to $p$ (by dependent action on paths).
 We follow the pattern of the non-dependent case
 in \cref{sec:TorZ-recursion}, but keep in mind that 
 $A$ is now not constant and $p$ is a \emph{path over a path}.
+{\color{red}We make extensive use of the functions and lemmas from \cref{sec:pathovers}.}
 
 The following lemma follows from the fact that $\zet$ is a set
 and $s: \zet\to\zet$ is an equivalence.
@@ -1070,8 +1071,7 @@ However, if $\alpha$ is shorter than its type we may
 prefer to keep $\alpha$ in $\cp{\alpha}$.
 Also, as $\cp{\refl{}}$ is the identity, so is any $\cp{\alpha}$
 when the endpoints of $\alpha$ are definitionally equal. 
-We make extensive use of this and of the functions and
-lemmas from \cref{sec:pathovers}.
+{\color{red}We make extensive use of this simplification}.
 
 Abbreviate $s_0 \defeq s^\pt_0$, $s_1 \defeq s^\pt_1$, 
 then $\varepsilon_{\Zloop,0} : s_0^{-1} \ct s_1 = {\Zloop}$.
@@ -1099,9 +1099,10 @@ We now calculate:
 \end{align*}
 
 \section{Conclusion and Future Research}
-We have proved the induction principle of the circle for $\TorZ$:
+We have proved, {\color{red}for any type family $A\to\TorZ$,} 
+the induction principle of the circle for $\TorZ$:
 \[
-{\ind}_A : \sum_{a:A(\pt)}(a=_\Zloop a) ~~\to~~ \prod_{Z:\TorZ} A(Z),
+{\ind}_A : \sum_{a:A(\pt)}(a=^A_\Zloop a) ~~\to~~ \prod_{Z:\TorZ} A(Z),
 \]
 with ${\ind}_A$ mapping $(a,p)$ to $c_p$ satisfying $c_p(\pt) \jdeq a$ 
 and $\apd{c_p}(\Zloop) = p$.
