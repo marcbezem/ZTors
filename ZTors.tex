@@ -194,7 +194,7 @@ by Grayson \cite{circleind-Dan,circleind-Dan-theorem} in \UniMath.
 The precise statement of the induction principle is that there is a 
 function of the following type:
 \begin{equation}
-  \label{circleinductionequation}
+  \label{eq:circle-induction}
   \thinmuskip=10mu              % this is better than inserting tildes
   \prod_{A: \TorZ\to\UU}
   \prod_{a: A(\pt)}
@@ -252,7 +252,7 @@ composition $\cto'$ of paths over paths and the \emph{right recursive} $\cto$ co
   \label{fig:circle-induction}
 \end{figure}
 
-The type in \cref{circleinductionequation} is illustrated in \cref{fig:circle-induction}.
+The type in \cref{eq:circle-induction} is illustrated in \cref{fig:circle-induction}.
 We think of $\TorZ$ as a circle (and prove that it is),
 but we illustrate it (and objects depending on it) as periodically recurring,
 in order to make clearer diagrams.
@@ -267,7 +267,7 @@ If the underlying type theory has propositional truncation with a dependent elim
 in \cite[6.9]{hottbook}, then the path $r : f(\pt)= a$ above is a reflexivity path.
 It then follows
 from the care with which we chose the expression $r\cto' l \cto r^{-1}$, that it has the same type as $l$, and, moreover, the two terms are
-judgmentally equal.  Thus the right side of the equation \ref{circleinductionequation} can be replaced by $l$.
+judgmentally equal.  Thus the right side of the equation \ref{eq:circle-induction} can be replaced by $l$.
 
 Because the convention in {\UniMath} is to avoid higher inductive types,
 the formalization in \cite{circleind-Dan} is
@@ -289,7 +289,7 @@ to reduce to action on paths. Then use connectedness to strengthen
 this result from embeddings to equivalences. 
 Finally, again using connectedness, reduce to the loop spaces
 of the respective points, and show they are equivalent to $\zet$ and thus to each other.)
-The induction principle \cref{circleinductionequation} for $\TorZ$ then follows directly.
+The induction principle \cref{eq:circle-induction} for $\TorZ$ then follows directly.
 
 One can construct models of type theory with univalent universes and propositional resizing
 (viz., essentially of \UniMath{})
@@ -694,7 +694,33 @@ the point constructor).}
   The \emph{computation rule} asserts that $f (\trunc a) \jdeq g(a)$ for all $a:A$.
 \end{definition}
 
-In {\UniMath} the induction principle holds, but not the computation rule for it.
+In {\UniMath} the induction principle holds, but not the computation rule for it.%
+\footnote{\color{red}
+Recall that in {\UniMath} $\Trunc T \defeq \prod_{P:\Prop}((T \to P) \to P)$.
+The function $\trunc\_: T\to\Trunc T$ is in {\UniMath} not a constructor,
+but defined by $\trunc t  (P,f) \defeq f(t)$, for all $P: \Prop$, $f: T\to P$, and $t:T$.
+Thus we naturally get a recursion principle: if $P: \Prop$, then any
+$g: T \to P$ defines an $f : \Trunc T \to P$ by setting $f(x)\defeq x(P,g)$.
+Clearly $f$ satisfies $f(\trunc t |) \jdeq \trunc t (P,g) \jdeq g(t)$, for all $t: T$.
+
+For induction the situation is different: if $P: \Trunc T \to \Prop$,
+then any $g: \prod_{t:T} P(\trunc t)$ again defines an
+$f:  \prod_{x:\Trunc T} P(x)$. Since the latter type is a proposition,
+there is only one such $f$ and it can be obtained in several ways. 
+One way is the following. Let $x: \Trunc T$. Then $P(x): \Prop$. 
+Define $h_x: T \to P(x)$ by mapping $t$ to the transport of $g(t): P(\trunc t)$ 
+along the path of type $\trunc t = x$ coming from the proof that $\Trunc T$ is a proposition.
+By the recursion principle, $h_x$ defines $h'_x : \Trunc T \to P(x)$.
+Now set $f(x) \defeq h'_x(x)$. Indeed $f: \prod_{x:\Trunc T} P(x)$. However,
+because of the transport, we don't have $f(\trunc t) \jdeq g(t)$,
+as the path of type $\trunc t = \trunc t$ coming from the proof that $\Trunc T$ is 
+a proposition need not be a reflexivity path.
+
+There are several other ways of defining $f$, but none of them
+satisfies the computation rule $f(\trunc t)\jdeq g(t)$. It is currently
+unknown whether it is possible to define in {\UniMath} a propositional
+truncation with an induction principle that satisfies the computation rule.
+}
 
 \begin{lemma}\label{lem:dep-elim-TorZ}
 If $P(Z)$ is a proposition for all $Z:\TorZ$, then $P(\pt)$ implies that $P(Z)$ holds for all $Z:\TorZ$.
@@ -712,8 +738,25 @@ the same as $P(\pt)$, so $p$ provides the proof.
 The proof $q: \prod_{Z:\TorZ} P(Z)$ constructed above has the property that $q(\pt)\jdeq p$ if the computation rule for the induction principle
 for propositional truncation holds.
 
-The aim of this section is to show that $\TorZ$ has the
-universal property of the circle.
+{\color{red}The aim of this section is to show that $\TorZ$ satisfies a recursion principle
+and an induction principle.
+Together they establish that $\TorZ$ has the universal property of the circle.
+The precise statement of the induction principle has been stated in the
+introduction, see \cref{eq:circle-induction}.
+The recursion principle is the non-dependent version of the induction principle in 
+\cref{eq:circle-induction}, namely that there is a function of the following type:
+\begin{equation}
+  \label{eq:circle-recursion}
+  \thinmuskip=10mu              % this is better than inserting tildes
+  \prod_{A: \UU}
+  \prod_{a: A}
+  \prod_{l: a=_A a}
+  \sum_{f: \TorZ \to A}
+  \sum_{r: f(\pt)= a}
+  {\ap{f}(\Zloop) = r\ct l \ct r^{-1}}.
+\end{equation}
+}
+
 Although the same method works to derive both the recursion and the induction principles,
 we opt to do the recursion principle first, as it is slightly simpler,
 and prepares the way for the more complicated induction principle.
@@ -736,7 +779,8 @@ The idea is to expand $A$ to a $\Sigma$-type over $A$
 and to prove that this $\Sigma$-type is contractible
 (\cref{lem:guided-null-hmtps}).
 We then obtain a function to $A$ by (double) projection
-of this proof, as illustrated in \cref{fig:TorZ-recursion}.
+of this proof, as illustrated in \cref{fig:TorZ-recursion},
+{\color{red}where $\vec c_p(X,f)$ is a dependent function.}
 
 \begin{figure}
 \begin{tikzpicture} %\large
