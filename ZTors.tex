@@ -122,15 +122,13 @@ that is an equivalence.\footnote{%
   For clarity, we distinguish between the \emph{group} $\ZZ$
   and the \emph{underlying set} $\zet$.}
 
-{\color{red} Recall that a $\ZZ$-torsor \cite{XYZ} consists of a set $X$ and 
-a $\ZZ$-action ${\cdot} : (\zet\times X) \to X$ that is free and transitive. 
-This means that for all $x,y$ in $X$ there is a unique integer $n$ such
-that $n\cdot x = y$. By fixing $x$, say as $x_0$, we get a bijection $e: \zet\to X$. 
-Furthermore, since $\ZZ$ has one generator, the $\ZZ$-action is completely 
-determined  by the action of the integer $1$.
-This action of $1$ is a bijection $X\to X$ which we denote by $f$.
+{\color{red}Recall that for a group $G$, a $G$-torsor consists of a nonempty set $X$ and
+  a left action of $G$ on it that is free and transitive.  This means that for all $x,y \in X$ there is a unique $g \in G$ such
+that $g \cdot x = y$.  An element $x_0 \in X$ yields a bijection $e: G \to X$ given by $g \mapsto g \cdot x_0$.
+In the case where $G$ is $\ZZ$, then since $\ZZ$ is a free group with one generator, an action on $X$ is completely 
+determined by the action of the integer $1$: it is a bijection $X \to X$ which we denote by $f$.
 Then we have $e(s(n)) = (1+n)\cdot x_0 = 1\cdot(n\cdot x_0) = f(e(n))$ for all
-integers $n$. So the following diagram commutes:
+integers $n$.  So the following diagram commutes.
 % the transport of $s$ along (the path coming by univalence from) $e$ equals $f$.
 \[
 \begin{tikzpicture} %\large
