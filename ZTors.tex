@@ -122,37 +122,40 @@ that is an equivalence.\footnote{%
   For clarity, we distinguish between the \emph{group} $\ZZ$
   and the \emph{underlying set} $\zet$.}
 
-{\color{red}Recall that for a group $G$, a $G$-torsor consists of a nonempty set $X$ and
+{\color{red}Recall that for a group $G$, a {\em $G$-torsor} consists of a nonempty set $X$ and
   a left action of $G$ on it that is free and transitive.  This means that for all $x,y \in X$ there is a unique $g \in G$ such
 that $g \cdot x = y$.  An element $x_0 \in X$ yields a bijection $e: G \to X$ given by $g \mapsto g \cdot x_0$.
-In the case where $G$ is $\ZZ$, then since $\ZZ$ is a free group with one generator, an action on $X$ is completely 
-determined by the action of the integer $1$: it is a bijection $X \to X$ which we denote by $f$.
+
+In the case where $G$ is $\ZZ$, then since $\ZZ$ is a free group with one generator, an action of $\ZZ$ on a set $X$ is completely 
+determined by the action of the integer $1$---it is a bijection $X \xrightarrow{\cong} X$ which we denote by $f$.
 Then we have $e(s(n)) = (1+n)\cdot x_0 = 1\cdot(n\cdot x_0) = f(e(n))$ for all
 integers $n$.  So the following diagram commutes.
 % the transport of $s$ along (the path coming by univalence from) $e$ equals $f$.
 \[
 \begin{tikzpicture} %\large
    \matrix (m) 
-   [matrix of math nodes, row sep=2em, column sep=2em, ampersand replacement=\&]
+   [matrix of math nodes, row sep=2em, column sep=3em, ampersand replacement=\&]
     {\zet \& \zet \\ X \& X \\ };
-\draw[->](m-1-1) -- (m-1-2) node[midway,above] {$s$};
-\draw[->] (m-1-1) -- (m-2-1) node[midway,left] {$e$};
-\draw[->] (m-1-2) -- (m-2-2) node[midway,right] {$e$};
-\draw[->] (m-2-1) -- (m-2-2) node[midway,above] {$f$};
+\draw[->] (m-1-1) -- (m-1-2) node[midway,below] {$s$} node[midway,above] {$\cong$};
+\draw[->] (m-1-1) -- (m-2-1) node[midway,left] {$e$} node[midway,right] {$\cong$};
+\draw[->] (m-1-2) -- (m-2-2) node[midway,left] {$e$} node[midway,right] {$\cong$};
+\draw[->] (m-2-1) -- (m-2-2) node[midway,below] {$f$} ;
 \end{tikzpicture}
 \]
-Conversely, we get a $\ZZ$-torsor from any pair $(X,f)$ such that the diagram
-above commutes, and this is independent of the choice of $x_0$.
+Conversely, we get a unique $\ZZ$-torsor from any pair $(X,f)$, where $X$ is a nonempty set and $f : X \to X$ is a function, such that there
+exists a bijection $e$ that makes the diagram above commute, by transporting the structure of $Z$ as a trivial $\ZZ$-torsor along $e$,
+thereby expressing $e$ as an isomorphism of $\ZZ$-torsors.
 
-With the above considerations in mind we consider pairs $(X,f)$ of type $\sum_{X:\UU}(X\to X)$,}
-and introduce \emph{the pointed type of $\zet$-torsors} by adopting the following definitions
+With the above considerations in mind, and recalling that, in the presence of univalence, isomorphisms correspond to identities,
+we consider pairs $(X,f)$ of type $\sum_{X:\UU}(X\to X)$,} 
+and we introduce \emph{the pointed type of $\zet$-torsors} by adopting the following definitions
 (cf.~\cref{def:TorZ}).
 \begin{align*}
   \TorZ &\defeq \sum_{(X,f)}\Trunc{(\zet,s)=(X,f)}  \\
   \pt & \defeq ((\zet,s),\trunc{\refl{(\zet,s)}}) : \TorZ
 \end{align*}
 
-It is not difficult to see 
+{\color{red}One may} see 
 that the type $\pt =_\TorZ \pt$ is equivalent to $\zet$.
 To see that,
 begin by observing that every function $f:\zet\to\zet$ commuting with $s$
@@ -183,7 +186,7 @@ such that $f(\pt)\jdeq a$ and $\ap{f}(\Zloop)=l$.%
 \footnote{\color{red}This construction was formalised by Grayson 
 in 2014, see \cite{circlerec-Dan}; our construction here uses the 
 same basic idea but manages the computations involved in establishing the
-induction principle better.}  We call the resulting function
+induction principle differently.}  We call the resulting function
 (\cref{def:TorZrecursor} below)
 \[
 {\rec}_A : \sum_{a:A}(a=a) ~~\to~~ (\TorZ \to A).
@@ -481,8 +484,8 @@ $s(\zzero)\defeq \zpos(0)$,
 $s(\zpos(n))\defeq \zpos(S(n))$,
 $s(\zneg(n))\defeq -i(n)$. For example, we have
 $s(-1)\jdeq s(\zneg(0))\jdeq -i(0) \jdeq \zzero \jdeq 0$.
-{\color{red}Let's denote the successor function on $\NN$ by $S$,}
-By induction on $n:\NN$ one proves $s(i(n))=i(S(n))$, 
+{\color{red}Denoting the successor function on $\NN$ by $S$,
+by} induction on $n:\NN$ one proves $s(i(n))=i(S(n))$, 
 so that one can say that $s$ extends $S$ on the $i$-image of $\NN$. 
 From now on we will identify $i(n):\zet$ with $n$,
 and $-i(n):\zet$ with $-n$, for all $n:\NN$.
@@ -511,7 +514,7 @@ From addition and unary $-$ one can define a binary
 %\end{xca}
 
 Recall the equivalence $\ev_0 : (\pt=_\TorZ \pt)\to\zet$ from the introduction,
-{\color{red}mapping $p$ to $\pr_1(p)_*(0)$}.
+{\color{red}which sends $p$ to $\pr_1(p)_*(0)$}.
 We have $\refl{\pt} : \pt=_\TorZ \pt$, as well as the operations
 of \emph{path reversal} and \emph{path composition} as defined
 in \cite[2.1]{hottbook}. These satisfy the laws as stated
@@ -632,24 +635,23 @@ as well as the formalization of a version for $\zet$-torsors.
   with $h_0 : P(0)$, $h_+ : \prod_{n:\NN}P(n+1)$,  and $h_- : \prod_{n:\NN} P(-n-1)$. 
   Since $h(0)=p$ only depends on $h_0$ the pair $(h_0,r)$ with  $r : h_0 = p$
   contracts away, so we're left with the type
- {\color{red} 
-  \begin{align*}  
-    \varphi^{-1}(p)
-    &\equiv \psi_+(p) \times \psi_-(p),\text{~where $\psi_+(p),\psi_-(p)$ are}
- \end{align*}
- \begin{align*}
-  \sum_{h_+ : \prod_{n:\NN}P(n+1)} \bigl(  (h_+(0) = f_0(p))  &
-                          \times \prod_{n:\NN}h_+(n+1) = f_n(h_+(n))\bigr),\text{and}\\
-  \sum_{h_- : \prod_{n:\NN}P(-n-1)} \bigl(   (h_-(0) = f_{-1}^{-1}(p))  &
-                          \times \prod_{n:\NN}h_-(n+1) = f_{-n-2}^{-1}(h_-(n))\bigr),
-  \end{align*} repectively.
-The type  $\varphi^{-1}(p)$ is contractible, because $\psi_+(p)$ and
-$\psi_-(p)$ are  contractible,}
-  each specifying a certain function $h_{\pm}:\prod_{n:\NN}Q_{\pm}(n)$,
-  and saying that this function has a certain value at $0$
-  and prescribing the values at successors.
-  But such a specification is unique by the universal property (induction!) of $\NN$.
+  $$ \varphi^{-1}(p) \equiv \psi_+(p) \times \psi_-(p), $$
+  \bgroup\color{red}
+  where $\psi_+(p)$ and $\psi_-(p)$ are defined as follows.
+  \begin{align*}
+    \psi_+(p) & := \sum_{h_+ : \prod_{n:\NN}P(n+1)}  \bigl((h_+(0) = f_0(p))         \\
+    & \hspace {8em} \times \prod_{n:\NN}h_+(n+1) = f_n(h_+(n))\bigr) \\
+    \psi_-(p) & := \sum_{h_- : \prod_{n:\NN}P(-n-1)} \bigl((h_-(0) = f_{-1}^{-1}(p))  \\
+    & \hspace {8em} \times \prod_{n:\NN}h_-(n+1) = f_{-n-2}^{-1}(h_-(n))\bigr)
+  \end{align*}
+  The type $\varphi^{-1}(p)$ is contractible, because $\psi_+(p)$ and $\psi_-(p)$ are contractible.
+  They are contractible because each specifies a certain function, namely $h_+$ or $h_-$,
+  specifies that this function has a certain value at $0$,
+  and prescribes the value of the function at all successors.
+  Such a specification is unique by the universal property (induction) of $\NN$.
+  \egroup
 \end{proof}
+
 Let us spell out the inverse function produced in the proof.
 It maps $p : P(0)$ to a pair whose first component
 is the function that takes $z:\zet$ to $f^z(p):P(z)$, where
