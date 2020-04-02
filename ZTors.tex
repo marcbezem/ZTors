@@ -146,7 +146,8 @@ integers $n$.  So the following diagram commutes.
 Conversely, we get a unique $\ZZ$-torsor from any pair $(X,f)$, where $X$ is a nonempty set and $f : X \to X$ is a function, such that there
 exists a bijection $e$ that makes the diagram above commute, by transporting the structure of $Z$ as a trivial $\ZZ$-torsor along $e$,
 thereby expressing $e$ as an isomorphism of $\ZZ$-torsors.  Independence of the structure on $X$ from the choice of $e$ is established by
-observing that $n + x = f^n(x)$ for all $n \in \ZZ$.
+observing that $n + x = f^n(x)$ for all $n \in \ZZ$.  Alternatively, one could define an action of $\ZZ$ on $X$ by setting $n + x := f^n(x)$,
+and then use the existence of $e$ to show that the action is free and transitive and to show that $X$ is nonempty.
 
 With the above considerations in mind, and recalling that, in the presence of univalence, isomorphisms correspond to identities,
 we consider pairs $(X,f)$ of type $\sum_{X:\UU}(X\to X)$,} 
@@ -157,16 +158,16 @@ and we introduce \emph{the pointed type of $\zet$-torsors} by adopting the follo
   \pt & \defeq ((\zet,s),\trunc{\refl{(\zet,s)}}) : \TorZ
 \end{align*}
 
-{\color{red}One may} see 
+{\color{red}We claim}
 that the type $\pt =_\TorZ \pt$ is equivalent to $\zet$.
 To see that,
 begin by observing that every function $f:\zet\to\zet$ commuting with $s$
 is propositionally equal to $s^{f(0)}$.  The first projection
 acting on $p : \pt =_\TorZ \pt$ gives a path $\pr_1(p) : \zet=\zet$
 such that the corresponding transport function $\pr_1(p)_* : \zet\to\zet$
-is a bijection commuting with $s$. We evaluate this bijection in $0$.
+is a bijection commuting with $s$. We evaluate this bijection {\color{red}at} $0$.
 Let $\ev_0(p) \defeq \pr_1(p)_*(0)$ for all $p : \pt =_\TorZ \pt$,
-then $\ev_0 : (\pt =_\TorZ \pt) \to \zet$.  Combining these observations,
+then $\ev_0 : (\pt =_\TorZ \pt) \to \zet$.  Combining these observations {\color{red}and}
 using the univalence axiom, one proves that $\ev_0$ is an equivalence.
 
 Since $\zet$ is a set, it follows that the underlying set of the fundamental group of $(\TorZ,\pt$) is equivalent to $\zet$,
@@ -290,7 +291,8 @@ slightly different from the construction presented below.
 The formalized construction does not use any higher inductive types,
 relying instead on the construction of propositional truncation as
 (the propositional resizing of)
-$$\Trunc X \defeq \prod_{P:\Prop}((X \to P) \to P).$$
+$$\Trunc X \defeq \prod_{P:\Prop}((X \to P) \to P),$$
+{\color{red}where $\Prop$ is the type of all propositions (in a chosen universe).}
 Nor, of course, and this is the whole point, do we
 depend on the previous existence of a type satisfying the induction principle of the circle. 
 
@@ -710,12 +712,12 @@ the point constructor).}
 
 In {\UniMath} the induction principle holds, but not the computation rule for it.%
 \footnote{\color{red}
-Recall that in {\UniMath} $\Trunc T \defeq \prod_{P:\Prop}((T \to P) \to P)$.
-The function $\trunc\_: T\to\Trunc T$ is in {\UniMath} not a constructor,
-but defined by $\trunc t  (P,f) \defeq f(t)$, for all $P: \Prop$, $f: T\to P$, and $t:T$.
+Recall that in {\UniMath} $\Trunc T \defeq \prod_{P:\Prop}((T \to P) \to P)$, and 
+the function $\trunc\_: T\to\Trunc T$ is
+defined by $\trunc t  (P,f) \defeq f(t)$ for all $P: \Prop$, $f: T\to P$, and $t:T$.
 Thus we naturally get a recursion principle: if $P: \Prop$, then any
 $g: T \to P$ defines an $f : \Trunc T \to P$ by setting $f(x)\defeq x(P,g)$.
-Clearly $f$ satisfies $f(\trunc t |) \jdeq \trunc t (P,g) \jdeq g(t)$, for all $t: T$.
+Clearly $f$ satisfies $f(\trunc t) \jdeq \trunc t (P,g) \jdeq g(t)$, for all $t: T$.
 
 For induction the situation is different: if $P: \Trunc T \to \Prop$,
 then any $g: \prod_{t:T} P(\trunc t)$ again defines an
@@ -728,7 +730,7 @@ By the recursion principle, $h_x$ defines $h'_x : \Trunc T \to P(x)$.
 Now set $f(x) \defeq h'_x(x)$. Indeed $f: \prod_{x:\Trunc T} P(x)$. However,
 because of the transport, we don't have $f(\trunc t) \jdeq g(t)$,
 as the path of type $\trunc t = \trunc t$ coming from the proof that $\Trunc T$ is 
-a proposition need not be a reflexivity path.
+a proposition need not be the path given by reflexivity.
 
 There are several other ways of defining $f$, but none of them
 satisfies the computation rule $f(\trunc t)\jdeq g(t)$. It is currently
@@ -752,13 +754,9 @@ the same as $P(\pt)$, so $p$ provides the proof.
 The proof $q: \prod_{Z:\TorZ} P(Z)$ constructed above has the property that $q(\pt)\jdeq p$ if the computation rule for the induction principle
 for propositional truncation holds.
 
-{\color{red}The aim of this section is to show that $\TorZ$ satisfies a recursion principle
-and an induction principle.
-Together they establish that $\TorZ$ has the universal property of the circle.
-The precise statement of the induction principle has been stated in the
-introduction, see \cref{eq:circle-induction}.
-The recursion principle is the non-dependent version of the induction principle in 
-\cref{eq:circle-induction}, namely that there is a function of the following type:
+{\color{red}The aim of this section is to show that $\TorZ$ satisfies the induction principle \cref{eq:circle-induction} for the circle,
+thereby establishing that $\TorZ$ has the defining property of the circle.
+The recursion principle is the non-dependent version of the induction principle, namely that there is a function of the following type:
 \begin{equation}
   \label{eq:circle-recursion}
   \thinmuskip=10mu              % this is better than inserting tildes
