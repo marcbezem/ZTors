@@ -785,42 +785,34 @@ All input data is present in $p$ and its type.
 When defining types and functions depending on the input data, 
 we use $p$ in various denotations to express this dependence. 
 
-To be able to apply \cref{lem:dep-elim-TorZ}, 
-we need to find a suitable proposition.
-The idea is to expand $A$ to a $\Sigma$-type over $A$
-(\cref{def:guided-null-hmtps}), 
-and to prove that this $\Sigma$-type is contractible
-(\cref{lem:guided-null-hmtps}).
-We then obtain a function to $A$ by (double) projection
-of this proof, as illustrated in \cref{fig:TorZ-recursion},
-{\color{red}where $\vec c_p(X,f,t)$ has the type in the left corner of the diagram.}
+To be able to apply \cref{lem:dep-elim-TorZ}, we need to find a suitable proposition.  {\color{red}The idea is to find a
+  correspondence\footnote{\color{red}A {\em correspondence} from a type $T$ to a type $T'$ is a type $C$ with projections $pr_1 : C \to T$ and
+    $pr_2 : C \to T'$.} from $\TorZ$ to $A$ whose first projection is an equivalence, thereby yielding a map from $\TorZ$ to $A$.}
 
 \begin{figure}
+\color{red}
 \begin{tikzpicture} %\large
    \matrix (m) 
    [matrix of math nodes, row sep=2em, column sep=2em, ampersand replacement=\&]
     { 
+    \sum\limits_{(X,f,t) : \TorZ}
     \sum\limits_{a':A} ~
     \sum\limits_{h: X\to a=a'} ~
     \prod\limits_{x:X} ~ h(f(x))=p\ct h(x)
     \&
-    \&  
     \vphantom{\sum\limits_{a':A} ~
       \sum\limits_{h: X\to a=a'} ~
       \prod\limits_{x:X} ~ h(f(x))=p\ct h(x)}
-    A
-\\
-\\
-                     \& \TorZ \&      \\};
+    A \\
+    \TorZ \\};
 
-\draw[->>] (m-1-1) -- (m-3-2);
-\draw[-> ] ( [xshift=-10pt] m-1-1) -- (m-1-3) node[midway,above]  {$\fst$};
-\draw[->>] (m-1-3) -- (m-3-2);
-\draw[->,dotted] (m-3-2) to[bend left=30] node[near end,left]{$\vec c_p$} (m-1-1);
-\draw[->,dotted] (m-3-2) to[bend right=30] node[near end,right]{$c_p$} (m-1-3);
+\draw[->>] (m-1-1) -- (m-2-1) node[midway,left] {$\scriptstyle\cong$} node[midway,right] {$\scriptstyle pr_1$};
+\draw[->>] ( [xshift=-10pt] m-1-1) -- (m-1-2) node[midway,above] {$\scriptstyle pr_2$};
+\draw[->,dotted] (m-2-1) to[bend left=60] node[midway,left]{$\scriptstyle\vec c_p$} (m-1-1) ;
+\draw[->,dotted] (m-2-1) -- (m-1-2) node[midway,below]{$\scriptstyle c_p$} ;
 
 \end{tikzpicture}
-\caption{\label{fig:TorZ-recursion}Factoring through a contractible type}
+\caption{\label{fig:TorZ-recursion}Mapping torsors to $A$}
 \end{figure}
 
 \begin{definition}\label{def:guided-null-hmtps}
@@ -858,9 +850,9 @@ The type $Q_p(X,f)$ is contractible for all $(X,f,t):\TorZ$.
   where $\varphi_{a'}(h,q) \defeq h(0)$.
 \end{proof}
 
-The center of contraction $\vec{c}_p(\pt)$ of $Q_p(\zet,s)$ is 
-implicitly defined in the above proof 
-and can be uncovered by a careful analysis of all proof-relevant steps.
+{\color{red}For $T := (X,f,t) : \TorZ$, let $\vec{c}_p(T)$ denote the center of contractibility of $Q_p(X,f)$ as constructed in the proof above.
+  We introduce the notation $\vec{c}_p(Z)\defeq(c_p(Z),\tilde{c}_p(Z),\hat{c}_p(Z))$ for its components.
+  The value of $\vec{c}_p(\pt)$ can be uncovered by a careful analysis of the steps of the proof.}
 First, the center of $\sum_{a':A} a=a'$ is $(a,\refl{a})$.
 This center is pulled back by $\varphi_{a}$ to a center
 $(a,c)$ of $Q_p(\zet,s)$, where $c$ is the center of 
@@ -872,8 +864,7 @@ end of the proof of \cref{thm:integers-univ-symm},
 tells us that $c$ is a pair $(h,q)$ with $h(z)=p^z$
 for all $z:\zet$. Indeed, $\varphi_{a}(h,q) = h(0) = \refl{a}$.
 Moreover, $q$ has type $\prod_{z:\zet} h(z+1)=p\ct h(z)$.
-Wrapping up, $\vec c_p(\pt)\defeq (a,h,q)$. In general we write
-$\vec{c}_p(Z)\defeq(c_p(Z),\tilde{c}_p(Z),\hat{c}_p(Z))$.
+Wrapping up, $\vec c_p(\pt)\defeq (a,h,q)$. 
 
 The analysis in the previous paragraph
 means we have achieved one of our goals,
@@ -1016,7 +1007,7 @@ where $\delta^Z_x$ comes from \cref{lem:loop-s-iterated}.
 
 The center of contraction $\vec{c}_p(\pt)$ of $Q_p(\pt)$ is 
 defined in the above proof as $\varphi_{a}^{-1}(a,\cp{\gamma_0}(\rrfl))$, 
-which is again a triple $(a,h,q)$. In general we write
+which is a triple $(a,h,q)$. In general we write
 $\vec{c}_p(Z)\defeq(c_p(Z),\tilde{c}_p(Z),\hat{c}_p(Z))$
 for the center of contraction of $Q_p(Z)$.
 We immediately get $c_p(\pt)\defeq a$ and will proceed to
