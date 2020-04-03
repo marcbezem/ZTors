@@ -107,7 +107,7 @@ One extra piece of knowledge we use here is the \emph{dependent} elimination
 principle for propositional truncation, mentioned in \cite[6.9]{hottbook},
 and qualified as `not really useful'%
 \footnote{The dependent elimination principle appears to 
-  be used later in \cite{hottbook}, though.
+  be used later in \cite[Lemma 7.3.3]{hottbook}, though.
   %% see the issue we made at https://github.com/HoTT/book/issues/1028
 }.
 We use this principle in \cref{lem:dep-elim-TorZ}, and the paragraph after
@@ -644,9 +644,9 @@ as well as the formalization of a version for $\zet$-torsors.
   \bgroup\color{red}
   where $\psi_+(p)$ and $\psi_-(p)$ are defined as follows.
   \begin{align*}
-    \psi_+(p) & := \sum_{h_+ : \prod_{n:\NN}P(n+1)}  \bigl((h_+(0) = f_0(p))         \\
+    \psi_+(p) & \defeq  \sum_{h_+ : \prod_{n:\NN}P(n+1)}  \bigl((h_+(0) = f_0(p))         \\
     & \hspace {8em} \times \prod_{n:\NN}h_+(n+1) = f_n(h_+(n))\bigr) \\
-    \psi_-(p) & := \sum_{h_- : \prod_{n:\NN}P(-n-1)} \bigl((h_-(0) = f_{-1}^{-1}(p))  \\
+    \psi_-(p) & \defeq  \sum_{h_- : \prod_{n:\NN}P(-n-1)} \bigl((h_-(0) = f_{-1}^{-1}(p))  \\
     & \hspace {8em} \times \prod_{n:\NN}h_-(n+1) = f_{-n-2}^{-1}(h_-(n))\bigr)
   \end{align*}
   The type $\varphi^{-1}(p)$ is contractible, because $\psi_+(p)$ and $\psi_-(p)$ are contractible.
@@ -793,7 +793,7 @@ and to prove that this $\Sigma$-type is contractible
 (\cref{lem:guided-null-hmtps}).
 We then obtain a function to $A$ by (double) projection
 of this proof, as illustrated in \cref{fig:TorZ-recursion},
-{\color{red}where $\vec c_p(X,f)$ is a dependent function.}
+{\color{red}where $\vec c_p(X,f,t)$ has the type in the left corner of the diagram.}
 
 \begin{figure}
 \begin{tikzpicture} %\large
