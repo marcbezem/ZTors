@@ -1106,7 +1106,7 @@ We now calculate:
 \label{sec:topos}
 
 Voevodsky's pioneering work~\cite{1211.2851} constructed interpretations of the rules of univalent foundations (but not the entire formal system~\cite{voevodsky:not-interp}) in the Quillen model category of simplicial sets, which is a presentation of the fundamental $(\infty,1)$-topos of $\infty$-groupoids.
-After a decade of further work, this interpretation has now been extended to include a class of model categories presenting all $(\infty,1)$-topos by Shulman~\cite{shulman:univinj}, and made into an interpretation of the entire formal system by Brunerie, de Boer, Lumsdaine, and M\"{o}rtberg~\cite{initiality}.
+After a decade of further work, this interpretation has now been extended to include a class of model categories presenting all $(\infty,1)$-toposes by Shulman~\cite{shulman:univinj}, and made into an interpretation of the entire formal system by Brunerie, de Boer, Lumsdaine, and M\"{o}rtberg~\cite{initiality}.
 Thus, we can now say conclusively that the result of this paper yields a theorem about all $(\infty,1)$-toposes.
 
 However, this theorem requires a bit of unpacking to make it look familiar to higher topos theorists.
@@ -1152,7 +1152,7 @@ Thus, $\sum_{X:\UU} (X\to X)$ classifies objects equipped with an endomorphism, 
 
 Finally, we need to consider the topos-theoretic interpretation of propositional truncation.
 We can ignore its particular construction in {\UniMath} and focus on its universal property, which says that it is a reflection into propositions, i.e., for any proposition $P$ we have $(\Trunc{X}\to P) \equiv (X\to P)$.
-Interpreted fiberwise in an $(\infty,1)$-topos, this says that if $X\to A$ is any map then $\Trunc{X}\to A$ is a reflection into the sub-$(\infty,1)$-category of $\sE/A$ consisting of the monomorphisms, i.e., maps $P\to A$ whose diagonal $P\to P\times_A P$ is an equivalence.
+Interpreted fiberwise in an $(\infty,1)$-topos, this says that if $X\to A$ is any map then $\Trunc{X}\to A$ is its reflection into the sub-$(\infty,1)$-category of $\sE/A$ consisting of the monomorphisms, i.e., maps $P\to A$ whose diagonal $P\to P\times_A P$ is an equivalence.
 By~\cite[Example 5.2.8.16 and Corollary 6.5.1.14]{lurie:higher-topoi} (in the case $n=-1$), the effective epimorphisms and monomorphisms in an $(\infty,1)$-topos form a factorization system, and hence in particular the map $X\to \Trunc{X}$ is an effective epimorphism.
 
 Now recall the definition of $\TorZ$ as $\sum_{(X,f)}\Trunc{(\zet,s)=(X,f)}$.
