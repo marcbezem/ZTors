@@ -1124,35 +1124,35 @@ Most of the work needed for this approach inside of type theory has already been
 She defines an ``$\dS$-algebra'' to be a type $C$ equipped with a point $c:C$ and a path $s:c=_C c$, and defines an $\dS$-algebra to ``have $\dS$-induction'' precisely if it satisfies the analogue of our~\eqref{eq:circle-induction} (see~\cite[Notation 22]{sojakova:hits-hias}).
 Her main theorem~\cite[Theorem 50]{sojakova:hits-hias} then implies that if $C$ has $\dS$-induction, then it is \emph{homotopy-initial} in that for any other $\dS$-algebra $(A,a,l)$ the type of ``$\dS$-homomorphisms''
 \[H_{C,A} \defeq \sum_{h:C\to A} \sum_{\beta: h(c) = a} \ap{h}(s) \ct \beta = \beta \ct l  \]
-is contractible, i.e.\ there is an element of the type
+is contractible, i.e., there is an element of the type
 \[ \prod_{(A,a,l)} \mathrm{Contr}(H_{C,A}). \]
 It follows that our $\TorZ$ is homotopy-initial in this sense.
 
 Now suppose we have a Quillen model category $\cE$ that presents an $(\infty,1)$-topos $\sE$.
 To show that $\TorZ$ has the universal property of a circle object in $\sE$, we must show that for any object $A$ of $\sE$, the diagram of hom-spaces ($\infty$-groupoids)
 \[ \sE(\TorZ,A) \to \sE(1,A) \rightrightarrows \sE(1,A) \]
-is a homotopy equalizer, i.e.\ that the map from $\sE(\TorZ,A)$ to the homotopy equalizer of two copies of the identity map of $\sE(1,A)$ is an equivalence.
+is a homotopy equalizer, i.e., that the map from $\sE(\TorZ,A)$ to the homotopy equalizer of two copies of the identity map of $\sE(1,A)$ is an equivalence.
 It suffices to show that the homotopy fiber of this map over any point is contractible, which is to say that given any point $a:1\to A$ and homotopy $l:a\sim a$, the space of maps $h:\TorZ\to A$ equipped with a homotopy $\beta : h(\pt) \sim a$ and a higher homotopy $h(\Zloop) \ct \beta \sim \beta \ct l$ is contractible.
 
 Now, homotopies in the $(\infty,1)$-category $\sE$ can always be presented by \emph{right homotopies} in the model category $\cE$, meaning maps into a path object.
 Thus, our object $A$ of $\sE$ with $a$ and $l$ can be presented by an object of $\cE$, which we also denote $A$, with a point $a:1\to A$ in $\cE$ and a right homotopy $l:1\to P A_{(a,a)}$, where $P A$ is the path object of $A$ and $P A_{(a,a)}$ is its pullback along $(a,a):1\to A\times A$.
-Since path objects supply the interpretation of identity types, this corresponds to a type $A$ with an element $a:A$ and path $l:a=_A a$, i.e.\ an $\dS$-algebra.
+Since path objects supply the interpretation of identity types, this corresponds to a type $A$ with an element $a:A$ and path $l:a=_A a$, i.e., an $\dS$-algebra.
 By a similar argument, the homotopy fiber that we want to prove contractible is equivalent to the hom-space $\sE(1, H_{\TorZ,A})$.
 Thus, it suffices to observe that if $B$ is an object with a point $1\to \mathrm{Contr}(B)$ then $B$ is equivalent to the terminal object (a detailed proof can be found in~\cite[Lemma 4.1]{shulman:elreedy}).
 
-It is also worth saying a few words about why our $\TorZ$ ``classifies $\ZZ$-torsors'' in the $(\infty,1)$-categorical sense, i.e.\ that for any object $A$, the hom-space $\sE(A,\TorZ)$ is naturally equivalent to the $\infty$-groupoid of small $\ZZ$-torsors in $\sE/A$.
+It is also worth saying a few words about why our $\TorZ$ ``classifies $\ZZ$-torsors'' in the $(\infty,1)$-categorical sense, i.e., that for any object $A$, the hom-space $\sE(A,\TorZ)$ is naturally equivalent to the $\infty$-groupoid of small $\ZZ$-torsors in $\sE/A$.
 Importantly, the relevant notion of ``$\ZZ$-torsor'' is the topos- and sheaf-theoretic one: a $\ZZ$-torsor $X$ in $\sE/A$ need not be ``globally'' isomorphic to $\ZZ\times A$, but only ``locally'' so in the sense that there is an effective epimorphism $p:B \twoheadrightarrow A$ such that $p^*X$ is isomorphic over $B$ to $\ZZ\times B$.
 
 To start with, we observe that by the univalence axiom, $\UU$ is an object classifier, in the sense that $\sE(A,\UU)$ is naturally equivalent, by pullback of the canonical map $\UUp\to \UU$, to a full sub-$\infty$-groupoid of the core of $\sE/A$ (the fiberwise ``small'' objects).
 This means that for any $f,g:A\to \UU$, the induced map from the space of homotopies $f\sim g$ to the space of equivalences $f^*\UUp \equiv g^*\UUp$ in $\sE/A$ is an equivalence.
-This holds because the former is the space of lifts of $(f,g):A\to \UU\times \UU$ to the path-object $P\UU$, while the latter is (e.g.\ by~\cite[Lemma 4.3]{shulman:elreedy}) the space of sections of $\mathrm{Equiv}_A(f^*\UUp,g^*\UUp)$, or equivalently the lifts of $(f,g)$ to $\mathrm{Equiv}_{\UU\times \UU}(\pi_1^*\UUp,\pi_2^*\UUp)$, and the univalence axiom says precisely that $P\UU$ is equivalent to $\mathrm{Equiv}_{\UU\times \UU}(\pi_1^*\UUp,\pi_2^*\UUp)$ over $\UU\times\UU$.
+This holds because the former is the space of lifts of $(f,g):A\to \UU\times \UU$ to the path-object $P\UU$, while the latter is (e.g., by~\cite[Lemma 4.3]{shulman:elreedy}) the space of sections of $\mathrm{Equiv}_A(f^*\UUp,g^*\UUp)$, or equivalently the lifts of $(f,g)$ to $\mathrm{Equiv}_{\UU\times \UU}(\pi_1^*\UUp,\pi_2^*\UUp)$, and the univalence axiom says precisely that $P\UU$ is equivalent to $\mathrm{Equiv}_{\UU\times \UU}(\pi_1^*\UUp,\pi_2^*\UUp)$ over $\UU\times\UU$.
 
 Similarly, $\sum_{X:\UU} (X\to X)$ is the exponential in $\sE/\UU$ of $\UU_p$ by itself, so by the pullback-stability and universal property of exponentials, the space of lifts of $f:A\to \UU$ to $\sum_{X:\UU} (X\to X)$ is equivalent to the space of endomorphisms of the corresponding object $f^*\UUp$ of $\sE/A$.
 Thus, $\sum_{X:\UU} (X\to X)$ classifies objects equipped with an endomorphism, in that $\sE(A, \sum_{X:\UU} (X\to X))$ is naturally equivalent to the $\infty$-groupoid of small objects of $\sE/A$ equipped with an endomorphism.
 
 Finally, we need to consider the topos-theoretic interpretation of propositional truncation.
-We can ignore its particular construction in {\UniMath} and focus on its universal property, which says that it is a reflection into propositions, i.e.\ for any proposition $P$ we have $(\Trunc{X}\to P) \equiv (X\to P)$.
-Interpreted fiberwise in an $(\infty,1)$-topos, this says that if $X\to A$ is any map then $\Trunc{X}\to A$ is a reflection into the sub-$(\infty,1)$-category of $\sE/A$ consisting of the monomorphisms, i.e.\ maps $P\to A$ whose diagonal $P\to P\times_A P$ is an equivalence.
+We can ignore its particular construction in {\UniMath} and focus on its universal property, which says that it is a reflection into propositions, i.e., for any proposition $P$ we have $(\Trunc{X}\to P) \equiv (X\to P)$.
+Interpreted fiberwise in an $(\infty,1)$-topos, this says that if $X\to A$ is any map then $\Trunc{X}\to A$ is a reflection into the sub-$(\infty,1)$-category of $\sE/A$ consisting of the monomorphisms, i.e., maps $P\to A$ whose diagonal $P\to P\times_A P$ is an equivalence.
 By~\cite[Example 5.2.8.16 and Corollary 6.5.1.14]{lurie:higher-topoi} (in the case $n=-1$), the effective epimorphisms and monomorphisms in an $(\infty,1)$-topos form a factorization system, and hence in particular the map $X\to \Trunc{X}$ is an effective epimorphism.
 
 Now recall the definition of $\TorZ$ as $\sum_{(X,f)}\Trunc{(\zet,s)=(X,f)}$.
