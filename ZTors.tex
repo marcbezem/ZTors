@@ -109,24 +109,26 @@ We turn now to the content of this paper.
 
 As a prerequisite we require, of the reader, a working knowledge of homotopy type theory
 as described in, for example, the first four chapters of \cite{hottbook}.
-One extra piece of knowledge we use here is the \emph{dependent} elimination
-principle for propositional truncation, mentioned in \cite[6.9]{hottbook},
-and qualified as `not really useful'%
-\footnote{The dependent elimination principle appears to 
-  be used later in \cite[Lemma 7.3.3]{hottbook}, though.
-  %% see the issue we made at https://github.com/HoTT/book/issues/1028
-}.
-We use this principle in \cref{lem:dep-elim-TorZ}, and the paragraph after
-its proof gives some extra attention to the computational aspect.
+In the next \cref{sec:statement}, more precisely in \cref{eq:circle-induction},
+we give a precise formulation of the main result.
+%For convenience we give a direct inductive
+%definition of the set of integers in \cref{sec:integers},
+%and we give an alternative induction principle in \cref{sec:integers-induction}.
+%Thus we get a set of integers $\zet$, a constant $0:\zet$,
+%and a successor function $s:\zet\to\zet$
+%that is an equivalence.\footnote{%
+%  For clarity, we distinguish between the \emph{group} $\ZZ$
+%  and the \emph{underlying set} $\zet$.}
+Preparing for the proof of the main result, 
+we give in \cref{sec:auxiliaries} some auxiliary results
+that are not in the first four chapters of \cite{hottbook}.
+The full proof of the main result can be found in \cref{sec:ZTorsors},
+more precisely in \cref{sec:TorZ-induction}.
+In \cref{sec:topos} we discuss the interpretation of the main result
+in higher toposes, before we conclude in \cref{sec:conclusion}.
 
-For convenience we give a direct inductive
-definition of the set of integers in \cref{sec:integers},
-and we give an alternative induction principle in \cref{sec:integers-induction}.
-Thus we get a set of integers $\zet$, a constant $0:\zet$,
-and a successor function $s:\zet\to\zet$
-that is an equivalence.\footnote{%
-  For clarity, we distinguish between the \emph{group} $\ZZ$
-  and the \emph{underlying set} $\zet$.}
+
+\section{Precise formulation and discussion}\label{sec:statement}
 
 {Recall that for a group $G$, a {\em $G$-torsor} consists of a nonempty set $X$ and
   a left action of $G$ on it that is free and transitive.  This means that for all $x,y \in X$ there is a unique $g \in G$ such
@@ -330,12 +332,16 @@ as this is not a groupoid.
 Because the $2$-sphere in topology is not an $n$-type for any $n$,
 the new model will not contain a $2$-sphere.
 
-\section{Identifying elements in members of families of types}
-\label{sec:pathovers}
+\section{Auxiliary results}\label{sec:auxiliaries}
 
 In this section we present some additional results that are needed in the sequel.
 % and that cannot be found in \cite{hottbook}.
-Proofs are by (nested) induction as indicated in the text,
+
+\subsection{Identifying elements in members of families of types}
+\label{sec:pathovers}
+
+
+All proofs in this subsection are by (nested) induction as indicated in the text,
 and can moreover be found in \cite{paths-over-formalized}.
 
 Let $A : \UU$, $B : A \to \UU$, $a_i:A$, $b_i:B(a_i)$ for $i=1,2$, and $p : a_1 = a_2$.
@@ -458,9 +464,20 @@ The proof is by induction on $\beta$ (for right-recursive composition).
 \end{lemma}
  The proof is by induction first on $\beta$, then on $q$, and finally on $\hat q$.
 
+\subsection{Dependent elimination of propositional truncation}\label{sec:proptrunc}
+
+One extra piece of knowledge we use here is the \emph{dependent} elimination
+principle for propositional truncation, mentioned in \cite[6.9]{hottbook},
+and qualified as `not really useful'%
+\footnote{The dependent elimination principle appears to 
+  be used later in \cite[Lemma 7.3.3]{hottbook}, though.
+  %% see the issue we made at https://github.com/HoTT/book/issues/1028
+}.
+We use this principle in \cref{lem:dep-elim-TorZ}, and the paragraph after
+its proof gives some extra attention to the computational aspect.
 
 
-\section{The integers}
+\subsection{The integers}
 \label{sec:integers}
 
 We define the type of integers in one of the many possible ways.
@@ -543,8 +560,7 @@ including all the proofs of the group laws in $\zet$.
 is one of the benefits of the univalent approach.)
 
 
-
-\section{Some induction principles for the integers}
+\subsection{Some induction principles for the integers}
 \label{sec:integers-induction}
 
 \begin{figure}[b]
@@ -1198,7 +1214,7 @@ Since $\TorZ \to \sum_{X:\UU} (X\to X)$ is a monomorphism, this means that $\Tor
 Combining \cref{thm:torz-coeq,thm:torz-classif}, we see that any circle object in an $(\infty,1)$-topos is equivalent to $\TorZ$ and hence classifies $\ZZ$-torsors.
 
 
-\section{Conclusion and Future Research}
+\section{Conclusion and Future Research}\label{sec:conclusion}
 We have proved, {for any type family $A\to\TorZ$,} 
 the induction principle of the circle for $\TorZ$:
 \[
