@@ -292,7 +292,11 @@ If the underlying type theory has propositional truncation with a dependent elim
 in \cite[6.9]{hottbook}, then the path $r : f(\pt)= a$ above is a reflexivity path.
 It then follows
 from the care with which we chose the expression $r\cto' l \cto r^{-1}$, that it has the same type as $l$, and, moreover, the two terms are
-judgmentally equal.  Thus the right side of the equation \ref{eq:circle-induction} can be replaced by $l$.
+judgmentally equal.
+Thus, in this case, the function $f$ provided by the induction principle
+satisfies the equation $\apd{f}(\Zloop) = l$,
+which is the equation in \eqref{eq:circle-induction} with
+the right-hand side replaced by $l$.
 
 Because the convention in {\UniMath} is to avoid higher inductive types,
 the formalization in \cite{circleind-Dan} is
