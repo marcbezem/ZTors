@@ -22,6 +22,12 @@
     \email{danielrichardgrayson@gmail.com}
     \urladdr{http://dangrayson.com/}
 }
+{
+    \author{Michael Shulman}
+    \address{Department of Mathematics, University of San Diego}
+    \email{shulman@sandiego.edu}
+    \urladdr{http://www.sandiego.edu/~shulman}
+}
 
 \date{May 17, 2019}
 
@@ -34,7 +40,7 @@ circle not using higher inductive types.
 \end{abstract}
 
 \maketitle
-\markleft{BEZEM BUCHHOLTZ GRAYSON}
+\markleft{BEZEM BUCHHOLTZ GRAYSON SHULMAN}
 \markright{CONSTRUCTION OF THE CIRCLE}
 \tableofcontents
 
@@ -1107,7 +1113,7 @@ We now calculate:
 
 Voevodsky's pioneering work~\cite{1211.2851} constructed interpretations of the rules of univalent foundations (but not the entire formal system~\cite{voevodsky:not-interp}) in the Quillen model category of simplicial sets, which is a presentation of the fundamental $(\infty,1)$-topos of $\infty$-groupoids.
 After a decade of further work, this interpretation has now been extended to include a class of model categories presenting all $(\infty,1)$-toposes by Shulman~\cite{shulman:univinj}, and made into an interpretation of the entire formal system by Brunerie, de Boer, Lumsdaine, and M\"{o}rtberg~\cite{initiality}.
-Thus, we can now say conclusively that the result of this paper yields a theorem about all $(\infty,1)$-toposes.
+Thus, we can now say conclusively that the result of our paper yields a theorem about all $(\infty,1)$-toposes.
 
 However, this theorem requires a bit of unpacking to make it look familiar to higher topos theorists.
 In particular, since all $(\infty,1)$-toposes are cocomplete, the more usual way to define an internal ``circle object'' in such a topos would be as a (homotopy) colimit: specifically, the coequalizer of two copies of the identity map of the terminal object (corresponding to the presentation of a circle as a cell complex with one 0-cell and one 1-cell).
@@ -1147,26 +1153,30 @@ Thus, it suffices to observe that if $B$ is an object with a point $1\to \mathrm
 \end{proof}
 
 We should also explain more carefully why our $\TorZ$ ``classifies $\ZZ$-torsors'' in the $(\infty,1)$-categorical sense.
-Importantly, the relevant notion of ``$\ZZ$-torsor'' is the ``local'' topos- and sheaf-theoretic one: an object $X$ of a slice $(\infty,1)$-topos $\sE/A$ is a \emph{$\ZZ$-torsor} if and only there is an effective epimorphism $p:B \twoheadrightarrow A$ such that $p^*X$ is isomorphic over $B$ to $\ZZ\times B$.
+Importantly, the relevant notion of ``$\ZZ$-torsor'' is the ``local'' topos- and sheaf-theoretic one: an object $X$ of a slice $(\infty,1)$-topos $\sE/A$ is a \emph{$\ZZ$-torsor} if and only there is an effective epimorphism\footnote{An \emph{effective epimorphism} is a morphism that is the quotient of its kernel.  In an $(\infty,1)$-topos the relevant ``kernels'' are simplicial objects; see~\cite[Section 6.2.3]{lurie:higher-topoi}.} $p:B \twoheadrightarrow A$ such that $p^*X$ is isomorphic over $B$ to $\ZZ\times B$.
 
 \begin{theorem}\label{thm:torz-classif}
   For any object $A$ of an $(\infty,1)$-topos $\sE$, the hom-space $\sE(A,\TorZ)$ is naturally equivalent to the $\infty$-groupoid of $\ZZ$-torsors in $\sE/A$.
 \end{theorem}
 \begin{proof}
-To start with, we observe that by the univalence axiom, $\UU$ is an object classifier, in the sense that $\sE(A,\UU)$ is naturally equivalent, by pullback of the canonical map $\UUp\to \UU$, to a full sub-$\infty$-groupoid of the core of $\sE/A$ (the fiberwise ``small'' objects).
+  Recall that $\TorZ$ is defined as $\sum_{X:\UU}\sum_{f:X\to X} \Trunc{(\zet,s)=(X,f)}$, so that it comes with a sequence of projections
+  \[ \TorZ \longrightarrow \Big(\sum_{X:\UU} (X\to X)\Big) \longrightarrow \UU .\]
+  We will start by characterizing what $\UU$ classifies, then $\sum_{X:\UU} (X\to X)$, then finally $\TorZ$.
+
+For the first, the univalence axiom implies that $\UU$ is an object classifier, in the sense that $\sE(A,\UU)$ is naturally equivalent, by pullback of the canonical map $\UUp\to \UU$, to a full sub-$\infty$-groupoid of the core of $\sE/A$ (the fiberwise ``small'' objects).
 This means that for any $f,g:A\to \UU$, the induced map from the space of homotopies $f\sim g$ to the space of equivalences $f^*\UUp \equiv g^*\UUp$ in $\sE/A$ is an equivalence.
 This holds because the former is the space of lifts of $(f,g):A\to \UU\times \UU$ to the path-object $P\UU$, while the latter is (e.g., by~\cite[Lemma 4.3]{shulman:elreedy}) the space of sections of $\mathrm{Equiv}_A(f^*\UUp,g^*\UUp)$, or equivalently the lifts of $(f,g)$ to $\mathrm{Equiv}_{\UU\times \UU}(\pi_1^*\UUp,\pi_2^*\UUp)$, and the univalence axiom says precisely that $P\UU$ is equivalent to $\mathrm{Equiv}_{\UU\times \UU}(\pi_1^*\UUp,\pi_2^*\UUp)$ over $\UU\times\UU$.
 
-Similarly, $\sum_{X:\UU} (X\to X)$ is the exponential in $\sE/\UU$ of $\UU_p$ by itself, so by the pullback-stability and universal property of exponentials, the space of lifts of $f:A\to \UU$ to $\sum_{X:\UU} (X\to X)$ is equivalent to the space of endomorphisms of the corresponding object $f^*\UUp$ of $\sE/A$.
-Thus, $\sum_{X:\UU} (X\to X)$ classifies small objects equipped with an endomorphism, in that $\sE(A, \sum_{X:\UU} (X\to X))$ is naturally equivalent to the $\infty$-groupoid of small objects of $\sE/A$ with an endomorphism.
+Secondly, $\sum_{X:\UU} (X\to X)$ is the exponential in $\sE/\UU$ of $\UUp$ by itself.
+Thus, by the pullback-stability and universal property of exponentials, the space of lifts of $f:A\to \UU$ to $\sum_{X:\UU} (X\to X)$ is equivalent to the space of endomorphisms of the corresponding object $f^*\UUp$ of $\sE/A$.
+Hence $\sum_{X:\UU} (X\to X)$ classifies small objects equipped with an endomorphism, in that $\sE(A, \sum_{X:\UU} (X\to X))$ is naturally equivalent to the $\infty$-groupoid of small objects of $\sE/A$ with an endomorphism.
 
-Finally, we need to consider the topos-theoretic interpretation of propositional truncation.
+Thirdly, for $\TorZ$ we need to consider the topos-theoretic interpretation of propositional truncation.
 We can ignore its particular construction in {\UniMath} and focus on its universal property, which says that it is a reflection into propositions, i.e., for any proposition $P$ we have $(\Trunc{X}\to P) \equiv (X\to P)$.
-Interpreted fiberwise in an $(\infty,1)$-topos, this says that if we represent a morphism $X\to A$ as the first projection from a dependent type, $(\sum_{a:A} X(a)) \to A$, then the corresponding projection $(\sum_{a:A} \Trunc{X(a)})\to A$ (which we may write informally as $\Trunc{X}_A \to A$) is its reflection into the sub-$(\infty,1)$-category of $\sE/A$ consisting of the monomorphisms, i.e., maps $P\to A$ whose diagonal $P\to P\times_A P$ is an equivalence.
-By~\cite[Example 5.2.8.16 and Corollary 6.5.1.14]{lurie:higher-topoi} (in the case $n=-1$), the effective epimorphisms and monomorphisms in an $(\infty,1)$-topos form a factorization system, and hence in particular the map $X\to \Trunc{X}_A$ is an effective epimorphism.
+Interpreted fiberwise in an $(\infty,1)$-topos, this says that if we represent a morphism $X\to A$ as the first projection from a dependent sum, $(\sum_{a:A} X(a)) \to A$, then the corresponding projection $(\sum_{a:A} \Trunc{X(a)})\to A$ is its reflection into the sub-$(\infty,1)$-category of $\sE/A$ consisting of the monomorphisms, i.e., maps $P\to A$ whose diagonal $P\to P\times_A P$ is an equivalence.
+By~\cite[Example 5.2.8.16 and Corollary 6.5.1.14]{lurie:higher-topoi} (in the case $n=-1$), the effective epimorphisms and monomorphisms in an $(\infty,1)$-topos form a factorization system, and hence in particular the map $X\to (\sum_{a:A} \Trunc{X(a)})$ is an effective epimorphism.
 
-Now recall the definition of $\TorZ$ as $\sum_{(X,f)}\Trunc{(\zet,s)=(X,f)}$.
-This means we have an (effective epimorphism, monomorphism) factorization $W \twoheadrightarrow \TorZ \rightarrowtail \sum_{X:\UU} (X\to X)$, where $W = \sum_{(X,f)} (\zet,s)=(X,f)$ is (by arguments like those above) a classifier for small objects $X$ equipped with an endomorphism $f$ and a \emph{specified} equivalence to $\zet$ respecting the endomorphisms.
+Now by the definition of $\TorZ$, we have an (effective epimorphism, monomorphism) factorization $W \twoheadrightarrow \TorZ \rightarrowtail \sum_{X:\UU} (X\to X)$, where $W = \sum_{(X,f)} (\zet,s)=(X,f)$ is (by arguments like those above) a classifier for small objects $X$ equipped with an endomorphism $f$ and a \emph{specified} equivalence to $\zet$ respecting the endomorphisms.
 In particular, when the universal object-with-endomorphism over $\sum_{X:\UU} (X\to X)$ is pulled back to $\TorZ$, then there exists an effective epimorphism onto $\TorZ$ (namely $W\to \TorZ$) such that when it is pulled back further along that morphism it becomes equivalent to $(\zet,s)$.
 Thus, this universal object is a $\ZZ$-torsor, and hence so is any pullback of it.
 
