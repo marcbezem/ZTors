@@ -59,12 +59,12 @@ principles, is devoid of the features one normally associates with topology, suc
 In standard homotopy theory it is well known that the {\em classifying space} of the group $\ZZ$ of integers is 
 homotopy equivalent to the circle.  We aim to reproduce that result in synthetic homotopy theory.
 
-The traditional algebraic notion of $\ZZ$-torsor yields a category {\color{red}whose objects are the $\ZZ$-torsors.
+The traditional algebraic notion of $\ZZ$-torsor yields a category {whose objects are the $\ZZ$-torsors.
 Moreover, all the arrows of this category are isomorphisms, and
 one specific object  -- namely $\ZZ$ itself -- is the trivial $\ZZ$-torsor, whose automorphism group is $\ZZ$.}
-Due to univalence, the type $\color{red}\TorZ$ of all $\ZZ$-torsors
+Due to univalence, the type $\TorZ$ of all $\ZZ$-torsors
 is a connected pointed type whose fundamental group is $\ZZ$; we may call it the {\em classifying type} of $\ZZ$.  
-In this paper we show that $\color{red}\TorZ$ behaves the way a circle ought to behave, 
+In this paper we show that $\TorZ$ behaves the way a circle ought to behave, 
 by establishing that maps from it to other types (or families of types) are freely determined
 by the destinations of the base point and the canonical loop at the base point (corresponding to the element $1$ of $\ZZ$).  
 The proof is constructive, in that it does not appeal to the axiom of choice or the law of the excluded middle.
@@ -76,7 +76,7 @@ consider the type consisting of all frieze patterns in a Euclidean plane\footnot
 linear collection of evenly spaced copies of the letter $F$.
 $$ \cdots FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF \cdots $$
 
-\bgroup\color{red}
+\bgroup
 We have formalized the result in \UniMath{}, a name which refers both to Voevodsky's (univalent) foundation of mathematics based on a formal
 type theoretic language and to a particular repository \cite{UniMath} of formalized proofs, initiated by him, encoded in the language of the
 proof assistant {\em Coq}.  See \cite{VV-UniMath-1} for an overview by Voevodsky of it.
@@ -86,14 +86,14 @@ $\pt : \Sc$, a path $\Sloop : \pt = \pt$, an induction principle (for defining f
 %
 Adding higher inductive types to the system would give another construction of the circle, equivalent to the one described above.
 %
-Voevodsky chose not to include higher inductive types, nor inductive types\footnote{\color{red}{\em UniMath} accepts just a few specific types
+Voevodsky chose not to include higher inductive types, nor inductive types\footnote{{\em UniMath} accepts just a few specific types
   and type formers that can be introduced as inductive types, namely: the finite types of cardinality at most 2, the natural numbers, binary
   coproducts, sums of families of types, and identity types.}, to {\em UniMath} for two chief reasons.
 %
 Firstly, it was (and still is) not clear how to specify precisely what a definition of a higher inductive type consists of: see
 \cite{1705.07088,HoTT-Agda-HIT} for two approaches.
 %
-Secondly, Voevodsky planned to prove consistency of {\sl UniMath} in a series of papers\footnote{\color{red}Early work \cite{1211.2851} with
+Secondly, Voevodsky planned to prove consistency of {\sl UniMath} in a series of papers\footnote{Early work \cite{1211.2851} with
   Kapulkin and Lumsdaine to establish consistency left him unsatisfied, so he embarked on his own series of papers, to be realized with more details
   exposed.} and realized that adding inductive types and higher inductive types to the system would dramatically increase the length of the
 series and the burden of writing them; as it was, he died before completing the project.
@@ -128,7 +128,7 @@ that is an equivalence.\footnote{%
   For clarity, we distinguish between the \emph{group} $\ZZ$
   and the \emph{underlying set} $\zet$.}
 
-{\color{red}Recall that for a group $G$, a {\em $G$-torsor} consists of a nonempty set $X$ and
+{Recall that for a group $G$, a {\em $G$-torsor} consists of a nonempty set $X$ and
   a left action of $G$ on it that is free and transitive.  This means that for all $x,y \in X$ there is a unique $g \in G$ such
   that $g \cdot x = y$.  An element $x_0 \in X$ yields a bijection $e: G \to X$ given by $g \mapsto g \cdot x_0$.
   If the operation in the group $G$ is written additively, we'll echo that by writing the torsor operation additively: $g + x$.
@@ -165,16 +165,16 @@ and we introduce \emph{the pointed type of $\zet$-torsors} by adopting the follo
   \pt & \defeq ((\zet,s),\trunc{\refl{(\zet,s)}}) : \TorZ
 \end{align*}
 
-{\color{red}We claim}
+{We claim}
 that the type $\pt =_\TorZ \pt$ is equivalent to $\zet$.
 To see that,
 begin by observing that every function $f:\zet\to\zet$ commuting with $s$
 is propositionally equal to $s^{f(0)}$.  The first projection
 acting on $p : \pt =_\TorZ \pt$ gives a path $\pr_1(p) : \zet=\zet$
 such that the corresponding transport function $\pr_1(p)_* : \zet\to\zet$
-is a bijection commuting with $s$. We evaluate this bijection {\color{red}at} $0$.
+is a bijection commuting with $s$. We evaluate this bijection {at} $0$.
 Let $\ev_0(p) \defeq \pr_1(p)_*(0)$ for all $p : \pt =_\TorZ \pt$,
-then $\ev_0 : (\pt =_\TorZ \pt) \to \zet$.  Combining these observations {\color{red}and}
+then $\ev_0 : (\pt =_\TorZ \pt) \to \zet$.  Combining these observations {and}
 using the univalence axiom, one proves that $\ev_0$ is an equivalence.
 
 Since $\zet$ is a set, it follows that the underlying set of the fundamental group of $(\TorZ,\pt$) is equivalent to $\zet$,
@@ -193,7 +193,7 @@ With this in hand, we can formulate a recursion principle for $\TorZ$.
 It states that, given a type $A$, an element $a$ of $A$ and a
 path $l:a=_A a$, one can construct a function $f:\TorZ\to A$
 such that $f(\pt)\jdeq a$ and $\ap{f}(\Zloop)=l$.%
-\footnote{\color{red}This construction was formalised by Grayson 
+\footnote{This construction was formalised by Grayson 
 in 2014, see \cite{circlerec-Dan}; our construction here uses the 
 same basic idea but manages the computations involved in establishing the
 induction principle differently.}  We call the resulting function
@@ -299,7 +299,7 @@ The formalized construction does not use any higher inductive types,
 relying instead on the construction of propositional truncation as
 (the propositional resizing of)
 $$\Trunc X \defeq \prod_{P:\Prop}((X \to P) \to P),$$
-{\color{red}where $\Prop$ is the type of all propositions (in a chosen universe).}
+{where $\Prop$ is the type of all propositions (in a chosen universe).}
 Nor, of course, and this is the whole point, do we
 depend on the previous existence of a type satisfying the induction principle of the circle. 
 
@@ -470,9 +470,9 @@ Let $\zet$ be the inductive type with the following three constructors:
 \begin{enumerate}[topsep=0pt]
 \item $\zzero: \zet$ for the integer number zero, 
 $0 \defeq \zzero$
-\item $\zpos: \NN \to \zet$ for positive {\color{red}integers},
+\item $\zpos: \NN \to \zet$ for positive {integers},
 $1 \defeq \zpos(0),\ldots$.
-\item $\zneg: \NN \to \zet$ for negative {\color{red}integers}, 
+\item $\zneg: \NN \to \zet$ for negative {integers}, 
 $-1 \defeq \zneg(0),\ldots$
 \end{enumerate}
 \end{definition}
@@ -495,7 +495,7 @@ $s(\zzero)\defeq \zpos(0)$,
 $s(\zpos(n))\defeq \zpos(S(n))$,
 $s(\zneg(n))\defeq -i(n)$. For example, we have
 $s(-1)\jdeq s(\zneg(0))\jdeq -i(0) \jdeq \zzero \jdeq 0$.
-{\color{red}Denoting the successor function on $\NN$ by $S$,
+{Denoting the successor function on $\NN$ by $S$,
 by} induction on $n:\NN$ one proves $s(i(n))=i(S(n))$, 
 so that one can say that $s$ extends $S$ on the $i$-image of $\NN$. 
 From now on we will identify $i(n):\zet$ with $n$,
@@ -525,7 +525,7 @@ From addition and unary $-$ one can define a binary
 %\end{xca}
 
 Recall the equivalence $\ev_0 : (\pt=_\TorZ \pt)\to\zet$ from the introduction,
-{\color{red}which sends $p$ to $\pr_1(p)_*(0)$}.
+{which sends $p$ to $\pr_1(p)_*(0)$}.
 We have $\refl{\pt} : \pt=_\TorZ \pt$, as well as the operations
 of \emph{path reversal} and \emph{path composition} as defined
 in \cite[2.1]{hottbook}. These satisfy the laws as stated
@@ -586,7 +586,7 @@ $f : \prod_{n:\NN}(P(n) \to P(n+1))$ and
 $g : \prod_{n:\NN}(P(-n) \to P(-n-1))$,
 as illustrated in \cref{fig:integers-induction-asymmetric}.
 
-The function $h:\prod_{z:\ZZ}(P(z)\color{red})$ thus defined satisfies
+The function $h:\prod_{z:\ZZ}(P(z))$ thus defined satisfies
 $h(n+1)\jdeq f(n,h(n))$ and $h(-n-1)\jdeq g(n,h(-n))$ for all $n:\NN$.
 
 It is possible to give a more symmetric, but less general induction principle,
@@ -647,7 +647,7 @@ as well as the formalization of a version for $\zet$-torsors.
   Since $h(0)=p$ only depends on $h_0$ the pair $(h_0,r)$ with  $r : h_0 = p$
   contracts away, so we're left with the type
   $$ \varphi^{-1}(p) \equiv \psi_+(p) \times \psi_-(p), $$
-  \bgroup\color{red}
+  \bgroup
   where $\psi_+(p)$ and $\psi_-(p)$ are defined as follows.
   \begin{align*}
     \psi_+(p) & \defeq  \sum_{h_+ : \prod_{n:\NN}P(n+1)}  \bigl((h_+(0) = f_0(p))         \\
@@ -676,11 +676,11 @@ is the function that takes $z:\zet$ to $f^z(p):P(z)$, where
 
 \section{Z-Torsors}\label{sec:ZTorsors}
 
-{\color{red}In this section, pairs $(X,f)$ will be of type $\sum_{X:\UU}(X\to X)$.}
+{In this section, pairs $(X,f)$ will be of type $\sum_{X:\UU}(X\to X)$.}
 Moreover, terms of propositional type whose precise form does not interest us are denoted by ``$!$''.
 Nested pairs may be written as tuples.
 With these notational simplifications, we rephrase some definitions from the introduction.
-{\color{red}The formalization of \cref{sec:TorZ-recursion} can be found in \cite{circlerec-Dan},
+{The formalization of \cref{sec:TorZ-recursion} can be found in \cite{circlerec-Dan},
 that of \cref{sec:TorZ-induction} in \cite{circleind-Dan}.}
 
 \begin{definition}\label{def:TorZ}
@@ -701,14 +701,14 @@ that of \cref{sec:TorZ-induction} in \cite{circleind-Dan}.}
 \end{definition}
 
 The type $\TorZ$ is equivalent to the more traditionally defined 
-type of $\ZZ$-torsors, but is more parsimonious.\footnote{\color{red}Our formalization, however, uses the traditional definition.}
+type of $\ZZ$-torsors, but is more parsimonious.\footnote{Our formalization, however, uses the traditional definition.}
 (Traditionally, a $\ZZ$-torsor is defined as a nonempty set upon which the group $\ZZ$ acts freely and transitively.)
 Another way to think of it is as the type of Cayley diagrams for $\ZZ$.
 
 We remark that the pointed type $\TorZ$ is connected, that is, $\Trunc{\pt=Z}$ for all $Z:\TorZ$.
 
 We introduce the induction principle for propositional truncation in the following form 
-(compare with \cite[6.9]{hottbook}, {\color{red}$\trunc\_: A\to\Trunc A$ is 
+(compare with \cite[6.9]{hottbook}, {$\trunc\_: A\to\Trunc A$ is 
 the point constructor).}
 
 \begin{definition}\label{def:proptruncind}
@@ -718,7 +718,7 @@ the point constructor).}
 \end{definition}
 
 In {\UniMath} the induction principle holds, but not the computation rule for it.%
-\footnote{\color{red}
+\footnote{
 Recall that in {\UniMath} $\Trunc T \defeq \prod_{P:\Prop}((T \to P) \to P)$, and 
 the function $\trunc\_: T\to\Trunc T$ is
 defined by $\trunc t  (P,f) \defeq f(t)$ for all $P: \Prop$, $f: T\to P$, and $t:T$.
@@ -761,7 +761,7 @@ the same as $P(\pt)$, so $p$ provides the proof.
 The proof $q: \prod_{Z:\TorZ} P(Z)$ constructed above has the property that $q(\pt)\jdeq p$ if the computation rule for the induction principle
 for propositional truncation holds.
 
-{\color{red}The aim of this section is to show that $\TorZ$ satisfies the induction principle \cref{eq:circle-induction} for the circle,
+{The aim of this section is to show that $\TorZ$ satisfies the induction principle \cref{eq:circle-induction} for the circle,
 thereby establishing that $\TorZ$ has the defining property of the circle.
 The recursion principle is the non-dependent version of the induction principle, namely that there is a function of the following type:
 \begin{equation}
@@ -791,12 +791,12 @@ All input data is present in $p$ and its type.
 When defining types and functions depending on the input data, 
 we use $p$ in various denotations to express this dependence. 
 
-To be able to apply \cref{lem:dep-elim-TorZ}, we need to find a suitable proposition.  {\color{red}The idea is to find a
-  correspondence\footnote{\color{red}A {\em correspondence} from a type $T$ to a type $T'$ is a type $C$ with projections $pr_1 : C \to T$ and
+To be able to apply \cref{lem:dep-elim-TorZ}, we need to find a suitable proposition.  {The idea is to find a
+  correspondence\footnote{A {\em correspondence} from a type $T$ to a type $T'$ is a type $C$ with projections $pr_1 : C \to T$ and
     $pr_2 : C \to T'$.} from $\TorZ$ to $A$ whose first projection is an equivalence, thereby yielding a map from $\TorZ$ to $A$.}
 
 \begin{figure}
-\color{red}
+
 \begin{tikzpicture} %\large
    \matrix (m) 
    [matrix of math nodes, row sep=2em, column sep=2em, ampersand replacement=\&]
@@ -856,7 +856,7 @@ The type $Q_p(X,f)$ is contractible for all $(X,f,t):\TorZ$.
   where $\varphi_{a'}(h,q) \defeq h(0)$.
 \end{proof}
 
-{\color{red}For $T := (X,f,t) : \TorZ$, let $\vec{c}_p(T)$ denote the center of contractibility of $Q_p(X,f)$ as constructed in the proof above.
+{For $T := (X,f,t) : \TorZ$, let $\vec{c}_p(T)$ denote the center of contractibility of $Q_p(X,f)$ as constructed in the proof above.
   We introduce the notation $\vec{c}_p(Z)\defeq(c_p(Z),\tilde{c}_p(Z),\hat{c}_p(Z))$ for its components.
   The value of $\vec{c}_p(\pt)$ can be uncovered by a careful analysis of the steps of the proof.}
 First, the center of $\sum_{a':A} a=a'$ is $(a,\refl{a})$.
@@ -921,7 +921,7 @@ and maps $\Zloop$ to $p$ (by dependent action on paths).
 We follow the pattern of the non-dependent case
 in \cref{sec:TorZ-recursion}, but keep in mind that 
 $A$ is now not constant and $p$ is a \emph{path over a path}.
-{\color{red}We make extensive use of the functions and lemmas from \cref{sec:pathovers}.}
+{We make extensive use of the functions and lemmas from \cref{sec:pathovers}.}
 
 The following lemma follows from the fact that $\zet$ is a set
 and $s: \zet\to\zet$ is an equivalence.
@@ -1081,7 +1081,7 @@ However, if $\alpha$ is shorter than its type we may
 prefer to keep $\alpha$ in $\cp{\alpha}$.
 Also, as $\cp{\refl{}}$ is the identity, so is any $\cp{\alpha}$
 when the endpoints of $\alpha$ are definitionally equal. 
-{\color{red}We make extensive use of this simplification}.
+{We make extensive use of this simplification}.
 
 Abbreviate $s_0 \defeq s^\pt_0$, $s_1 \defeq s^\pt_1$, 
 then $\varepsilon_{\Zloop,0} : s_0^{-1} \ct s_1 = {\Zloop}$.
@@ -1199,7 +1199,7 @@ Combining \cref{thm:torz-coeq,thm:torz-classif}, we see that any circle object i
 
 
 \section{Conclusion and Future Research}
-We have proved, {\color{red}for any type family $A\to\TorZ$,} 
+We have proved, {for any type family $A\to\TorZ$,} 
 the induction principle of the circle for $\TorZ$:
 \[
 {\ind}_A : \sum_{a:A(\pt)}(a=^A_\Zloop a) ~~\to~~ \prod_{Z:\TorZ} A(Z),
@@ -1212,7 +1212,7 @@ from $\TorZ$ to the type of $G$-torsors, where $G$ is a free group with
 a set of generators with decidable equality.
 
 \section{Acknowledgements}
-The authors acknowledge the support of the Centre for Advanced Study (CAS)
+Bezem, Buchholtz, and Grayson acknowledge the support of the Centre for Advanced Study (CAS)
 at the Norwegian Academy of Science and Letters
 in Oslo, Norway, which funded and hosted the research project Homotopy Type Theory and Univalent Foundations during the academic year 2018/19. 
 Grayson also acknowledges the support of the Air Force Office of Scientific Research, through a grant to Carnegie Mellon University.
