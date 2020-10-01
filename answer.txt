@@ -1,0 +1,32 @@
+Answer to the reviewer who wrote BBG-Report.
+
+Thanks for all the constructive criticism! The few points that have
+not led to changes in the text (all in red) are addressed below.
+
+(p2) The ∞-topos motivation for this work could be discussed in a paragraph
+right above “Now we give a few more details.”
+
+Ulrik, did you make up your mind about whether you would write something?
+
+(4.3) Does the proof construct an inverse equivalence? 
+Or does it reduce the statement that blah is an equivalence to the case 
+where blah is the identity function?
+
+R: The latter is indeed a high-level description of what happens in the proof.
+However, any proof that a function is an equivalence constructs 
+implicitly its inverse.
+
+Same questions for the proof of 4.9.
+
+R: This lemma, now 2.9, is not about an equivalence but about an
+identity between two paths over a path. Is there some misunderstanding here?
+
+(p11) It wasn’t clear to me why Q_p(X,f) is a proposition.
+
+R: This is completely non-trivial, and the hard core of the proof.
+
+(§6) In the “future research,” what exactly are you hoping to prove about the type TG?
+
+R: That TG satisfies the universal property of the direct product of circles,
+one for each generator. The exact formulation, and certainly the proof,
+are beyond the scope of our article - actually a research project in itself.
