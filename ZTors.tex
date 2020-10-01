@@ -834,8 +834,10 @@ To be able to apply \cref{lem:dep-elim-TorZ}, we need to find a suitable proposi
 
 \draw[->>] (m-1-1) -- (m-2-1) node[midway,left] {$\scriptstyle\equiv$} node[midway,right] {$\scriptstyle pr_1$};
 \draw[->>] ( [xshift=-10pt] m-1-1) -- (m-1-2) node[midway,above] {$\scriptstyle pr_2$};
-\draw[->,dotted] (m-2-1) to[bend left=60] node[midway,left]{$\scriptstyle\vec c_p$} (m-1-1) ;
-\draw[->,dotted] (m-2-1) -- (m-1-2) node[midway,below]{$\scriptstyle c_p$} ;
+\draw[->,dotted] (m-2-1.west) to[bend left=45]
+  node[midway,left]{$\scriptstyle\vec c_p$} (m-1-1) ;
+\draw[->,dotted] (m-2-1) to[bend right=15] node[midway,below]{$\scriptstyle c_p$}
+(m-1-2) ;
 
 \end{tikzpicture}
 \caption{\label{fig:TorZ-recursion}Mapping torsors to $A$}
