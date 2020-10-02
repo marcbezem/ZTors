@@ -282,17 +282,21 @@ We think of $\TorZ$ as a circle (and prove that it is),
 but we illustrate it (and objects depending on it) as periodically recurring,
 in order to make clearer diagrams.
 We draw the type family $A$ as a periodic fibration over this circle,
-and the goal is the to produce from the point $a$ and the path $l$ over $\Sloop$,
+and the goal is then to produce from the point $a$ and the path $l$ over $\Sloop$,
 the section $f$, the path $r$, and a final element inhabiting
 the type $\apd{f}(\Zloop) = r\cto' l \cto r^{-1}$, which is equivalent to
 $\apd{f}(\Zloop) =^{\lambda z, z=^A_{\Zloop}z}_r l$,
 and which corresponds to filling the inside of the curvilinear quadrilateral in \cref{fig:circle-induction}.
 
-If the underlying type theory has propositional truncation with a dependent eliminator that computes judgmentally on the point constructor, as
-in \cite[6.9]{hottbook}, then the path $r : f(\pt)= a$ above is a reflexivity path.
-It then follows
-from the care with which we chose the expression $r\cto' l \cto r^{-1}$, that it has the same type as $l$, and, moreover, the two terms are
-judgmentally equal.  Thus the right side of the equation \ref{eq:circle-induction} can be replaced by $l$.
+Let $\ind$ denote the function with type in \cref{eq:circle-induction} that we will construct.
+Its application to $A,a,l$ of appropriate types, denoted by $\ind_A(a,l)$,
+is a triple $(f,r,q)$ where $f$ is a section of $A$ and $r : f(\pt)= a$ a path.
+If the underlying type theory has propositional truncation with a dependent eliminator 
+that computes judgmentally on the point constructor, as in \cite[6.9]{hottbook}, 
+then the path $r : f(\pt)= a$ above is a reflexivity path, so $f(\pt)\jdeq a$.
+It then follows from the care with which we chose the expression $r\cto' l \cto r^{-1}$, 
+that it has the same type as $l$, and, moreover, the two terms are judgmentally equal.
+Thus the right side of the equation \ref{eq:circle-induction} can be replaced by $l$.
 
 Because the convention in {\UniMath} is to avoid higher inductive types,
 the formalization in \cite{circleind-Dan} is
@@ -317,6 +321,8 @@ Finally, again using connectedness, reduce to the loop spaces
 of the respective points, and show they are equivalent to $\zet$ and thus to each other.)
 The induction principle \cref{eq:circle-induction} for $\TorZ$ then follows directly.
 
+The reader may wonder whether our result can be generalized to higher spheres.
+The answer is no.
 One can construct models of type theory with univalent universes and propositional resizing
 (viz., essentially of \UniMath{})
 that do not have higher inductive types, not even suspensions.
@@ -331,6 +337,8 @@ but it cannot contain the $2$-sphere (the suspension of the circle),
 as this is not a groupoid.
 Because the $2$-sphere in topology is not an $n$-type for any $n$,
 the new model will not contain a $2$-sphere.
+The restricted model also shows that one cannot construct a circle in
+the lowest universe in \UniMath{}.
 
 \section{Auxiliary results}\label{sec:auxiliaries}
 
