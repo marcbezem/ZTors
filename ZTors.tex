@@ -112,14 +112,7 @@ As a prerequisite we require, of the reader, a working knowledge of homotopy typ
 as described in, for example, the first four chapters of \cite{hottbook}.
 In the next \cref{sec:statement}, more precisely in \cref{eq:circle-induction},
 we give a precise formulation of the main result.
-%For convenience we give a direct inductive
-%definition of the set of integers in \cref{sec:integers},
-%and we give an alternative induction principle in \cref{sec:integers-induction}.
-%Thus we get a set of integers $\zet$, a constant $0:\zet$,
-%and a successor function $s:\zet\to\zet$
-%that is an equivalence.\footnote{%
-%  For clarity, we distinguish between the \emph{group} $\ZZ$
-%  and the \emph{underlying set} $\zet$.}
+
 Preparing for the proof of the main result, 
 we give in \cref{sec:auxiliaries} some auxiliary results
 that are not in the first four chapters of \cite{hottbook}.
@@ -475,21 +468,64 @@ The proof is by induction on $\beta$ (for right-recursive composition).
 
 \subsection{Dependent elimination of propositional truncation}\label{sec:proptrunc}
 
-One extra piece of knowledge we use here is the \emph{dependent} elimination
+One extra piece of knowledge we need is the \emph{dependent} elimination
 principle for propositional truncation, mentioned in \cite[6.9]{hottbook},
 and qualified as `not really useful'%
 \footnote{The dependent elimination principle appears to 
   be used later in \cite[Lemma 7.3.3]{hottbook}, though.
   %% see the issue we made at https://github.com/HoTT/book/issues/1028
 }.
-We use this principle in \cref{lem:dep-elim-TorZ}, and the paragraph after
-its proof gives some extra attention to the computational aspect.
+We use this principle in \cref{lem:dep-elim-TorZ}, and it plays an
+essential role in the proof of the induction principle for $\TorZ$.
+
+We introduce the induction principle for propositional truncation in the following form 
+($\trunc\_: A\to\Trunc A$ is the point constructor).
+
+\begin{definition}\label{def:proptruncind}
+  If $A$ is a type and $B(x)$ is a family of propositions parametrized by the elements $a$ of $\Trunc A$,
+  and given $g : \prod_{a:A} B(\trunc a)$, then there is a function $f : \prod_{x:\Trunc A} B(x)$.
+  The \emph{computation rule} asserts that $f (\trunc a) \jdeq g(a)$ for all $a:A$.
+\end{definition}
+
+In {\UniMath} the induction principle holds, but not the computation rule for it.
+Recall that in {\UniMath} $\Trunc A \defeq \prod_{P:\Prop}((A \to P) \to P)$, and 
+the function $\trunc\_: A\to\Trunc A$ is
+defined by $\trunc a  (P,f) \defeq f(a)$ for all $P: \Prop$, $f: A\to P$, and $a:A$.
+Thus we naturally get a recursion principle: if $P: \Prop$, then any
+$g: A \to P$ defines an $f : \Trunc A \to P$ by setting $f(x)\defeq x(P,g)$.
+Clearly $f$ satisfies $f(\trunc a) \jdeq \trunc a (P,g) \jdeq g(a)$, for all $a:A$.
+
+For induction the situation is different: if $B: \Trunc A \to \Prop$,
+then any $g: \prod_{a:A} B(\trunc t)$ again defines an
+$f:  \prod_{x:\Trunc A} B(x)$. Since the latter type is a proposition,
+there is only one such $f$ and it can be obtained in several ways. 
+One way is the following. Let $x: \Trunc A$. Then $B(x): \Prop$. 
+Define $h_x: A \to B(x)$ by mapping $a$ to the transport of $g(a): B(\trunc a)$ 
+along the path of type $\trunc a = x$ coming from the proof that $\Trunc A$ is a proposition.
+By the recursion principle, $h_x$ defines $h'_x : \Trunc A \to B(x)$.
+Now set $f(x) \defeq h'_x(x)$. Indeed $f: \prod_{x:\Trunc A} B(x)$.
+Of course, we have $f(\trunc a) = g(a)$ since $B(\trunc a)$ is a proposition.
+However, because of the transport, we don't have $f(\trunc a) \jdeq g(a)$,
+as the path of type $\trunc a = \trunc a$ coming from the proof that $\Trunc T$ is 
+a proposition need not be the path given by reflexivity.
+
+There are several other ways of defining $f$, but none of them
+satisfies the computation rule $f(\trunc a)\jdeq g(a)$. It is currently
+unknown whether it is possible to define in {\UniMath} a propositional
+truncation with an induction principle that satisfies the computation rule.
 
 
 \subsection{The integers}
 \label{sec:integers}
 
-We define the type of integers in one of the many possible ways.
+For convenience we give a direct inductive
+definition of the set of integers, and we give 
+an alternative induction principle in \cref{sec:integers-induction}.
+Thus we get a set of integers $\zet$, a constant $0:\zet$,
+and a successor function $s:\zet\to\zet$
+that is an equivalence.\footnote{%
+  For clarity, we distinguish between the \emph{group} $\ZZ$
+  and the \emph{underlying set} $\zet$.}
 
 \begin{definition}\label{def:integers}
 Let $\zet$ be the inductive type with the following three constructors:
@@ -702,8 +738,8 @@ is the function that takes $z:\zet$ to $f^z(p):P(z)$, where
 \section{Z-Torsors}\label{sec:ZTorsors}
 
 {In this section, pairs $(X,f)$ will be of type $\sum_{X:\UU}(X\to X)$.}
-Moreover, terms of propositional type whose precise form does not interest us are denoted by ``$!$''.
-Nested pairs may be written as tuples.
+Moreover, nested pairs will be written as tuples.
+% OBSOLETE terms of propositional type ... are denoted by ``$!$''.
 With these notational simplifications, we rephrase some definitions from the introduction.
 {The formalization of \cref{sec:TorZ-recursion} can be found in \cite{circlerec-Dan},
 that of \cref{sec:TorZ-induction} in \cite{circleind-Dan}.}
@@ -732,43 +768,6 @@ Another way to think of it is as the type of Cayley diagrams for $\ZZ$.
 
 We remark that the pointed type $\TorZ$ is connected, that is, $\Trunc{\pt=Z}$ for all $Z:\TorZ$.
 
-We introduce the induction principle for propositional truncation in the following form 
-(compare with \cite[6.9]{hottbook}, {$\trunc\_: A\to\Trunc A$ is 
-the point constructor).}
-
-\begin{definition}\label{def:proptruncind}
-  If $A$ is a type and $B(x)$ is a family of propositions parametrized by the elements $a$ of $\Trunc A$,
-  and given $g : \prod_{a:A} B(\trunc a)$, then there is a function $f : \prod_{x:\Trunc A} B(x)$.
-  The \emph{computation rule} asserts that $f (\trunc a) \jdeq g(a)$ for all $a:A$.
-\end{definition}
-
-In {\UniMath} the induction principle holds, but not the computation rule for it.%
-\footnote{
-Recall that in {\UniMath} $\Trunc T \defeq \prod_{P:\Prop}((T \to P) \to P)$, and 
-the function $\trunc\_: T\to\Trunc T$ is
-defined by $\trunc t  (P,f) \defeq f(t)$ for all $P: \Prop$, $f: T\to P$, and $t:T$.
-Thus we naturally get a recursion principle: if $P: \Prop$, then any
-$g: T \to P$ defines an $f : \Trunc T \to P$ by setting $f(x)\defeq x(P,g)$.
-Clearly $f$ satisfies $f(\trunc t) \jdeq \trunc t (P,g) \jdeq g(t)$, for all $t: T$.
-
-For induction the situation is different: if $P: \Trunc T \to \Prop$,
-then any $g: \prod_{t:T} P(\trunc t)$ again defines an
-$f:  \prod_{x:\Trunc T} P(x)$. Since the latter type is a proposition,
-there is only one such $f$ and it can be obtained in several ways. 
-One way is the following. Let $x: \Trunc T$. Then $P(x): \Prop$. 
-Define $h_x: T \to P(x)$ by mapping $t$ to the transport of $g(t): P(\trunc t)$ 
-along the path of type $\trunc t = x$ coming from the proof that $\Trunc T$ is a proposition.
-By the recursion principle, $h_x$ defines $h'_x : \Trunc T \to P(x)$.
-Now set $f(x) \defeq h'_x(x)$. Indeed $f: \prod_{x:\Trunc T} P(x)$. However,
-because of the transport, we don't have $f(\trunc t) \jdeq g(t)$,
-as the path of type $\trunc t = \trunc t$ coming from the proof that $\Trunc T$ is 
-a proposition need not be the path given by reflexivity.
-
-There are several other ways of defining $f$, but none of them
-satisfies the computation rule $f(\trunc t)\jdeq g(t)$. It is currently
-unknown whether it is possible to define in {\UniMath} a propositional
-truncation with an induction principle that satisfies the computation rule.
-}
 
 \begin{lemma}\label{lem:dep-elim-TorZ}
 If $P(Z)$ is a proposition for all $Z:\TorZ$, then $P(\pt)$ implies that $P(Z)$ holds for all $Z:\TorZ$.
