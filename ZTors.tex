@@ -496,7 +496,7 @@ $g: A \to P$ defines an $f : \Trunc A \to P$ by setting $f(x)\defeq x(P,g)$.
 Clearly $f$ satisfies $f(\trunc a) \jdeq \trunc a (P,g) \jdeq g(a)$, for all $a:A$.
 
 For induction the situation is different: if $B: \Trunc A \to \Prop$,
-then any $g: \prod_{a:A} B(\trunc t)$ again defines an
+then any $g: \prod_{a:A} B(\trunc a)$ again defines an
 $f:  \prod_{x:\Trunc A} B(x)$. Since the latter type is a proposition,
 there is only one such $f$ and it can be obtained in several ways. 
 One way is the following. Let $x: \Trunc A$. Then $B(x): \Prop$. 
@@ -506,7 +506,7 @@ By the recursion principle, $h_x$ defines $h'_x : \Trunc A \to B(x)$.
 Now set $f(x) \defeq h'_x(x)$. Indeed $f: \prod_{x:\Trunc A} B(x)$.
 Of course, we have $f(\trunc a) = g(a)$ since $B(\trunc a)$ is a proposition.
 However, because of the transport, we don't have $f(\trunc a) \jdeq g(a)$,
-as the path of type $\trunc a = \trunc a$ coming from the proof that $\Trunc T$ is 
+as the path of type $\trunc a = \trunc a$ coming from the proof that $\Trunc A$ is 
 a proposition need not be the path given by reflexivity.
 
 There are several other ways of defining $f$, but none of them
