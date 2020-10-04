@@ -748,7 +748,7 @@ that of \cref{sec:TorZ-induction} in \cite{circleind-Dan}.}
   The pointed type of $\zet$-torsors is defined by
   \begin{align*}
     \TorZ &\defeq \sum_{(X,f)}\Trunc{(\zet,s)=(X,f)}  \\
-    \pt & \defeq ((\zet,s),\trunc{\refl{(\zet,s)}}) : \TorZ
+    \pt & \defeq (\zet,s,\trunc{\refl{(\zet,s)}}) : \TorZ
   \end{align*}
   The variables $X,Y,Z$ will be used for elements of $\TorZ$, 
   as well as, by an abuse of notation, for their the first components.
@@ -776,7 +776,7 @@ If $P(Z)$ is a proposition for all $Z:\TorZ$, then $P(\pt)$ implies that $P(Z)$ 
 \begin{proof}
 Let $P(Z)$ be a proposition for all $Z:\TorZ$, and assume we have a proof
 $p:P(\pt)$. Let $(X,f,t):\TorZ$, then $t :\Trunc{(\zet,s)=(X,f)}$.
-Since $P(X,f,t)$ is a proposition, it suffices by truncation elimination
+Since $P(X,f,t)$ is a proposition, it suffices by \cref{def:proptruncind}
 to prove $P(X,f,\trunc{e})$ for all $e:(\zet,s)=(X,f)$. 
 By induction on $e$ we reduce the task to proving $P(\zet,s,\trunc{\refl{(Z,s)}})$, which is
 the same as $P(\pt)$, so $p$ provides the proof.
@@ -787,7 +787,8 @@ for propositional truncation holds.
 
 {The aim of this section is to show that $\TorZ$ satisfies the induction principle \cref{eq:circle-induction} for the circle,
 thereby establishing that $\TorZ$ has the defining property of the circle.
-The recursion principle is the non-dependent version of the induction principle, namely that there is a function of the following type:
+The recursion principle is the non-dependent version of the induction principle, 
+namely that there is a function of the following type:
 \begin{equation}
   \label{eq:circle-recursion}
   \thinmuskip=10mu              % this is better than inserting tildes
@@ -882,9 +883,13 @@ The type $Q_p(X,f)$ is contractible for all $(X,f,t):\TorZ$.
   where $\varphi_{a'}(h,q) \defeq h(0)$.
 \end{proof}
 
-{For $T := (X,f,t) : \TorZ$, let $\vec{c}_p(T)$ denote the center of contractibility of $Q_p(X,f)$ as constructed in the proof above.
+A relevant observation at this point is that $Q_p(X,f)$ does not depend on $t$.
+This means that we actually apply in the proof above the non-dependent version 
+of \cref{lem:dep-elim-TorZ}, for which the computation rule holds also in {\UniMath}.
+For $T := (X,f,t) : \TorZ$, let $\vec{c}_p(T)$ denote the center of contractibility 
+of $Q_p(X,f)$ as constructed in the proof above.
   We introduce the notation $\vec{c}_p(Z)\defeq(c_p(Z),\tilde{c}_p(Z),\hat{c}_p(Z))$ for its components.
-  The value of $\vec{c}_p(\pt)$ can be uncovered by a careful analysis of the steps of the proof.}
+  The value of $\vec{c}_p(\pt)$ can be uncovered by a careful analysis of the steps of the proof.
 First, the center of $\sum_{a':A} a=a'$ is $(a,\refl{a})$.
 This center is pulled back by $\varphi_{a}$ to a center
 $(a,c)$ of $Q_p(\zet,s)$, where $c$ is the center of 
@@ -926,7 +931,6 @@ that $\tilde c_p(\pt,1) = p$ and $\tilde c_p(\pt,0) = \refl{a}$.
 It follows that $\ap{c_p}(\Zloop) = p$ by \cref{lem:ap-c-tilde-c}.
 This means we have achieved our second goal as well.
 We summarize the results in the following recursion principle for $\TorZ$.
-In the next section we will prove an induction principle for $\TorZ$.
 
 \begin{definition}\label{def:TorZrecursor}
   The function ${\rec}_A(a,p) \defeq c_p$ as defined after 
@@ -937,6 +941,14 @@ In the next section we will prove an induction principle for $\TorZ$.
   and satisfies ${\rec}_A(a,p)(\pt) \jdeq a$ and 
   $\ap{{\rec}_A(a,p)}(\Zloop) = p$.
 \end{definition}
+
+Alternatively, without using the computation rule for propositional truncation, 
+we can get an element of the type \cref{eq:circle-recursion} as follows.
+We have $c_p : \TorZ\to A$, 
+$\tilde c_p(\pt,0) : a = c_p(\pt)$,
+$\tilde c_p(\pt,1) = p \ct \tilde c_p(\pt,0)$, and
+$\ap{c_p}(\Zloop) = \tilde c_p(\pt,0)^{-1}\ct \tilde c_p(\pt,1)
+= \tilde c_p(\pt,0)^{-1}\ct p \ct \tilde c_p(\pt,0)$.
 
 \subsection{Induction in $\TorZ$}\label{sec:TorZ-induction}
 
@@ -1133,6 +1145,15 @@ We now calculate:
    (p\cto\cp{\refl{\pt} = s_0}(\rrfl))))&= \\
 \cp{\gamma}(\rrfl\cto(p\cto\rrfl))&= p. 
 \end{align*}
+
+Alternatively, without using the computation rule for propositional truncation, 
+leaving out the subscripts of the equivalences $\cp{}$, we have, 
+$c_p : \prod_{Z:\TorZ}A(Z)$, 
+$\tilde c_p(\pt,0) : a = c_p(\pt)$,
+$\tilde c_p(\pt,1) = \cp{}(p \cto \tilde c_p(\pt,0))$, and
+$\apd{c_p}(\Zloop) = \cp{}(\tilde c_p(\pt,0)^{-o}\cto \tilde c_p(\pt,1))
+= \cp{}(\tilde c_p(\pt,0)^{-o}\cto \cp{}(p \cto \tilde c_p(\pt,0)))$.
+With some massage we get an element of the type in \cref{eq:circle-induction}.
 
 \section{Interpretation in higher toposes}
 \label{sec:topos}
