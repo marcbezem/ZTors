@@ -9,3 +9,6 @@
 *.pdf
 *.toc
 *.dvi
+*.synctex.gz
+*~
+auto/
