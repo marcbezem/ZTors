@@ -92,7 +92,7 @@ Voevodsky chose not to include higher inductive types, nor inductive types\footn
   coproducts, sums of families of types, and identity types.}, to {\em UniMath} for two chief reasons.
 %
 Firstly, it was (and still is) not clear how to specify precisely what a definition of a higher inductive type consists of: see
-\cite{1705.07088,HoTT-Agda-HIT} for two approaches.
+\cite{HoTT-Agda-HIT,1705.07088} for two approaches.
 %
 Secondly, Voevodsky planned to prove consistency of {\sl UniMath} in a series of papers\footnote{Early work \cite{1211.2851} with
   Kapulkin and Lumsdaine to establish consistency left him unsatisfied, so he embarked on his own series of papers, to be realized with more details
@@ -124,15 +124,21 @@ in higher toposes, before we conclude in \cref{sec:conclusion}.
 
 \section{Precise formulation and discussion}\label{sec:statement}
 
-{Recall that for a group $G$, a {\em $G$-torsor} consists of a nonempty set $X$ and
-  a left action of $G$ on it that is free and transitive.  This means that for all $x,y \in X$ there is a unique $g \in G$ such
-  that $g \cdot x = y$.  An element $x_0 \in X$ yields a bijection $e: G \to X$ given by $g \mapsto g \cdot x_0$.
-  If the operation in the group $G$ is written additively, we'll echo that by writing the torsor operation additively: $g + x$.
+Recall that for a group $G$, a \emph{$G$-torsor} consists of a nonempty set $X$ and
+a left action of $G$ on it that is free and transitive.
+This means that for all $x,y \in X$ there is a unique $g \in G$ such
+that $g \cdot x = y$.
+Any element $x_0 \in X$ yields a bijection $e: G \to X$ given by $g \mapsto g \cdot x_0$.
+If the operation in the group $G$ is written additively, we'll echo that by writing the torsor operation additively: $g + x$.
 
 In the case where $G$ is $\ZZ$, then since $\ZZ$ is a free group with one generator, an action of $\ZZ$ on a set $X$ is completely
 determined by the action of the integer $1$---it is a bijection $X \xrightarrow{\cong} X$ which we denote by $f$.
-Then we have $e(s(n)) = (1+n) + x_0 = 1 + (n + x_0) = f(e(n))$ for all
-integers $n$.  So the following diagram commutes.
+Fixing $x_0\in X$, the corresponding bijection $e$ then satisfies
+  $e(s(n)) = (1+n) + x_0 = 1 + (n + x_0) = f(e(n))$ for all
+integers $n$.
+So the following diagram commutes.\footnote{%
+  For clarity, we distinguish between the \emph{group} $\ZZ$
+  and the \emph{underlying set} $\zet$.}
 % the transport of $s$ along (the path coming by univalence from) $e$ equals $f$.
 \[
 \begin{tikzpicture} %\large
@@ -146,15 +152,16 @@ integers $n$.  So the following diagram commutes.
 \end{tikzpicture}
 \]
 Conversely, we get a unique $\ZZ$-torsor from any pair $(X,f)$, where $X$ is a nonempty set and $f : X \to X$ is a function, such that there
-exists a bijection $e$ that makes the diagram above commute, by transporting the structure of $Z$ as a trivial $\ZZ$-torsor along $e$, thereby
+exists a bijection $e$ that makes the diagram above commute, by transporting the structure of $\zet$ as a trivial $\ZZ$-torsor along $e$, thereby
 expressing $e$ as an isomorphism of $\ZZ$-torsors.  Independence of the structure on $X$ from the choice of $e$ is established by observing that
-$n + x = f^n(x)$ for all $n \in \ZZ$.  Alternatively, one could use the existence of $e$ to show that $f$ is a bijection and $X$ is nonempty,
+$n + x_0 = f^n(x_0)$ for all $n \in \ZZ$.
+Alternatively, one could use the existence of $e$ to show that $f$ is a bijection and $X$ is nonempty,
 define an action of $\ZZ$ on $X$ by setting $n + x := f^n(x)$ for any $n \in \ZZ$, and then use the existence of $e$ again to show that the
 action is free and transitive.
 
 With the above considerations in mind, and recalling that, in the presence of univalence, isomorphisms correspond to identities,
-we consider pairs $(X,f)$ of type $\sum_{X:\UU}(X\to X)$,}
-and we introduce \emph{the pointed type of $\zet$-torsors} by adopting the following definitions
+we consider pairs $(X,f)$ of type $\sum_{X:\UU}(X\to X)$,
+and we introduce \emph{the pointed type of $\ZZ$-torsors} by adopting the following definitions
 (cf.~\cref{def:TorZ}).
 \begin{align*}
   \TorZ &\defeq \sum_{(X,f)}\Trunc{(\zet,s)=(X,f)}  \\
@@ -523,9 +530,7 @@ definition of the set of integers, and we give
 an alternative induction principle in \cref{sec:integers-induction}.
 Thus we get a set of integers $\zet$, a constant $0:\zet$,
 and a successor function $s:\zet\to\zet$
-that is an equivalence.\footnote{%
-  For clarity, we distinguish between the \emph{group} $\ZZ$
-  and the \emph{underlying set} $\zet$.}
+that is an equivalence.
 
 \begin{definition}\label{def:integers}
 Let $\zet$ be the inductive type with the following three constructors:
