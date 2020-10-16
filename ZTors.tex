@@ -475,7 +475,7 @@ The proof is by induction on $\beta$ (for right-recursive composition).
 \end{lemma}
  The proof is by induction first on $\beta$, then on $q$, and finally on $\hat q$.
 
-\subsection{Dependent elimination of propositional truncation}\label{sec:proptrunc}
+\subsection{Dependent elimination for propositional truncation}\label{sec:proptrunc}
 
 One extra piece of knowledge we need is the \emph{dependent} elimination
 principle for propositional truncation, mentioned in \cite[6.9]{hottbook},
@@ -492,7 +492,7 @@ We introduce the induction principle for propositional truncation in the followi
 
 \begin{definition}\label{def:proptruncind}
   If $A$ is a type and $B(x)$ is a family of propositions parametrized by the elements $a$ of $\Trunc A$,
-  and given $g : \prod_{a:A} B(\trunc a)$, then there is a function $f : \prod_{x:\Trunc A} B(x)$.
+  and we are given $g : \prod_{a:A} B(\trunc a)$, then there is a function $f : \prod_{x:\Trunc A} B(x)$.
   The \emph{computation rule} asserts that $f (\trunc a) \jdeq g(a)$ for all $a:A$.
 \end{definition}
 
@@ -505,21 +505,21 @@ $g: A \to P$ defines an $f : \Trunc A \to P$ by setting $f(x)\defeq x(P,g)$.
 Clearly $f$ satisfies $f(\trunc a) \jdeq \trunc a (P,g) \jdeq g(a)$, for all $a:A$.
 
 For induction the situation is different: if $B: \Trunc A \to \Prop$,
-then any $g: \prod_{a:A} B(\trunc a)$ again defines an
-$f:  \prod_{x:\Trunc A} B(x)$. Since the latter type is a proposition,
-there is only one such $f$ and it can be obtained in several ways.
-One way is the following. Let $x: \Trunc A$. Then $B(x): \Prop$.
-Define $h_x: A \to B(x)$ by mapping $a$ to the transport of $g(a): B(\trunc a)$
+then from any $g: \prod_{a:A} B(\trunc a)$ we can construct a function
+$f:  \prod_{x:\Trunc A} B(x)$, as follows.  (Since the latter type is a proposition,
+there is only one such $f$.)
+Suppose we have an element $x: \Trunc A$.  Then $B(x)$ is a proposition.
+Define $h_x: A \to B(x)$ by sending $a$ to the transport of $g(a): B(\trunc a)$
 along the path of type $\trunc a = x$ coming from the proof that $\Trunc A$ is a proposition.
-By the recursion principle, $h_x$ defines $h'_x : \Trunc A \to B(x)$.
-Now set $f(x) \defeq h'_x(x)$. Indeed $f: \prod_{x:\Trunc A} B(x)$.
-Of course, we have $f(\trunc a) = g(a)$ since $B(\trunc a)$ is a proposition.
+By the recursion principle, from $h_x$ we may obtain a function $h'_x : \Trunc A \to B(x)$.
+Now set $f(x) \defeq h'_x(x)$, with $f: \prod_{x:\Trunc A} B(x)$.
+We have $f(\trunc a) = g(a)$, since $B(\trunc a)$ is a proposition.
 However, because of the transport, we don't have $f(\trunc a) \jdeq g(a)$,
 as the path of type $\trunc a = \trunc a$ coming from the proof that $\Trunc A$ is
 a proposition need not be the path given by reflexivity.
 
 There are several other ways of defining $f$, but none of them
-satisfies the computation rule $f(\trunc a)\jdeq g(a)$. It is currently
+satisfies the computation rule $f(\trunc a)\jdeq g(a)$.  It is currently
 unknown whether it is possible to define in {\UniMath} a propositional
 truncation with an induction principle that satisfies the computation rule.
 
