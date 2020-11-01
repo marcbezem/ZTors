@@ -6,7 +6,7 @@
 \usepackage{letltxmacro}        %to rename \equiv
 \LetLtxMacro{\oldequiv}{\equiv}
 \usepackage{xspace}
-\usepackage[all]{xy}
+\usepackage{xifthen}
 \usepackage{pgfplots,tikz}
 \usepackage{tikz-cd}
 \pgfplotsset{compat=newest}
@@ -42,13 +42,17 @@
             urlcolor=linkcolor,
             unicode,
             pdfauthor={CAS},
-            pdftitle={Symmetry},
+            pdftitle={Construction of the Circle in UniMath},
             pdfsubject={Mathematics},
-            pdfkeywords={type theory, group theory, univalence axiom}]{hyperref}
+            pdfkeywords={type theory,univalence foundations,circle}]{hyperref}
 % - except for cleveref!
 \usepackage[capitalize]{cleveref}
-\usepackage{xifthen}
 \definecolor{linkcolor}{rgb}{0,0,0.5}
+
+%% Enable synctex
+\pdfadjustspacing=1
+\brokenpenalty=10000 %%% No hyphenation across page breaks
+\synctex=1
 
 %% macros
 \newcommand{\mytitle}{Symmetry}
@@ -119,6 +123,7 @@
 \newcommand{\Prop}{\mathord{\mathrm{Prop}}}
 \newcommand{\Set}{\mathord{\mathrm{Set}}}
 \newcommand{\Group}{\mathord{\mathrm{Group}}}
+\newcommand{\CircleAlg}{\mathord{\mathrm{CircleAlg}}}
 \newcommand{\AbGroup}{\mathord{\mathrm{AbGroup}}}
 \newcommand{\Bunch}{\mathord{\mathrm{Bunch}}}
 \newcommand{\AbBunch}{\mathord{\mathrm{AbBunch}}}
@@ -141,7 +146,8 @@
 \newcommand{\rrfl}{\mathrm{rrfl}}
 \newcommand{\cp}[1]{\mathrm{cp}_{#1}}
 \newcommand*{\dblslash}{\mathbin{/\kern-3pt/}}
-
+\newcommand*{\Shom}{\mathop{\mathbb{S}\textrm{-}\mathrm{hom}}}
+\newcommand*{\Ssect}{\mathop{\mathbb{S}\textrm{-}\mathrm{sect}}}
 \newcommand{\cE}{\mathcal{E}}
 \newcommand{\sE}{\mathscr{E}}
 

@@ -48,25 +48,25 @@ circle not using higher inductive types.
 
 In the standard set-theoretic foundations of mathematics, the sets have elements, which are themselves sets.  A set has no additional structure
 connecting its various elements to each other.  An equation between two sets is always a proposition, and equality between two elements of a set
-is independent of the ambient set.  By contrast, in homotopy type theory and in Voevodsky's univalent foundations, the {\em types} are the
+is independent of the ambient set.  By contrast, in homotopy type theory and in Voevodsky's univalent foundations, the \emph{types} are the
 fundamental objects, serving to classify the objects of mathematics.  They have elements.  Equations are used only to compare two elements of
 the same type, and the equations are not always propositions.  Types thus behave much like spaces, viewed from the point of view of homotopy
 theory, due to the promotion of isomorphisms between objects of the same type to equalities (true equations), together with the intuition that
 an equality between two objects of the same type is like a path between two points in the same space.
- 
-{\em Synthetic homotopy theory} is the study of the homotopy theoretic properties of types.  It is a fruitful one, because it turns out that many
+
+\emph{Synthetic homotopy theory} is the study of the homotopy theoretic properties of types.  It is a fruitful one, because it turns out that many
 of the most basic results of standard homotopy theory have true analogues for types.  This is true even though the framework is based purely on
 logical principles, rather than implemented like traditional homotopy theory in terms of topological spaces and continuous maps or combinatorial
 structures such as simplicial sets and fibrant replacement.
 
-In standard homotopy theory it is well known that the {\em classifying space} of the group $\ZZ$ of integers is
-homotopy equivalent to the circle.  We aim to reproduce that result in synthetic homotopy theory.
+In standard homotopy theory it is well known that the \emph{classifying space} of the group $\ZZ$ of integers is
+homotopy equivalent to the circle.  We aim to reproduce that result in synthetic homotopy theory in a way that doesn't presuppose the existence of a circle.
 
-The traditional algebraic notion of $\ZZ$-torsor yields a category {whose objects are the $\ZZ$-torsors.
+The traditional algebraic notion of $\ZZ$-torsor yields a category whose objects are the $\ZZ$-torsors.
 Moreover, all the arrows of this category are isomorphisms, and
-one specific object---namely $\ZZ$ itself---is the trivial $\ZZ$-torsor, whose automorphism group is $\ZZ$.}
+one specific object---namely $\ZZ$ itself---is the trivial $\ZZ$-torsor, whose automorphism group is $\ZZ$.
 Due to univalence, the type $\TorZ$ of all $\ZZ$-torsors
-is a connected pointed type whose fundamental group is $\ZZ$; we may call it the {\em classifying type} of $\ZZ$.
+is a connected pointed type whose fundamental group is $\ZZ$; we may call it the \emph{classifying type} of $\ZZ$.
 In this paper we show that $\TorZ$ behaves the way a circle ought to behave,
 by establishing that maps from it to other types (or families of types) are freely determined
 by the destinations of the base point and the canonical loop at the base point (corresponding to the element $1$ of $\ZZ$).
@@ -74,29 +74,34 @@ The proof is constructive, in that it does not appeal to the axiom of choice or 
 
 There are various types equivalent to the type of $\ZZ$-torsors, and thus they also provide constructions of circles: all one needs is a
 connected pointed type whose automorphism groups are isomorphic to $\ZZ$.  For example, if one arising from geometry is desired, one may
-consider the type consisting of all frieze patterns in a Euclidean plane\footnote{We say \emph{a} Euclidean plane instead of {\em the} Euclidean
-  plane to indicate that the type is actually the type of pairs consisting of a Euclidean plane and such a frieze pattern in it.} formed from a
+consider the type consisting of all frieze patterns in a Euclidean plane\footnote{%
+  We say \emph{a} Euclidean plane instead of \emph{the} Euclidean
+  plane to indicate that the type is actually the type of pairs consisting of a Euclidean plane and such a frieze pattern in it.}
+formed from a
 linear collection of evenly spaced copies of the letter $F$.
-$$ \cdots FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF \cdots $$
+\[
+  \cdots FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF \cdots
+\]
 
-\bgroup
 We have formalized the result in \UniMath{}, a name which refers both to Voevodsky's (univalent) foundation of mathematics based on a formal
 type theoretic language and to a particular repository \cite{UniMath} of formalized proofs, initiated by him, encoded in the language of the
-proof assistant {\em Coq}.  See \cite{VV-UniMath-1} for an overview by Voevodsky of it.
+proof assistant \emph{Coq}.
+See \cite{VV-UniMath-1} for an overview by Voevodsky of it.
 
-The other standard way to construct a circle in type theory uses {\em higher inductive types}, where one posits a new type $\Sc$, an element
+The other standard way to construct a circle in type theory uses \emph{higher inductive types}, where one posits a new type $\Sc$, an element
 $\pt : \Sc$, a path $\Sloop : \pt = \pt$, an induction principle (for defining functions from it), and nothing more.
 %
 Adding higher inductive types to the system would give another construction of the circle, equivalent to the one described above.
 %
-Voevodsky chose not to include higher inductive types, nor inductive types\footnote{{\em UniMath} accepts just a few specific types
+Voevodsky chose not to include higher inductive types, nor inductive types\footnote{\emph{UniMath} accepts just a few specific types
   and type formers that can be introduced as inductive types, namely: the finite types of cardinality at most 2, the natural numbers, binary
-  coproducts, sums of families of types, and identity types.}, to {\em UniMath} for two chief reasons.
+  coproducts, sums of families of types, and identity types.},
+to \emph{UniMath} for two chief reasons.
 %
 Firstly, it was (and still is) not clear how to specify precisely what a definition of a higher inductive type consists of: see
 \cite{HoTT-Agda-HIT,1705.07088} for two approaches.
 %
-Secondly, Voevodsky planned to prove consistency of {\sl UniMath} in a series of papers\footnote{Early work \cite{1211.2851} with
+Secondly, Voevodsky planned to prove consistency of \emph{UniMath} in a series of papers\footnote{Early work \cite{1211.2851} with
   Kapulkin and Lumsdaine to establish consistency left him unsatisfied, so he embarked on his own series of papers, to be realized with more details
   exposed.} and realized that adding inductive types and higher inductive types to the system would dramatically increase the length of the
 series and the burden of writing them; as it was, he died before completing the project.
@@ -108,7 +113,6 @@ context is interpreted as a fibrant simplicial set, a type in a context is inter
 a type in a context is interpreted as a section of such a fibration, and so on.
 
 We turn now to the content of this paper.
-\egroup
 
 As a prerequisite we require, of the reader, a working knowledge of homotopy type theory
 as described in, for example, the first four chapters of \cite{hottbook}.
@@ -125,6 +129,9 @@ in higher toposes, before we conclude in \cref{sec:conclusion}.
 
 
 \section{Precise formulation and discussion}\label{sec:statement}
+
+\subsection{Preview of the type of $\ZZ$-torsors}
+\label{sec:preview-Z-tors}
 
 Recall that for a group $G$, a \emph{$G$-torsor} consists of a nonempty set $X$ and
 a left action of $G$ on it that is free and transitive.
@@ -153,7 +160,7 @@ So the following diagram commutes.\footnote{%
 \draw[->] (m-2-1) -- (m-2-2) node[midway,below] {$f$} ;
 \end{tikzpicture}
 \]
-Conversely, we get a unique $\ZZ$-torsor from any pair $(X,f)$, where $X$ is a nonempty set and $f : X \to X$ is a function, such that there
+Conversely, we get a unique $\ZZ$-torsor from any pair $(X,f)$, where $X$ is a nonempty set and $f : X \to X$ is a function, such that there merely
 exists a bijection $e$ that makes the diagram above commute, by transporting the structure of $\zet$ as a trivial $\ZZ$-torsor along $e$, thereby
 expressing $e$ as an isomorphism of $\ZZ$-torsors.  Independence of the structure on $X$ from the choice of $e$ is established by observing that
 $n + x_0 = f^n(x_0)$ for all $n \in \ZZ$.
@@ -194,24 +201,95 @@ of $\TorZ$. Alternatively, we could have obtained $\Zloop$
 directly from $s: \zet\equiv\zet$ by applying the univalence axiom
 (with some easy add-ons, e.g., proving that $s$ commutes with itself).
 
-With this in hand, we can formulate a recursion principle for $\TorZ$.
-It states that, given a type $A$, an element $a$ of $A$ and a
-path $l:a=_A a$, one can construct a function $f:\TorZ\to A$
-such that $f(\pt)\jdeq a$ and $\ap{f}(\Zloop)=l$.%
-\footnote{This construction was formalised by Grayson
-in 2014, see \cite{circlerec-Dan}; our construction here uses the
-same basic idea but manages the computations involved in establishing the
-induction principle differently.}  We call the resulting function
-(\cref{def:TorZrecursor} below)
-\[
-{\rec}_A : \sum_{a:A}(a=a) ~~\to~~ (\TorZ \to A).
-\]
+\subsection{The type of circles}
+\label{sec:circles}
 
-The universal property of the circle for $\TorZ$
-states that ${\rec}_A$ above is an equivalence, for all types $A$.
-In order to prove this universal property (which we do in \cref{sec:TorZ-induction} below)
-one needs an induction
-principle, in which $A$ is not a type but a type family over $\TorZ$.
+In order to explain our main result,
+that $\TorZ$ behaves like the circle understood as a higher inductive type
+with constructors $\pt : \TorZ$ and $\Zloop : pt = \pt$,
+we introduce the types of \emph{circle algebras},
+consisting of a type together with a point and a loop at that point.
+\[
+  \CircleAlg \defeq \sum_{C:\UU}~\sum_{c:C}~ c = c.
+\]
+As explained in \cite{sojakova:hits-hias},
+given a circle algebra $\mathcal C \jdeq (C,c,s)$,
+there are various equivalent ways to state that it behaves like the circle,
+including:
+\begin{description}
+\item[Homotopy initiality]
+  The type of algebra homomorphisms
+  from $\mathcal C$ to any other circle algebra $\mathcal A\jdeq(A,a,l)$
+  is contractible, where this type of algebra homomorphisms is
+  \begin{equation}\label{eq:circle-hom}
+    \Shom(\mathcal C,\mathcal A) \defeq
+    \sum_{f : C \to A}\sum_{r:f(c)=a} \ap{f}(s)=r \ct l \ct r^{-1}.
+  \end{equation}
+\item[Universal property]
+  For any type $A:\UU$, the map that evaluates a function $f : C \to A$
+  at $c$ and $s$,
+  \begin{equation}\label{eq:eval}
+    (C \to A) \to \sum_{a : A} a=a,
+    \qquad
+    f \mapsto (f(c), \ap{f}(s)),
+  \end{equation}
+  is an equivalence.
+\item[Induction principle]
+  Any fibered circle algebra $\mathcal A$ over $\mathcal C$ has an algebra section,
+  where $\mathcal A\jdeq (A,a,l)$ with $A : C \to \UU$, $a : A(c)$
+  and $l : a=^A_s a$, and the type of algebra sections is
+  \begin{equation}\label{eq:circle-sect}
+    \Ssect(\mathcal A) \defeq
+    \sum_{f: \prod_{z:C} A(z)}
+    \sum_{r: f(c) = a}
+    {\apd{f}(s) = r\cto l \cto r^{-1}}.
+  \end{equation}
+  (Here $\apd{}$ is as defined in \cite[2.3]{hottbook};
+  we recall the basics of paths over a path and $\apd{}$ in \cref{sec:pathovers}.)
+\item[Dependent universal property]
+  For any type family $A : C \to \UU$, the map that evaluates a function
+  $f : \prod_{z:C} A(z)$ at $c$ and $s$,
+  \begin{equation}\label{eq:dep-eval}
+    \biggl(\prod_{z:C} A(z)\biggr) \to \sum_{a:A(c)} a=^A_s a,
+    \qquad
+    f \mapsto (f(c), \apd{f}(s)),
+  \end{equation}
+  has a section.
+\end{description}
+From these equivalences it also follows that the type of induction terms
+for $\mathcal C$,
+\begin{equation}
+  \label{eq:circle-induction-gen}
+  \prod_{A: C\to\UU}~
+  \prod_{a: A(c)}~
+  \prod_{l: a=^A_s a}~
+  \Ssect(A,a,l),
+\end{equation}
+which is equivalent to the type of sections of \eqref{eq:dep-eval}
+for all families $A$, is a proposition.
+
+The type of circles, then, is the subtype of $\CircleAlg$
+corresponding to any of these definitions.
+
+\subsection{$\TorZ$ is a circle}\label{sec:TorZ-circle}
+
+With this in hand, we can outline our route to proving
+that the circle algebra $(\TorZ,\pt,\Zloop)$ is a circle.
+
+As a warm-up, we first prove in \cref{sec:TorZ-recursion}
+the \emph{recursion principle},
+which states that, given a type $A$, an element $a$ of $A$ and a
+path $l:a=_A a$, one can construct a function $f:\TorZ\to A$
+with a path $r:f(\pt)=a$ such that $\ap{f}(\Zloop)=l$.
+This construction was formalised by Grayson
+in 2014, see \cite{circlerec-Dan}.\footnote{Our construction here uses the
+same basic idea but manages the computations involved in establishing the
+induction principle differently.}
+This however only proves \emph{weak} initiality, or equivalently,
+only gives a \emph{section} of \eqref{eq:eval}.
+
+In \cref{sec:TorZ-induction} we then prove the induction principle,
+in which $A$ is not a type but a type family over $\TorZ$.
 On the basis of Grayson's construction of the recursion principle,
 Shulman sketched an approach to the induction principle, see \cite{circleind-Mike}.
 Independently of this, but also departing from Grayson's proof of the
@@ -219,7 +297,7 @@ recursion principle, Buchholtz and Bezem found the construction
 presented in this paper, which has subsequently been formalized
 by Grayson \cite{circleind-Dan,circleind-Dan-theorem} in \UniMath.
 
-The precise statement of the induction principle is that there is a
+Spelling out the induction principle, we have to construct a
 function of the following type:
 \begin{equation}
   \label{eq:circle-induction}
@@ -231,12 +309,11 @@ function of the following type:
   \sum_{r: f(\pt)= a}
   {\apd{f}(\Zloop) = r\cto' l \cto r^{-1}}
 \end{equation}
-Here $\apd{}$ is as defined in \cite[2.3]{hottbook};
-we recall the basics of paths over a path and $\apd{}$ in \cref{sec:pathovers}.
 Note that $r$ above is a path between two elements of the same fiber $A(\pt)$.
 Hence $r$ and $r^{-1}$ are paths over $\refl{\pt}$ and can be composed with $l$.
-To simplify the statement, we use the \emph{left recursive}
-composition $\cto'$ of paths over paths and the \emph{right recursive} $\cto$ composition of paths over paths.
+To simplify the statement, we use both the \emph{left recursive}
+composition $\cto'$ and the \emph{right recursive} $\cto$ composition
+of paths over paths.
 (A composition operation is called \emph{left recursive} if it computes to its right-hand argument when its
  left-hand argument is given by reflexivity; similarly with \emph{left} replaced by \emph{right}.)
 
@@ -291,30 +368,41 @@ the type $\apd{f}(\Zloop) = r\cto' l \cto r^{-1}$, which is equivalent to
 $\apd{f}(\Zloop) =^{\lambda z, z=^A_{\Zloop}z}_r l$,
 and which corresponds to filling the inside of the curvilinear quadrilateral in \cref{fig:circle-induction}.
 
-Let $\ind$ denote the function with type in \cref{eq:circle-induction} that we will construct.
-Its application to $A,a,l$ of appropriate types, denoted by $\ind_A(a,l)$,
-is a triple $(f,r,q)$ where $f$ is a section of $A$ and $r : f(\pt)= a$ a path.
+Our construction uses the propositional truncation operation $\Trunc{-}$,
+as in \cite[6.9]{hottbook},
+but we do not require that the dependent eliminator
+witnessing the induction principle of $\Trunc{-}$
+computes judgmentally on the point constructor $\trunc{-}: X \to \Trunc X$.
+In the \emph{UniMath} formalization, propositional truncation is constructed as
+(the propositional resizing of)
+\[
+  \Trunc X \defeq \prod_{P:\Prop}((X \to P) \to P),
+\]
+where $\Prop$ is the type of all propositions (in a chosen universe).
+From this construction, the corresponding non-dependent eliminator
+will compute judgmentally on the point constructor,
+but the dependent eliminator will not.
+As we explain below, this has the consequence that
+in \emph{UniMath}, the non-dependent circle eliminator that we construct for $\TorZ$
+will then compute judgmentally on $\pt$,
+but the dependent one will not.
+
 If the underlying type theory has propositional truncation with a dependent eliminator
 that computes judgmentally on the point constructor, as in \cite[6.9]{hottbook},
-then the path $r : f(\pt)= a$ above is a reflexivity path, so $f(\pt)\jdeq a$.
+then our construction for the induction principle in \cref{eq:circle-induction} simplifies.
+Its application to $A,a,l$ of appropriate types
+is a triple $(f,r,q)$ where $f$ is a section of $A$ and $r : f(\pt)= a$
+becomes a \emph{reflexivity path}, so $f(\pt)\jdeq a$.
 It then follows from the care with which we chose the expression $r\cto' l \cto r^{-1}$,
 that it has the same type as $l$, and, moreover, the two terms are judgmentally equal.
-Thus the right side of the equation \ref{eq:circle-induction} can be replaced by $l$.
-
-Because the convention in {\UniMath} is to avoid higher inductive types,
-the formalization in \cite{circleind-Dan} is
-slightly different from the construction presented below.
-The formalized construction does not use any higher inductive types,
-relying instead on the construction of propositional truncation as
-(the propositional resizing of)
-$$\Trunc X \defeq \prod_{P:\Prop}((X \to P) \to P),$$
-{where $\Prop$ is the type of all propositions (in a chosen universe).}
-Nor, of course, and this is the whole point, do we
-depend on the previous existence of a type satisfying the induction principle of the circle.
+Thus the right side of the final equation in \eqref{eq:circle-induction}
+can be replaced by $l$.
 
 In a type theory where higher inductive types are admitted,
 one can introduce a circle $\Sc$ as a higher inductive type,
-as in \cite[6.1]{hottbook}, and it will easily be shown to be equivalent to $\TorZ$.
+as in \cite[6.1]{hottbook},
+and this will easily be shown to be equivalent to $\TorZ$,
+without relying on the results of our paper.
 The equivalence can be established by observing that $\TorZ$ and $\Sc$
 are pointed connected types with loop spaces equivalent to $\zet$.
 (For the interested reader: apply \cite[Lemma 7.6.2]{hottbook} with $n=-2$
@@ -593,15 +681,15 @@ From addition and unary $-$ one can define a binary
 %Show that $i(n+m)=i(n)+i(m)$ for all $n,m:\NN$.
 %\end{xca}
 
-Recall the equivalence $\ev_0 : (\pt=_\TorZ \pt)\to\zet$ from the introduction,
-{which sends $p$ to $\pr_1(p)_*(0)$}.
+Recall the equivalence $\ev_0 : (\pt=_\TorZ \pt)\to\zet$ from
+\cref{sec:preview-Z-tors}, which sends $p$ to $\pr_1(p)_*(0)$.
 We have $\refl{\pt} : \pt=_\TorZ \pt$, as well as the operations
 of \emph{path reversal} and \emph{path composition} as defined
 in \cite[2.1]{hottbook}. These satisfy the laws as stated
 and proved in \cite[Lemma 2.1.4]{hottbook}, equipping $\pt=_\TorZ \pt$
 with a group structure.
 The equivalence $\ev_0$ maps $\refl{\pt}$ via $\id_\zet : \zet\to\zet$ to $0$.
-As explained in the introduction, $\ev_0$ maps any $p : \pt=_\TorZ \pt$
+As explained above, $\ev_0$ maps any $p : \pt=_\TorZ \pt$
 via $s^k : \zet\to\zet$ to some $k:\zet$. Since $(s^k)^{-1} = s^{-k}$
 and $s^k \circ s^l = s^{k+l}$, $\ev_0$ transports path reversal
 and path composition to negation and addition, respectively.
@@ -744,12 +832,12 @@ is the function that takes $z:\zet$ to $f^z(p):P(z)$, where
 
 \section{Z-Torsors}\label{sec:ZTorsors}
 
-{In this section, pairs $(X,f)$ will be of type $\sum_{X:\UU}(X\to X)$.}
+In this section, pairs $(X,f)$ will be of type $\sum_{X:\UU}(X\to X)$.
 Moreover, nested pairs will be written as tuples.
-% OBSOLETE terms of propositional type ... are denoted by ``$!$''.
-With these notational simplifications, we rephrase some definitions from the introduction.
-{The formalization of \cref{sec:TorZ-recursion} can be found in \cite{circlerec-Dan},
-that of \cref{sec:TorZ-induction} in \cite{circleind-Dan}.}
+With these notational simplifications, we rephrase some definitions from
+\cref{sec:preview-Z-tors}.
+The formalization of \cref{sec:TorZ-recursion} can be found in \cite{circlerec-Dan},
+that of \cref{sec:TorZ-induction} in \cite{circleind-Dan}.
 
 \begin{definition}\label{def:TorZ}
   The pointed type of $\zet$-torsors is defined by
