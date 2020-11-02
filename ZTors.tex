@@ -3,7 +3,7 @@
 \hypersetup{pdfauthor={Bezem-Buchholtz-Grayson-Shulman},
   pdftitle={Construction of the Circle in UniMath}}
 \begin{document}
-\newcommand{\UniMath}{\emph{UniMath}}
+
 \title{Construction of the circle in \UniMath}
 {
     \author{Marc Bezem}
@@ -93,15 +93,15 @@ $\pt : \Sc$, a path $\Sloop : \pt = \pt$, an induction principle (for defining f
 %
 Adding higher inductive types to the system would give another construction of the circle, equivalent to the one described above.
 %
-Voevodsky chose not to include higher inductive types, nor inductive types\footnote{\emph{UniMath} accepts just a few specific types
+Voevodsky chose not to include higher inductive types, nor inductive types\footnote{\UniMath{} accepts just a few specific types
   and type formers that can be introduced as inductive types, namely: the finite types of cardinality at most 2, the natural numbers, binary
   coproducts, sums of families of types, and identity types.},
-to \emph{UniMath} for two chief reasons.
+to \UniMath{} for two chief reasons.
 %
 Firstly, it was (and still is) not clear how to specify precisely what a definition of a higher inductive type consists of: see
 \cite{HoTT-Agda-HIT,1705.07088} for two approaches.
 %
-Secondly, Voevodsky planned to prove consistency of \emph{UniMath} in a series of papers\footnote{Early work \cite{1211.2851} with
+Secondly, Voevodsky planned to prove consistency of \UniMath{} in a series of papers\footnote{Early work \cite{1211.2851} with
   Kapulkin and Lumsdaine to establish consistency left him unsatisfied, so he embarked on his own series of papers, to be realized with more details
   exposed.} and realized that adding inductive types and higher inductive types to the system would dramatically increase the length of the
 series and the burden of writing them; as it was, he died before completing the project.
@@ -219,11 +219,11 @@ including:
 \begin{description}
 \item[Homotopy initiality]
   The type of algebra homomorphisms
-  from $\mathcal C$ to any other circle algebra $\mathcal A\jdeq(A,a,l)$
+  from $\mathcal C$ to any other circle algebra $\mathcal A\jdeq(A,a,p)$
   is contractible, where this type of algebra homomorphisms is
   \begin{equation}\label{eq:circle-hom}
     \Shom(\mathcal C,\mathcal A) \defeq
-    \sum_{f : C \to A}\sum_{r:f(c)=a} \ap{f}(s)=r \ct l \ct r^{-1}.
+    \sum_{f : C \to A}\sum_{r:f(c)=a} \ap{f}(s)=r \ct p \ct r^{-1}.
   \end{equation}
 \item[Universal property]
   For any type $A:\UU$, the map that evaluates a function $f : C \to A$
@@ -236,16 +236,17 @@ including:
   is an equivalence.
 \item[Induction principle]
   Any fibered circle algebra $\mathcal A$ over $\mathcal C$ has an algebra section,
-  where $\mathcal A\jdeq (A,a,l)$ with $A : C \to \UU$, $a : A(c)$
-  and $l : a=^A_s a$, and the type of algebra sections is
+  where $\mathcal A\jdeq (A,a,p)$ with $A : C \to \UU$, $a : A(c)$
+  and $p : a=^A_s a$, and the type of algebra sections is
   \begin{equation}\label{eq:circle-sect}
     \Ssect(\mathcal A) \defeq
     \sum_{f: \prod_{z:C} A(z)}
     \sum_{r: f(c) = a}
-    {\apd{f}(s) = r\cto l \cto r^{-1}}.
+    {\apd{f}(s) = r\cto p \cto r^{-1}}.
   \end{equation}
   (Here $\apd{}$ is as defined in \cite[2.3]{hottbook};
-  we recall the basics of paths over a path and $\apd{}$ in \cref{sec:pathovers}.)
+  we recall the basics of paths over a path and $\apd{}$
+  in \cref{sec:pathovers} below.)
 \item[Dependent universal property]
   For any type family $A : C \to \UU$, the map that evaluates a function
   $f : \prod_{z:C} A(z)$ at $c$ and $s$,
@@ -262,8 +263,8 @@ for $\mathcal C$,
   \label{eq:circle-induction-gen}
   \prod_{A: C\to\UU}~
   \prod_{a: A(c)}~
-  \prod_{l: a=^A_s a}~
-  \Ssect(A,a,l),
+  \prod_{p: a=^A_s a}~
+  \Ssect(A,a,p),
 \end{equation}
 which is equivalent to the type of sections of \eqref{eq:dep-eval}
 for all families $A$, is a proposition.
@@ -279,8 +280,8 @@ that the circle algebra $(\TorZ,\pt,\Zloop)$ is a circle.
 As a warm-up, we first prove in \cref{sec:TorZ-recursion}
 the \emph{recursion principle},
 which states that, given a type $A$, an element $a$ of $A$ and a
-path $l:a=_A a$, one can construct a function $f:\TorZ\to A$
-with a path $r:f(\pt)=a$ such that $\ap{f}(\Zloop)=l$.
+path $p:a=_A a$, one can construct a function $f:\TorZ\to A$
+with a path $r:f(\pt)=a$ such that $\ap{f}(\Zloop)=r \ct l \ct r^{-1}$.
 This construction was formalised by Grayson
 in 2014, see \cite{circlerec-Dan}.\footnote{Our construction here uses the
 same basic idea but manages the computations involved in establishing the
@@ -304,13 +305,13 @@ function of the following type:
   \thinmuskip=10mu              % this is better than inserting tildes
   \prod_{A: \TorZ\to\UU}
   \prod_{a: A(\pt)}
-  \prod_{l: a=^A_{\Zloop} a}
+  \prod_{p: a=^A_{\Zloop} a}
   \sum_{f: \prod_{z:\TorZ} A(z)}
   \sum_{r: f(\pt)= a}
-  {\apd{f}(\Zloop) = r\cto' l \cto r^{-1}}
+  {\apd{f}(\Zloop) = r\cto' p \cto r^{-1}}
 \end{equation}
 Note that $r$ above is a path between two elements of the same fiber $A(\pt)$.
-Hence $r$ and $r^{-1}$ are paths over $\refl{\pt}$ and can be composed with $l$.
+Hence $r$ and $r^{-1}$ are paths over $\refl{\pt}$ and can be composed with $p$.
 To simplify the statement, we use both the \emph{left recursive}
 composition $\cto'$ and the \emph{right recursive} $\cto$ composition
 of paths over paths.
@@ -341,7 +342,7 @@ of paths over paths.
     { \begin{scope}[shift={(\x,0)}]
         \draw (1,1.6) .. controls ++(140:-.4) and ++(190:.3) .. (2,1.8)
                       .. controls ++(190:-.3) and ++(140:.4) .. (3,1.6);
-        \node at (2,1.5) {$l$};
+        \node at (2,1.5) {$p$};
         \node at (2,-.3) {$\Zloop$};
         \node at (2.2,2.65) {$\scriptstyle \apd{f}(\Zloop)$};
       \end{scope} }
@@ -362,38 +363,38 @@ We think of $\TorZ$ as a circle (and prove that it is),
 but we illustrate it (and objects depending on it) as periodically recurring,
 in order to make clearer diagrams.
 We draw the type family $A$ as a periodic fibration over this circle,
-and the goal is then to produce from the point $a$ and the path $l$ over $\Sloop$,
+and the goal is then to produce from the point $a$ and the path $p$ over $\Sloop$,
 the section $f$, the path $r$, and a final element inhabiting
-the type $\apd{f}(\Zloop) = r\cto' l \cto r^{-1}$, which is equivalent to
-$\apd{f}(\Zloop) =^{\lambda z, z=^A_{\Zloop}z}_r l$,
+the type $\apd{f}(\Zloop) = r\cto' p \cto r^{-1}$, which is equivalent to
+$\apd{f}(\Zloop) =^{\lambda z, z=^A_{\Zloop}z}_r p$,
 and which corresponds to filling the inside of the curvilinear quadrilateral in \cref{fig:circle-induction}.
 
-Our construction uses the propositional truncation operation $\Trunc{-}$,
+Our construction uses the propositional truncation operation $\Trunc{\blank}$,
 as in \cite[6.9]{hottbook},
 but we do not require that the dependent eliminator
-witnessing the induction principle of $\Trunc{-}$
-computes judgmentally on the point constructor $\trunc{-}: X \to \Trunc X$.
-In the \emph{UniMath} formalization, propositional truncation is constructed as
+witnessing the induction principle of $\Trunc{\blank}$
+computes judgmentally on the point constructor $\trunc{\blank}: X \to \Trunc X$.
+In the \UniMath{} formalization, propositional truncation is constructed as
 (the propositional resizing of)
-\[
+\begin{equation}\label{eq:trunc-impred}
   \Trunc X \defeq \prod_{P:\Prop}((X \to P) \to P),
-\]
+\end{equation}
 where $\Prop$ is the type of all propositions (in a chosen universe).
 From this construction, the corresponding non-dependent eliminator
 will compute judgmentally on the point constructor,
 but the dependent eliminator will not.
 As we explain below, this has the consequence that
-in \emph{UniMath}, the non-dependent circle eliminator that we construct for $\TorZ$
+in \UniMath{}, the non-dependent circle eliminator that we construct for $\TorZ$
 will then compute judgmentally on $\pt$,
 but the dependent one will not.
 
 If the underlying type theory has propositional truncation with a dependent eliminator
 that computes judgmentally on the point constructor, as in \cite[6.9]{hottbook},
 then our construction for the induction principle in \cref{eq:circle-induction} simplifies.
-Its application to $A,a,l$ of appropriate types
+Its application to $A,a,p$ of appropriate types
 is a triple $(f,r,q)$ where $f$ is a section of $A$ and $r : f(\pt)= a$
 becomes a \emph{reflexivity path}, so $f(\pt)\jdeq a$.
-It then follows from the care with which we chose the expression $r\cto' l \cto r^{-1}$,
+It then follows from the care with which we chose the expression $r\cto' p \cto r^{-1}$,
 that it has the same type as $l$, and, moreover, the two terms are judgmentally equal.
 Thus the right side of the final equation in \eqref{eq:circle-induction}
 can be replaced by $l$.
@@ -476,7 +477,7 @@ We define the unit path over a path, composition of paths over paths, and revers
   \item \emph{Composition of paths over paths} $\cto : b_1 =^B_{p_1} b_2 \to b_2 =^B_{p_2} b_3 \to b_1 =^B_{p_1 \ct p_2} b_3$,
     defined by induction first on $p_2$ and then on $r: b_2 = b_3$, by
     setting $q \cto \refl{b_2} \defeq q$ for all $q: b_1 =^B_{p_1} b_2$;
-  \item \emph{Reversal of paths over paths} $({-})^{-o} : b_1 =^B_{p_1} b_2 \to b_2 =^B_{(p_1)^{-1}} b_1$,
+  \item \emph{Reversal of paths over paths} $({\blank})^{-o} : b_1 =^B_{p_1} b_2 \to b_2 =^B_{(p_1)^{-1}} b_1$,
     defined by induction first on $p_1$ and then on $r: b_1 = b_2$, by
     setting $\refloi{b_1} \defeq \refl{b_1}$.
   \end{enumerate}
@@ -504,7 +505,7 @@ $p_i : a_i = a_{i+1}$ for $i=1,2$,
   For every $q : b_1 =^B_{p_1} b_2$, the
   function
   \[
-    q \cto ({-}) : (b_2 =^B_{p_2} b_3) \to (b_1 =^B_{p_1\ct p_2} b_3)
+    q \cto ({\blank}) : (b_2 =^B_{p_2} b_3) \to (b_1 =^B_{p_1\ct p_2} b_3)
   \]
   is an equivalence.
 \end{lemma}
@@ -530,7 +531,7 @@ The proof is by induction on $\beta$ (for right-recursive composition).
 
 \begin{lemma}\label{lem:inv2-change-path}
   For every  $p,q:a_1=a_2$ and 2-path $\alpha : p = q$, taking
-  $\alpha^- \defeq \ap{(\_)^{-1}}(\alpha)$, we have
+  $\alpha^- \defeq \ap{(\blank)^{-1}}(\alpha)$, we have
   $(\cp{\alpha}(\hat p))^{-o} = \cp{\alpha^-}(\hat p^{-o})$
   for every $\hat p: b_1=^B_p b_2$.
 \end{lemma}
@@ -567,26 +568,51 @@ The proof is by induction on $\beta$ (for right-recursive composition).
 
 One extra piece of knowledge we need is the \emph{dependent} elimination
 principle for propositional truncation, mentioned in \cite[6.9]{hottbook},
-and qualified as `not really useful'%
+and qualified as `not really useful'.%
 \footnote{The dependent elimination principle appears to
   be used later in \cite[Lemma 7.3.3]{hottbook}, though.
   %% see the issue we made at https://github.com/HoTT/book/issues/1028
-}.
+}
 We use this principle in \cref{lem:dep-elim-TorZ}, and it plays an
 essential role in the proof of the induction principle for $\TorZ$.
 
-We introduce the induction principle for propositional truncation in the following form
-($\trunc\_: A\to\Trunc A$ is the point constructor).
+Recall that we assume the presence of a propositional truncation operation
+$\Trunc{\blank}$ (mapping each universe to the propositions therein) equipped with
+maps $\trunc{\blank} : X \to \Trunc X$ exhibiting $\Trunc{\blank}$ as a reflection into
+propositions, i.e., for any proposition $P$, precomposition with $\trunc{\blank}$
+induces an equivalence $(\Trunc{X}\to P) \equiv (X\to P)$.
+If the inverse map sends $g:X\to P$ to $\bar g : \Trunc X \to P$
+such that $\bar g(\trunc x) \jdeq g(x)$ for all $x:X$,
+then we say the propositional truncation operation satisfies the
+judgmental computation rule for the non-dependent eliminator~%
+(\condlabel{cond:JNE}{JNE}).
+This can be achieved either by having $\Trunc{\blank}$ defined as a higher inductive type
+or using the impredicative encoding~\eqref{eq:trunc-impred}, as we verify below.
 
-\begin{definition}\label{def:proptruncind}
-  If $A$ is a type and $B(x)$ is a family of propositions parametrized by the elements $a$ of $\Trunc A$,
-  and we are given $g : \prod_{a:A} B(\trunc a)$, then there is a function $f : \prod_{x:\Trunc A} B(x)$.
-  The \emph{computation rule} asserts that $f (\trunc a) \jdeq g(a)$ for all $a:A$.
-\end{definition}
+\begin{lemma}\label{lem:proptruncind}
+  If $A$ is a type and $B(x)$ is a family of propositions
+  parametrized by the elements $x$ of $\Trunc A$,
+  and we are given $g : \prod_{a:A} B(\trunc a)$,
+  then there is a function $f : \prod_{x:\Trunc A} B(x)$.
+\end{lemma}
+\begin{proof}
+  The function $g$ induces a function $h : A \to \sum_{x:\Trunc A}B(x)$
+  by setting $h(a) \defeq (\trunc a,g(a))$.
+  Since the codomain of $h$ is a proposition,
+  we get an induced map $\Trunc A \to \sum_{x:\Trunc A}B(x)$,
+  which is automatically a section of $\pr_1 : \sum_{x:\Trunc A}B(x) \to \Trunc A$.
+  By the equivalence between sections of first projections
+  and dependent functions, we then get the required $f$.
+\end{proof}
+Note that the resulting function $f$ automatically satisfies
+$f(\trunc a) = g(a)$, for each $a:A$,
+since each type $B(\trunc a)$ is a proposition.
+If we can achieve a judgmental equality here,
+then we say that the propositional truncation operation satisfies the
+judgmental computation rule for the dependent eliminator.
 
-In {\UniMath} the induction principle holds, but not the computation rule for it.
-Recall that in {\UniMath} $\Trunc A \defeq \prod_{P:\Prop}((A \to P) \to P)$, and
-the function $\trunc\_: A\to\Trunc A$ is
+Recall that in \UniMath{}, $\Trunc A \defeq \prod_{P:\Prop}((A \to P) \to P)$, and
+the function $\trunc{\blank}: A\to\Trunc A$ is
 defined by $\trunc a  (P,f) \defeq f(a)$ for all $P: \Prop$, $f: A\to P$, and $a:A$.
 Thus we naturally get a recursion principle: if $P: \Prop$, then any
 $g: A \to P$ defines an $f : \Trunc A \to P$ by setting $f(x)\defeq x(P,g)$.
@@ -594,21 +620,15 @@ Clearly $f$ satisfies $f(\trunc a) \jdeq \trunc a (P,g) \jdeq g(a)$, for all $a:
 
 For induction the situation is different: if $B: \Trunc A \to \Prop$,
 then from any $g: \prod_{a:A} B(\trunc a)$ we can construct a function
-$f:  \prod_{x:\Trunc A} B(x)$, as follows.  (Since the latter type is a proposition,
-there is only one such $f$.)
-Suppose we have an element $x: \Trunc A$.  Then $B(x)$ is a proposition.
-Define $h_x: A \to B(x)$ by sending $a$ to the transport of $g(a): B(\trunc a)$
-along the path of type $\trunc a = x$ coming from the proof that $\Trunc A$ is a proposition.
-By the recursion principle, from $h_x$ we may obtain a function $h'_x : \Trunc A \to B(x)$.
-Now set $f(x) \defeq h'_x(x)$, with $f: \prod_{x:\Trunc A} B(x)$.
-We have $f(\trunc a) = g(a)$, since $B(\trunc a)$ is a proposition.
-However, because of the transport, we don't have $f(\trunc a) \jdeq g(a)$,
+$f: \prod_{x:\Trunc A} B(x)$, as in the proof of \cref{lem:proptruncind}.
+Unwinding the proof, there will be a transport involved in converting
+the section to a dependent function, and we won't have $f(\trunc a) \jdeq g(a)$,
 as the path of type $\trunc a = \trunc a$ coming from the proof that $\Trunc A$ is
 a proposition need not be the path given by reflexivity.
 
-There are several other ways of defining $f$, but none of them
+There are several other ways of defining $f$, but none we are aware of
 satisfies the computation rule $f(\trunc a)\jdeq g(a)$.  It is currently
-unknown whether it is possible to define in {\UniMath} a propositional
+unknown whether it is possible to define in \UniMath{} a propositional
 truncation with an induction principle that satisfies the computation rule.
 
 
@@ -857,7 +877,8 @@ that of \cref{sec:TorZ-induction} in \cite{circleind-Dan}.
 The type $\TorZ$ is equivalent to the more traditionally defined
 type of $\ZZ$-torsors, but is more parsimonious.\footnote{Our formalization, however, uses the traditional definition.}
 (Traditionally, a $\ZZ$-torsor is defined as a nonempty set upon which the group $\ZZ$ acts freely and transitively.)
-Another way to think of it is as the type of Cayley diagrams for $\ZZ$.
+Another way to think of it is as the type of Cayley diagrams for $\ZZ$
+with respect to the generator $1$.
 
 We remark that the pointed type $\TorZ$ is connected, that is, $\Trunc{\pt=Z}$ for all $Z:\TorZ$.
 
@@ -869,7 +890,7 @@ If $P(Z)$ is a proposition for all $Z:\TorZ$, then $P(\pt)$ implies that $P(Z)$ 
 \begin{proof}
 Let $P(Z)$ be a proposition for all $Z:\TorZ$, and assume we have a proof
 $p:P(\pt)$. Let $(X,f,t):\TorZ$, then $t :\Trunc{(\zet,s)=(X,f)}$.
-Since $P(X,f,t)$ is a proposition, it suffices by \cref{def:proptruncind}
+Since $P(X,f,t)$ is a proposition, it suffices by \cref{lem:proptruncind}
 to prove $P(X,f,\trunc{e})$ for all $e:(\zet,s)=(X,f)$.
 By induction on $e$ we reduce the task to proving $P(\zet,s,\trunc{\refl{(Z,s)}})$, which is
 the same as $P(\pt)$, so $p$ provides the proof.
@@ -878,8 +899,7 @@ the same as $P(\pt)$, so $p$ provides the proof.
 The proof $q: \prod_{Z:\TorZ} P(Z)$ constructed above has the property that $q(\pt)\jdeq p$ if the computation rule for the induction principle
 for propositional truncation holds.
 
-{The aim of this section is to show that $\TorZ$ satisfies the induction principle \cref{eq:circle-induction} for the circle,
-thereby establishing that $\TorZ$ has the defining property of the circle.
+Recall that the aim of this section is to show that $\TorZ$ satisfies the induction principle \cref{eq:circle-induction} for the circle.
 The recursion principle is the non-dependent version of the induction principle,
 namely that there is a function of the following type:
 \begin{equation}
@@ -887,12 +907,11 @@ namely that there is a function of the following type:
   \thinmuskip=10mu              % this is better than inserting tildes
   \prod_{A: \UU}
   \prod_{a: A}
-  \prod_{l: a=_A a}
+  \prod_{p: a=_A a}
   \sum_{f: \TorZ \to A}
   \sum_{r: f(\pt)= a}
-  {\ap{f}(\Zloop) = r\ct l \ct r^{-1}}.
+  {\ap{f}(\Zloop) = r\ct p \ct r^{-1}}.
 \end{equation}
-}
 
 Although the same method works to derive both the recursion and the induction principles,
 we opt to do the recursion principle first, as it is slightly simpler,
@@ -901,43 +920,45 @@ and prepares the way for the more complicated induction principle.
 \subsection{Recursion in $\TorZ$}\label{sec:TorZ-recursion}
 
 Fix $A:\UU$, $a:A$ and $p: a=_A a$.
-We want to construct a function from $\TorZ$ to $A$
-that maps $\pt$ to $a$ (definitionally),
-and maps $\Zloop$ to $p$ (by action on paths).
+We want to construct a function $f$ from $\TorZ$ to $A$
+that maps $\pt$ to $a$, as witnessed by some $r : f(\pt) = a$,
+and maps $\Zloop$ to $r\ct p\ct r^{-1}$ (by action on paths).
 
 All input data is present in $p$ and its type.
 When defining types and functions depending on the input data,
 we use $p$ in various denotations to express this dependence.
 
-To be able to apply \cref{lem:dep-elim-TorZ}, we need to find a suitable proposition.  {The idea is to find a
-  correspondence\footnote{A {\em correspondence} from a type $T$ to a type $T'$ is a type $C$ with projections $pr_1 : C \to T$ and
-    $pr_2 : C \to T'$.} from $\TorZ$ to $A$ whose first projection is an equivalence, thereby yielding a map from $\TorZ$ to $A$.}
+To be able to apply \cref{lem:dep-elim-TorZ}, we need to find a suitable proposition.
+The idea is to find a correspondence\footnote{%
+  A \emph{correspondence} (or \emph{span})
+  from a type $T$ to a type $T'$ is a type $C$
+  with projections $\pr_1 : C \to T$ and $\pr_2 : C \to T'$.}
+from $\TorZ$ to $A$ whose first projection is an equivalence, thereby yielding a map from $\TorZ$ to $A$.
 
 \begin{figure}
-
-\begin{tikzpicture} %\large
-   \matrix (m)
-   [matrix of math nodes, row sep=2em, column sep=2em, ampersand replacement=\&]
-    {
-    \sum\limits_{(X,f,t) : \TorZ}
+  \begin{tikzpicture}[commutative diagrams/every diagram,
+    execute at begin node=$, execute at end node=$]
+  \node (C) {%
+    \sum\limits_{(X,f,t) : \TorZ} ~
     \sum\limits_{a':A} ~
     \sum\limits_{h: X\to a=a'} ~
-    \prod\limits_{x:X} ~ h(f(x))=p\ct h(x)
-    \&
+    \prod\limits_{x:X} ~ h(f(x))=p\ct h(x)};
+  \node (T2) [right=3em of C] {%
     \vphantom{\sum\limits_{a':A} ~
       \sum\limits_{h: X\to a=a'} ~
       \prod\limits_{x:X} ~ h(f(x))=p\ct h(x)}
-    A \\
-    \TorZ \\};
+    A};
+  \node (T1) [below=of C] {\TorZ};
 
-\draw[->>] (m-1-1) -- (m-2-1) node[midway,left] {$\scriptstyle\equiv$} node[midway,right] {$\scriptstyle pr_1$};
-\draw[->>] ( [xshift=-10pt] m-1-1) -- (m-1-2) node[midway,above] {$\scriptstyle pr_2$};
-\draw[->,dotted] (m-2-1.west) to[bend left=45]
-  node[midway,left]{$\scriptstyle\vec c_p$} (m-1-1) ;
-\draw[->,dotted] (m-2-1) to[bend right=15] node[midway,below]{$\scriptstyle c_p$}
-(m-1-2) ;
+  \path[commutative diagrams/.cd, every arrow, every label]
+    (C) edge[->>,"\pr_1","\equiv"'] (T1)
+    (C) edge[->>,transform canvas={yshift=1ex},"\pr_2"] (T2)
+    (T1) edge[dotted,bend right=15,"c_p"'] (T2)
+    (T1) edge[dotted,to path={.. controls +(-5ex,0)
+      and +(-8ex,-5ex) .. (\tikztotarget)
+      \tikztonodes},"\vec c_p"] (C);
+  \end{tikzpicture}
 
-\end{tikzpicture}
 \caption{\label{fig:TorZ-recursion}Mapping torsors to $A$}
 \end{figure}
 
@@ -978,10 +999,10 @@ The type $Q_p(X,f)$ is contractible for all $(X,f,t):\TorZ$.
 
 A relevant observation at this point is that $Q_p(X,f)$ does not depend on $t$.
 This means that we actually apply in the proof above the non-dependent version
-of \cref{lem:dep-elim-TorZ}, for which the computation rule holds also in {\UniMath}.
-For $T := (X,f,t) : \TorZ$, let $\vec{c}_p(T)$ denote the center of contractibility
+of \cref{lem:dep-elim-TorZ}, for which the computation rule holds also in \UniMath{}.
+For $Z \jdeq (X,f,t) : \TorZ$, let $\vec{c}_p(Z)$ denote the center of contractibility
 of $Q_p(X,f)$ as constructed in the proof above.
-  We introduce the notation $\vec{c}_p(Z)\defeq(c_p(Z),\tilde{c}_p(Z),\hat{c}_p(Z))$ for its components.
+  We introduce the notation $(c_p(Z),\tilde{c}_p(Z),\hat{c}_p(Z))\defeq\vec{c}_p(Z)$ for its components.
   The value of $\vec{c}_p(\pt)$ can be uncovered by a careful analysis of the steps of the proof.
 First, the center of $\sum_{a':A} a=a'$ is $(a,\refl{a})$.
 This center is pulled back by $\varphi_{a}$ to a center
@@ -994,15 +1015,17 @@ end of the proof of \cref{thm:integers-univ-symm},
 tells us that $c$ is a pair $(h,q)$ with $h(z)=p^z$
 for all $z:\zet$. Indeed, $\varphi_{a}(h,q) = h(0) = \refl{a}$.
 Moreover, $q$ has type $\prod_{z:\zet} h(z+1)=p\ct h(z)$.
-Wrapping up, $\vec c_p(\pt)\defeq (a,h,q)$.
+Wrapping up, $\vec c_p(\pt) = (a,h,q)$,
+with judgmental equality if~\cref{cond:JNE} holds.
 
 The analysis in the previous paragraph
 means we have achieved one of our goals,
 namely that the function $c_p$ from $\TorZ$ to $A$
-maps $\pt$ to $a$ definitionally.
+maps $\pt$ to $a$, definitionally if~\cref{cond:JNE} holds.
+In any case, let $r \defeq \tilde c_p(\pt,0)^{-1} : c_p(\pt) = a$.
 %The situation is depicted in \cref{fig:TorZ-recursion}.
 We will now deal with the other goal,
-namely that $c_p$ acting on $\Zloop$ yields $p$.
+namely that $c_p$ acting on $\Zloop$ yields $r \ct p \ct r^{-1}$.
 
 \begin{lemma}\label{lem:ap-c-tilde-c}
 For all $X,Y:\TorZ$, $e: X=Y$ and $x:X$ we have
@@ -1018,30 +1041,15 @@ the correct type, as $\tilde c_p(X,x)$ has type $a=c_p(X)$.
 \end{proof}
 
 We apply the above lemma with $X\jdeq Y\jdeq \pt$ and $e\jdeq{\Zloop}: \pt=\pt$.
-Then we have $\ptoe{e}(x)=s(x)=x+1$. We can take $x\defeq 0$ and get by
-the analysis after the proof of \cref{lem:guided-null-hmtps}
-that $\tilde c_p(\pt,1) = p$ and $\tilde c_p(\pt,0) = \refl{a}$.
-It follows that $\ap{c_p}(\Zloop) = p$ by \cref{lem:ap-c-tilde-c}.
-This means we have achieved our second goal as well.
-We summarize the results in the following recursion principle for $\TorZ$.
-
-\begin{definition}\label{def:TorZrecursor}
-  The function ${\rec}_A(a,p) \defeq c_p$ as defined after
-  \cref{lem:guided-null-hmtps} has type
-  \[
-    {\rec}_A : \sum_{a:A}(a=a) ~~\to~~ (\TorZ \to A),
-  \]
-  and satisfies ${\rec}_A(a,p)(\pt) \jdeq a$ and
-  $\ap{{\rec}_A(a,p)}(\Zloop) = p$.
-\end{definition}
-
-Alternatively, without using the computation rule for propositional truncation,
-we can get an element of the type \cref{eq:circle-recursion} as follows.
-We have $c_p : \TorZ\to A$,
-$\tilde c_p(\pt,0) : a = c_p(\pt)$,
-$\tilde c_p(\pt,1) = p \ct \tilde c_p(\pt,0)$, and
-$\ap{c_p}(\Zloop) = \tilde c_p(\pt,0)^{-1}\ct \tilde c_p(\pt,1)
-= \tilde c_p(\pt,0)^{-1}\ct p \ct \tilde c_p(\pt,0)$.
+Then we have $\ptoe{e}(z)=s(z)=z+1$.
+Note that $\hat c_p(\pt,0) : \tilde c_p(\pt,1) = p \ct \tilde c_p(\pt,0)$.
+Hence, taking $z\defeq 0$ in \cref{lem:ap-c-tilde-c}, it follows that
+\[
+  \ap{c_p}(\Zloop) = \tilde c_p(\pt,0)^{-1} \ct \tilde c_p(\pt,1)
+  = r \ct p \ct r^{-1}.
+\]
+This means we have achieved our second goal as well,
+and we've produced an element of the type \eqref{eq:circle-recursion}.
 
 \subsection{Induction in $\TorZ$}\label{sec:TorZ-induction}
 
@@ -1058,14 +1066,14 @@ The following lemma follows from the fact that $\zet$ is a set
 and $s: \zet\to\zet$ is an equivalence.
 
 \begin{lemma}\label{lem:paths-in-TorZ}
-  Suppose $p : (\zet,s)=(X,f)$.  Then $X$ is a set and $f: X\to X$ is an equivalence.
-  Morever, with $\ptoe{p}\defeq \pr_1(p)_*$ the equivalence induced by $p$, we have
-  $f^n(x) = (\ptoe{p}\circ s^n \circ \ptoe{p}^{-1})(x) = \ptoe{p}(\ptoe{p}^{-1}(x)+n)$,
+  Suppose $q : (\zet,s)=(X,f)$.  Then $X$ is a set and $f: X\to X$ is an equivalence.
+  Morever, with $\ptoe{q}\defeq \pr_1(q)_*$ the equivalence induced by $q$, we have
+  $f^n(x) = (\ptoe{q}\circ s^n \circ \ptoe{q}^{-1})(x) = \ptoe{q}(\ptoe{q}^{-1}(x)+n)$,
   for all $n:\zet$ and $x:X$.
 \end{lemma}
 
 Note that for fixed $x:X$ the expression $\ptoe{p}^{-1}(x)+n$ can be seen as
-the function shifting $n:\zet$ by $\ptoe{p}^{-1}(x)$ positions, indeed an equivalence.
+the function shifting $n:\zet$ by $\ptoe{q}^{-1}(x)$ positions, indeed an equivalence.
 Hence $f^n(x)$ as a function of $n$ is an equivalence from $Z$ to $X$.
 For simplicity, we may denote $f^n(x)$ by $x+n$.
 
@@ -1136,7 +1144,7 @@ where $\delta^Z_x$ comes from \cref{lem:loop-s-iterated}.
   this time with the family $P_{a'} : \zet \to \UU$ given
   by $P_{a'}(z) \defeq (a =^A_{s^\pt_z} {a'})$
   and the equivalences $f_{a'} : \prod_{z:\zet} P_{a'}(z)\equiv P_{a'}(z+1)$
-  given by $f_{a'}(z) \defeq \cp{\delta^\pt_z}(p \cto ({-}))$.
+  given by $f_{a'}(z) \defeq \cp{\delta^\pt_z}(p \cto (\blank))$.
   Thus, applying \cref{thm:integers-univ-symm}
   shows that $\varphi_{a'}$ is an equivalence,
   where $\varphi_{a'}(h,q) \defeq h(0)$.
@@ -1164,8 +1172,6 @@ since $\pr_1(\refl{X})_*(x) \jdeq x$.
 Hence we set $\varepsilon_{\refl{X},x} \defeq \iota(s^X_x)$,
 with $\iota$ as in \cref{lem:invlaw-change-path}.
 \end{proof}
-
-%The following lemmas use pathover reversal denoted by $({-})^{-o}$.
 
 \begin{lemma}\label{lem:apd-c-tilde-c}
 For all $X,Y:\TorZ$, $e: X=Y$ and $x:X$ we have
@@ -1271,25 +1277,28 @@ It will then follow that since it classifies $\ZZ$-torsors, so does any other su
 \end{theorem}
 \begin{proof}
   Half of the proof takes place inside of type theory and the other half in a model category.
-However, the first half has already been done by Sojakova~\cite{sojakova:hits-hias}.
-She defines an ``$\dS$-algebra'' to be a type $C$ equipped with a point $c:C$ and a path $s:c=_C c$, and defines an $\dS$-algebra to ``have $\dS$-induction'' precisely if it satisfies the analogue of our~\eqref{eq:circle-induction} (see~\cite[Notation 22]{sojakova:hits-hias}).
-Her main theorem~\cite[Theorem 50]{sojakova:hits-hias} then implies that if $C$ has $\dS$-induction, then it is \emph{homotopy-initial} in that for any other $\dS$-algebra $(A,a,l)$ the type of ``$\dS$-homomorphisms''
-\[H_{C,A} \defeq \sum_{h:C\to A} \sum_{\beta: h(c) = a} \ap{h}(s) \ct \beta = \beta \ct l  \]
-is contractible, i.e., there is an element of the type
-\[ \prod_{(A,a,l)} \mathrm{Contr}(H_{C,A}). \]
+  However, the first half has already been done by Sojakova~\cite{sojakova:hits-hias},
+  as mentioned in \cref{sec:circles}.
+  Her main theorem~\cite[Theorem 50]{sojakova:hits-hias} then implies that if a circle algebra $\mathcal C\jdeq(C,c,s)$ satisfies the induction principle,
+  then it is \emph{homotopy-initial} in that for any other circle algebra $\mathcal A(A,a,p)$
+  the type of circle algebra homomorphisms~\eqref{eq:circle-hom}
+  is contractible, i.e., there is an element of the type
+  \[
+    \prod_{\mathcal A:\CircleAlg} \iscontr\bigl(\Shom(\mathcal C,\mathcal A)\bigr).
+  \]
 It follows that our $\TorZ$ is homotopy-initial in this sense.
 
 For the second half of the proof, suppose we have a Quillen model category $\cE$ that presents our $(\infty,1)$-topos $\sE$.
 We must show that for any object $A$ of $\sE$, the diagram of hom-spaces ($\infty$-groupoids)
 \[ \sE(\TorZ,A) \to \sE(1,A) \rightrightarrows \sE(1,A) \]
 is a homotopy equalizer, i.e., that the map from $\sE(\TorZ,A)$ to the homotopy equalizer of two copies of the identity map of $\sE(1,A)$ is an equivalence.
-It suffices to show that the homotopy fiber of this map over any point is contractible, which is to say that given any point $a:1\to A$ and homotopy $l:a\sim a$, the space of maps $h:\TorZ\to A$ equipped with a homotopy $\beta : h(\pt) \sim a$ and a higher homotopy $h(\Zloop) \ct \beta \sim \beta \ct l$ is contractible.
+It suffices to show that the homotopy fiber of this map over any point is contractible, which is to say that given any point $a:1\to A$ and homotopy $p:a\sim a$, the space of maps $f:\TorZ\to A$ equipped with a homotopy $r : h(\pt) \sim a$ and a higher homotopy $h(\Zloop) \ct r \sim r \ct p$ is contractible.
 
 Now, homotopies in the $(\infty,1)$-category $\sE$ can always be presented by \emph{right homotopies} in the model category $\cE$, meaning maps into a path object.
-Thus, our object $A$ of $\sE$ with $a$ and $l$ can be presented by an object of $\cE$, which we also denote $A$, with a point $a:1\to A$ in $\cE$ and a right homotopy $l:1\to P A_{(a,a)}$, where $P A$ is the path object of $A$ and $P A_{(a,a)}$ is its pullback along $(a,a):1\to A\times A$.
-Since path objects supply the interpretation of identity types, this corresponds to a type $A$ with an element $a:A$ and path $l:a=_A a$, i.e., an $\dS$-algebra.
+Thus, our object $A$ of $\sE$ with $a$ and $p$ can be presented by an object of $\cE$, which we also denote $A$, with a point $a:1\to A$ in $\cE$ and a right homotopy $p:1\to P A_{(a,a)}$, where $P A$ is the path object of $A$ and $P A_{(a,a)}$ is its pullback along $(a,a):1\to A\times A$.
+Since path objects supply the interpretation of identity types, this corresponds to a type $A$ with an element $a:A$ and path $p:a=_A a$, i.e., a circle algebra.
 By a similar argument, the homotopy fiber that we want to prove contractible is equivalent to the hom-space $\sE(1, H_{\TorZ,A})$.
-Thus, it suffices to observe that if $B$ is an object with a point $1\to \mathrm{Contr}(B)$ then $B$ is equivalent to the terminal object (a detailed proof can be found in~\cite[Lemma 4.1]{shulman:elreedy}).
+Thus, it suffices to observe that if $B$ is an object with a point $1\to \iscontr(B)$, then $B$ is equivalent to the terminal object (a detailed proof can be found in~\cite[Lemma 4.1]{shulman:elreedy}).
 \end{proof}
 
 We should also explain more carefully why our $\TorZ$ ``classifies $\ZZ$-torsors'' in the $(\infty,1)$-categorical sense.
@@ -1312,7 +1321,7 @@ Thus, by the pullback-stability and universal property of exponentials, the spac
 Hence $\sum_{X:\UU} (X\to X)$ classifies small objects equipped with an endomorphism, in that $\sE(A, \sum_{X:\UU} (X\to X))$ is naturally equivalent to the $\infty$-groupoid of small objects of $\sE/A$ with an endomorphism.
 
 Thirdly, for $\TorZ$ we need to consider the topos-theoretic interpretation of propositional truncation.
-We can ignore its particular construction in {\UniMath} and focus on its universal property, which says that it is a reflection into propositions, i.e., for any proposition $P$ we have $(\Trunc{X}\to P) \equiv (X\to P)$.
+We can ignore its particular construction in \UniMath{} and focus on its universal property, which says that it is a reflection into propositions, i.e., for any proposition $P$ we have $(\Trunc{X}\to P) \equiv (X\to P)$.
 Interpreted fiberwise in an $(\infty,1)$-topos, this says that if we represent a morphism $X\to A$ as the first projection from a dependent sum, $(\sum_{a:A} X(a)) \to A$, then the corresponding projection $(\sum_{a:A} \Trunc{X(a)})\to A$ is its reflection into the sub-$(\infty,1)$-category of $\sE/A$ consisting of the monomorphisms, i.e., maps $P\to A$ whose diagonal $P\to P\times_A P$ is an equivalence.
 By~\cite[Example 5.2.8.16 and Corollary 6.5.1.14]{lurie:higher-topoi} (in the case $n=-1$), the effective epimorphisms and monomorphisms in an $(\infty,1)$-topos form a factorization system, and hence in particular the map $X\to (\sum_{a:A} \Trunc{X(a)})$ is an effective epimorphism.
 

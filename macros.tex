@@ -14,7 +14,7 @@
 \usepackage{enumitem}
 \usepackage{mathrsfs}
 
-\usetikzlibrary{decorations.markings,decorations.pathreplacing,matrix,arrows,chains,positioning,scopes} 
+\usetikzlibrary{decorations.markings,decorations.pathreplacing,matrix,arrows,chains,positioning,scopes}
         %,hobby} % for hobby splines
 %% useful for debugging bezier paths
 %\tikzset{%
@@ -86,6 +86,17 @@
 
 \newcommand{\arxiv}[1]{preprint available at \href{http://arxiv.org/abs/#1}{arXiv:#1}}
 
+%%% Rules/conditions
+\makeatletter
+\def\condlabel#1#2{\begingroup
+  #2%
+  \protected@edef\cref@currentlabel{[cond][][]#2}%
+  \phantomsection\label[cond]{#1}%
+  \endgroup
+}
+\makeatother
+\crefformat{cond}{(#2#1#3)}
+
 % Should these be roman or italic?!
 \newcommand{\bool}{\mathop{\mathrm{Bool}}}
 \newcommand{\yes}{\mathop{\mathrm{yes}}}
@@ -115,7 +126,7 @@
 \newcommand{\ap}[1]{\mathop{{\mathrm{ap}}_{#1}}}
 \newcommand{\apd}[1]{\mathop{{\mathrm{apd}}_{#1}}}
 \newcommand{\apap}[3]{\mathop{{\mathrm{apap}}_{#1}(#2)(#3)}}
-\newcommand{\apc}{\mathop{{\it ap}{\ct}}}
+\newcommand{\apc}{\mathop{\mathrm{ap}_{\ct}}}
 
 \newcommand{\id}{\mathord{\mathrm{id}}}
 \newcommand{\pt}{{\mathord{\mathrm{pt}}}}
@@ -179,7 +190,9 @@
 \DeclarePairedDelimiter\Fin[]
 \DeclarePairedDelimiterX\setof[2]\lbrace\rbrace{#1 \mid #2}
 
-\newcommand{\nonempty}[1]{\Trunc{#1}}
+\newcommand*{\nonempty}[1]{\Trunc{#1}}
+\newcommand*{\UniMath}{\emph{UniMath}}
+\newcommand*{\blank}{\_}
 
 \newcommand\blfootnote[1]{%
   \begingroup
