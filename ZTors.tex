@@ -242,7 +242,7 @@ including:
     \Ssect(\mathcal A) \defeq
     \sum_{f: \prod_{z:C} A(z)}
     \sum_{r: f(c) = a}
-    {\apd{f}(s) = r\cto p \cto r^{-1}}.
+    {\apd{f}(s) = r\cto' p \cto r^{-1}}.
   \end{equation}
   (Here $\apd{}$ is as defined in \cite[2.3]{hottbook};
   we recall the basics of paths over a path and $\apd{}$
@@ -392,12 +392,13 @@ If the underlying type theory has propositional truncation with a dependent elim
 that computes judgmentally on the point constructor, as in \cite[6.9]{hottbook},
 then our construction for the induction principle in \cref{eq:circle-induction} simplifies.
 Its application to $A,a,p$ of appropriate types
-is a triple $(f,r,q)$ where $f$ is a section of $A$ and $r : f(\pt)= a$
-becomes a \emph{reflexivity path}, so $f(\pt)\jdeq a$.
-It then follows from the care with which we chose the expression $r\cto' p \cto r^{-1}$,
-that it has the same type as $l$, and, moreover, the two terms are judgmentally equal.
-Thus the right side of the final equation in \eqref{eq:circle-induction}
-can be replaced by $l$.
+is a triple $(f,r,q)$ where $f$ is a section of $A$ and $r : f(\pt)= a$.
+In this case, $f(\pt)\jdeq a$, but in general we won't have $r \jdeq \refl{a}$.
+However, the expression $\bar r\cto' p \cto \bar r^{-1}$ is well-typed
+for all $\bar r : a=a$, and we'll have that $r = \refl{a}$,
+so we may transport $q$ to obtain an element of type
+$\apd{f}(\Zloop) = \refl{a} \cto' p \cto \refl{a}^{-1}$.
+This type is then judgmentally equal to $\apd{f}(\Zloop)=p$.
 
 In a type theory where higher inductive types are admitted,
 one can introduce a circle $\Sc$ as a higher inductive type,
@@ -609,7 +610,8 @@ $f(\trunc a) = g(a)$, for each $a:A$,
 since each type $B(\trunc a)$ is a proposition.
 If we can achieve a judgmental equality here,
 then we say that the propositional truncation operation satisfies the
-judgmental computation rule for the dependent eliminator.
+judgmental computation rule for the dependent eliminator~%
+(\condlabel{cond:JDE}{JDE}).
 
 Recall that in \UniMath{}, $\Trunc A \defeq \prod_{P:\Prop}((A \to P) \to P)$, and
 the function $\trunc{\blank}: A\to\Trunc A$ is
@@ -1012,8 +1014,8 @@ that $\varphi_{a}$ is an equivalence. The latter proof
 is the above instance of \cref{thm:integers-univ-symm}.
 Unraveling this instance, and using the remark at the
 end of the proof of \cref{thm:integers-univ-symm},
-tells us that $c$ is a pair $(h,q)$ with $h(z)=p^z$
-for all $z:\zet$. Indeed, $\varphi_{a}(h,q) = h(0) = \refl{a}$.
+tells us that $c$ is a pair $(h,q)$ with $h(z)\jdeq p^z$
+for all $z:\zet$. Indeed, $\varphi_{a}(h,q) = h(0) \jdeq \refl{a}$.
 Moreover, $q$ has type $\prod_{z:\zet} h(z+1)=p\ct h(z)$.
 Wrapping up, $\vec c_p(\pt) = (a,h,q)$,
 with judgmental equality if~\cref{cond:JNE} holds.
@@ -1022,7 +1024,8 @@ The analysis in the previous paragraph
 means we have achieved one of our goals,
 namely that the function $c_p$ from $\TorZ$ to $A$
 maps $\pt$ to $a$, definitionally if~\cref{cond:JNE} holds.
-In any case, let $r \defeq \tilde c_p(\pt,0)^{-1} : c_p(\pt) = a$.
+In any case, let $r \defeq \tilde c_p(\pt,0)^{-1} : c_p(\pt) = a$,
+which reduces under~\cref{cond:JNE} to $\refl{a}$.
 %The situation is depicted in \cref{fig:TorZ-recursion}.
 We will now deal with the other goal,
 namely that $c_p$ acting on $\Zloop$ yields $r \ct p \ct r^{-1}$.
@@ -1054,9 +1057,10 @@ and we've produced an element of the type \eqref{eq:circle-recursion}.
 \subsection{Induction in $\TorZ$}\label{sec:TorZ-induction}
 
 Fix $A:\TorZ\to\UU$, $a:A(\pt)$, and $p: a=^A_{\Zloop} a$.
-On the basis of this input data, we will construct a function of
-type $\prod_{Z:\TorZ} A(Z)$ that maps $\pt$ to $a$ (definitionally),
-and maps $\Zloop$ to $p$ (by dependent action on paths).
+On the basis of this input data, we will construct a function $f$ of
+type $\prod_{Z:\TorZ} A(Z)$ that maps $\pt$ to $a$,
+as witnessed by some $r : f(\pt) = a$,
+and maps $\Zloop$ to $r \cto' p \cto r^{-1}$ (by dependent action on paths).
 We follow the pattern of the non-dependent case
 in \cref{sec:TorZ-recursion}, but keep in mind that
 $A$ is now not constant and $p$ is a \emph{path over a path}.
@@ -1072,7 +1076,7 @@ and $s: \zet\to\zet$ is an equivalence.
   for all $n:\zet$ and $x:X$.
 \end{lemma}
 
-Note that for fixed $x:X$ the expression $\ptoe{p}^{-1}(x)+n$ can be seen as
+Note that for fixed $x:X$ the expression $\ptoe{q}^{-1}(x)+n$ can be seen as
 the function shifting $n:\zet$ by $\ptoe{q}^{-1}(x)$ positions, indeed an equivalence.
 Hence $f^n(x)$ as a function of $n$ is an equivalence from $Z$ to $X$.
 For simplicity, we may denote $f^n(x)$ by $x+n$.
@@ -1084,7 +1088,7 @@ For simplicity, we may denote $f^n(x)$ by $x+n$.
   $f\circ e_x = e_x \circ s$, as both functions map $n$ to $f^{n+1}(x)$.
 \end{definition}
 
-Applying \cref{thm:integers-univ-symm} we will need two auxiliary
+Applying \cref{thm:integers-univ-symm}, we will need two auxiliary
 results about the paths $s^\pt_x$, one for $x=0$ and
 the other for the (symmetric) induction step.
 In \cref{def:loop-s-iterated}, if $Z\jdeq\pt$ and $x=0$, we get $e_0 = \id$.
@@ -1115,7 +1119,9 @@ Q_p(Z)&\defeq \sum_{a' : A(Z)}~\sum_{h : \prod_{x:X} a =^A_{s^Z_x} a'}~\prod_{x:
 \end{align*}
 where $\delta^Z_x$ comes from \cref{lem:loop-s-iterated}.
 \end{definition}
-
+Note that, unlike the $Q_p$ from~\cref{def:guided-null-hmtps},
+this version depends crucially on the $t$-component of $Z$ through
+both $s^Z$ and $\delta^Z$.
 
 \begin{lemma}\label{lem:guided-null-hmtps-dep}
   For every $Z:\TorZ$, the type $Q_p(Z)$ is contractible.
@@ -1150,14 +1156,21 @@ where $\delta^Z_x$ comes from \cref{lem:loop-s-iterated}.
   where $\varphi_{a'}(h,q) \defeq h(0)$.
 \end{proof}
 
-The center of contraction $\vec{c}_p(\pt)$ of $Q_p(\pt)$ is
-defined in the above proof as $\varphi_{a}^{-1}(a,\cp{\gamma_0}(\rrfl))$,
-which is a triple $(a,h,q)$. In general we write
-$\vec{c}_p(Z)\defeq(c_p(Z),\tilde{c}_p(Z),\hat{c}_p(Z))$
-for the center of contraction of $Q_p(Z)$.
-We immediately get $c_p(\pt)\defeq a$ and will proceed to
-elaborate $\apd{c_p}(\Zloop)$ (see \cite[2.3]{hottbook} for $\apd{\_}$).
+To simplify notations, we will now use variables $X,Y:\TorZ$,
+and also write $X,Y:\UU$ for the underlying types.
 
+Let $\vec c_p(X)$ denote the center of contraction of $Q_p(X)$ for $X:\TorZ$.
+Again, we write $(c_p(X),\tilde{c}_p(X),\hat{c}_p(X))\defeq\vec{c}_p(X)$
+for the components, where
+\begin{align*}
+         c_p &: \prod_{X:\TorZ} A(X),\\
+  \tilde c_p &: \prod_{X:\TorZ}\prod_{x:X} a =^A_{s^X_x} c_p(X), \\
+    \hat c_p &: \prod_{X:\TorZ}\prod_{x:X} \tilde c_p(X,x+1)
+               = \cp{\delta^X_x}(p \cto \tilde c_p(X,x)).
+\end{align*}
+In particular, $q\defeq \tilde c_p(\pt,0) : a =^A_{s^\pt_0} c_p(\pt)$,
+so we can define $r\defeq \cp{(\gamma_0^-)^{-1}}(q^{-o}) : c_p(\pt) = a$.
+We now proceed to elaborate $\apd{c_p}(\Zloop)$.
 
 \begin{lemma}\label{lem:s-X-x-*-e}
   For all $X,Y:\TorZ$, $e: X=Y$ and $x:X$ we have a path
@@ -1184,41 +1197,27 @@ which follows from \cref{lem:invlaw-change-path} and \cref{lem:s-X-x-*-e}.
 It remains to check that the general statement of the lemma is well-typed.
 We have the following paths over paths.
 \begin{align*}
-\apd{c_p}(e) &: (c_p(X) =^A_e c_p(Y))\\
-\tilde c_p(Y,e(x)) &:  (a =^A_{s^Y_{e(x)}} c_p(Y))\\
-\tilde c_p(X,x)^{-o} &: (c_p(X) =^A_{(s^X_x)^{-1}} a)\\
+\apd{c_p}(e) &: c_p(X) =^A_e c_p(Y)\\
+\tilde c_p(Y,e(x)) &:  a =^A_{s^Y_{e(x)}} c_p(Y)\\
+\tilde c_p(X,x)^{-o} &: c_p(X) =^A_{(s^X_x)^{-1}} a\\
 \tilde c_p(X,x)^{-o} \cto c_p(Y,e(x)) &:
-     (c_p(X) =^A_{(s^X_x)^{-1}\ct s^Y_{e(x)}} c_p(Y))
+     c_p(X) =^A_{(s^X_x)^{-1}\ct s^Y_{e(x)}} c_p(Y)
 \end{align*}
 In order to make ends meet between the first and the fourth typing
 we invoke \cref{lem:s-X-x-*-e} and \cref{def:pathover-change-path}.
 \end{proof}
 
-Recall the center of contraction $\varphi_{a}^{-1}(a,\cp{\gamma_0}(\rrfl))$
-of $Q_p(\pt)$, denoted by $(c_p(\pt),\tilde{c}_p(\pt),\hat{c}_p(\pt))$.
-The type of $h\defeq\tilde{c}_p(\pt)$ is $\prod_{z:\zet} a =^A_{s^\pt_z} a$ and
-the type of $q\defeq\hat{c}_p(\pt)$ is $\prod_{z:\zet} h(z+1) = \cp{\delta^\pt_z}(p \cto h(z))$.
-We know $\varphi_{a}(h,q) \jdeq h(0) = \cp{\gamma_0}(\rrfl)$,
-so $\tilde c_p(\pt,0) = \cp{\gamma_0}(\rrfl)$.
-Using $q$ we also know that
-$\tilde c_p(\pt,1) \jdeq h(1) = \cp{\delta^\pt_0}(p \cto h(0))$.
-We now have enough information to verify $\apd{c_p}(\Zloop)=p$,
-which by \cref{lem:apd-c-tilde-c} reduces to
-\[
-\cp{\varepsilon_{\Zloop,0}}
-((\cp{\gamma_0}(\rrfl))^{-o}\cto
-\cp{\delta^\pt_0}(p \cto \cp{\gamma_0}(\rrfl))) = p.
-\]
-
+We're now ready to check that $\apd{c_p}(\Zloop) = r \cto' p \cto r^{-1}$,
+where we recall that $r\jdeq\cp{\gamma_0^-}(q^{-o})$ and $q\jdeq\tilde c_p(\pt,0)$.
 A great simplification is obtained by using that $\TorZ$ is a groupoid:
-all 2-paths having the same endpoints are equal.
+all $2$-paths having the same endpoints are equal.
 Hence the functions $\cp{\alpha}$ only depend on the (path-)type
 of $\alpha$, and we may replace the subscript $\alpha$ by its type.
 However, if $\alpha$ is shorter than its type we may
 prefer to keep $\alpha$ in $\cp{\alpha}$.
 Also, as $\cp{\refl{}}$ is the identity, so is any $\cp{\alpha}$
 when the endpoints of $\alpha$ are definitionally equal.
-{We make extensive use of this simplification}.
+We make extensive use of this simplification.
 
 Abbreviate $s_0 \defeq s^\pt_0$, $s_1 \defeq s^\pt_1$,
 then $\varepsilon_{\Zloop,0} : s_0^{-1} \ct s_1 = {\Zloop}$.
@@ -1228,31 +1227,35 @@ s_0^{-1} \ct s_1 \stackrel{\alpha}{=}
 \refl{\pt}\ct(\Zloop\ct s_0) \stackrel{\beta}{=}
 \refl{\pt}\ct(\Zloop\ct\refl{\pt})\stackrel{\gamma}{=} {\Zloop}
 \]
-Here $\alpha,\beta$ are constructed with $\apc$ so as to
+Here $\alpha\defeq\apc((\gamma_0^-)^{-1},\delta_0^{-1}),
+\beta\defeq\apc(\refl{\refl{\pt}},\apc(\refl{\Zloop},\gamma_0^{-1}))$ are constructed with $\apc$ so as to
 enable the application of \cref{lem:compo-change-path}.
 We now calculate:
 
 \begin{align*}
-\cp{\alpha\ct\beta\ct\gamma}
-((\cp{\refl{\pt} = s_0}(\rrfl))^{-o} \cto
-   \cp{\Zloop\ct s_0 = s_1}(p\cto\cp{\refl{\pt} = s_0}(\rrfl)))&= \\
-\cp{\gamma}(\cp{\beta}(\cp{\alpha}
-((\cp{\refl{\pt} = s_0^{-1}}(\rrfl)) \cto
-   \cp{\Zloop\ct s_0 = s_1}(p\cto\cp{\refl{\pt} = s_0}(\rrfl)))))&= \\
-\cp{\gamma}(\cp{\beta}
-(\rrfl \cto
-   (p\cto\cp{\refl{\pt} = s_0}(\rrfl))))&= \\
-\cp{\gamma}(\rrfl\cto(p\cto\rrfl))&= p.
+  \apd{c_p}(\Zloop)
+  &= \cp{\varepsilon_{\Zloop,0}}
+    \bigl(\tilde c_p(\pt,0)^{-o} \cto \tilde c_p(\pt,1)\bigr) \\
+  &= \cp{\alpha\ct\beta\ct\gamma}
+    \bigl(q^{-o} \cto \cp{\delta_0}(p \cto q)\bigr) \\
+  &= \cp{\gamma}\biggl(\cp{\beta}\Bigl(\cp{\alpha}
+    \bigl(q^{-o} \cto \cp{\delta_0}(p \cto q)\bigr)\Bigr)\biggr) \\
+  &= \cp{\gamma}\biggl(\cp{\beta}\Bigl(
+    r \cto \cp{\delta_0^{-1}}\bigl(\cp{\delta_0}(p \cto q)\bigr)
+    \Bigr)\biggr) \\
+  &= \cp{\gamma}\Bigl(\cp{\beta}\bigl(
+    r \cto (p \cto q)\bigr)\Bigr) \\
+  &= \cp{\gamma}\Bigl(r \cto \bigl(p \cto \cp{\gamma_0^{-1}}(q)\bigl)\Bigr) \\
+  &= \cp{\gamma}\Bigl(r \cto \bigl(p \cto r^{-1}\bigl)\Bigr) \\
+  &= r \cto' p \cto r^{-1}
 \end{align*}
+In the last step, we use a final lemma \textcolor{red}{TODO}.
 
-Alternatively, without using the computation rule for propositional truncation,
-leaving out the subscripts of the equivalences $\cp{}$, we have,
-$c_p : \prod_{Z:\TorZ}A(Z)$,
-$\tilde c_p(\pt,0) : a = c_p(\pt)$,
-$\tilde c_p(\pt,1) = \cp{}(p \cto \tilde c_p(\pt,0))$, and
-$\apd{c_p}(\Zloop) = \cp{}(\tilde c_p(\pt,0)^{-o}\cto \tilde c_p(\pt,1))
-= \cp{}(\tilde c_p(\pt,0)^{-o}\cto \cp{}(p \cto \tilde c_p(\pt,0)))$.
-With some massage we get an element of the type in \cref{eq:circle-induction}.
+If~\cref{cond:JDE}, and not just~\cref{cond:JNE}, holds,
+then we see that $c_p(\pt)\jdeq a$, and $r=\refl{a}$,
+since $\vec c_P(\pt)$ reduces to
+$\varphi_{a}^{-1}(a,\cp{\gamma_0}(\rrfl))$,
+which is a triple $(a,h,q)$, where $h(0)=\refl{a}$.
 
 \section{Interpretation in higher toposes}
 \label{sec:topos}
