@@ -257,7 +257,7 @@ including:
   \end{equation}
   has a section.
 \end{description}
-From these equivalences it also follows that the type of induction terms
+From the equivalence of the types encoding the 4 principles above, it also follows that the type of induction terms
 for $\mathcal C$,
 \begin{equation}
   \label{eq:circle-induction-gen}
@@ -857,7 +857,7 @@ Moreover, nested pairs will be written as tuples.
 With these notational simplifications, we rephrase some definitions from
 \cref{sec:preview-Z-tors}.
 The formalization of \cref{sec:TorZ-recursion} can be found in \cite{circlerec-Dan},
-that of \cref{sec:TorZ-induction} in \cite{circleind-Dan}.
+and that of \cref{sec:TorZ-induction} can be found in in \cite{circleind-Dan}.
 
 \begin{definition}\label{def:TorZ}
   The pointed type of $\zet$-torsors is defined by
@@ -1227,8 +1227,8 @@ s_0^{-1} \ct s_1 \stackrel{\alpha}{=}
 \refl{\pt}\ct(\Zloop\ct s_0) \stackrel{\beta}{=}
 \refl{\pt}\ct(\Zloop\ct\refl{\pt})\stackrel{\gamma}{=} {\Zloop}
 \]
-Here $\alpha\defeq\apc((\gamma_0^-)^{-1},\delta_0^{-1}),
-\beta\defeq\apc(\refl{\refl{\pt}},\apc(\refl{\Zloop},\gamma_0^{-1}))$ are constructed with $\apc$ so as to
+Here $\alpha\defeq\apc((\gamma_0^-)^{-1},\delta_0^{-1})$ and
+$\beta\defeq\apc(\refl{\refl{\pt}},\apc(\refl{\Zloop},\gamma_0^{-1}))$ are constructed with $\apc$ so as to
 enable the application of \cref{lem:compo-change-path}.
 We now calculate:
 
