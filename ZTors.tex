@@ -29,7 +29,7 @@
     \urladdr{http://www.sandiego.edu/~shulman}
 }
 
-\date{May 17, 2019}
+\date{\today}
 
 \begin{abstract}
 We show that the type $\TorZ$ of $\ZZ$-torsors has the dependent universal property of the circle,
@@ -207,7 +207,7 @@ directly from $s: \zet\equiv\zet$ by applying the univalence axiom
 In order to explain our main result,
 that $\TorZ$ behaves like the circle understood as a higher inductive type
 with constructors $\pt : \TorZ$ and $\Zloop : pt = \pt$,
-we introduce the types of \emph{circle algebras},
+we introduce the type of \emph{circle algebras},
 consisting of a type together with a point and a loop at that point.
 \[
   \CircleAlg \defeq \sum_{C:\UU}~\sum_{c:C}~ c = c.
@@ -287,7 +287,7 @@ in 2014, see \cite{circlerec-Dan}.\footnote{Our construction here uses the
 same basic idea but manages the computations involved in establishing the
 induction principle differently.}
 This however only proves \emph{weak} initiality, or equivalently,
-only gives a \emph{section} of \eqref{eq:eval}.
+only gives a \emph{section} of the evaluation map in \eqref{eq:eval}.
 
 In \cref{sec:TorZ-induction} we then prove the induction principle,
 in which $A$ is not a type but a type family over $\TorZ$.
@@ -398,7 +398,7 @@ However, the expression $\bar r\cto' p \cto \bar r^{-1}$ is well-typed
 for all $\bar r : a=a$, and we'll have that $r = \refl{a}$,
 so we may transport $q$ to obtain an element of type
 $\apd{f}(\Zloop) = \refl{a} \cto' p \cto \refl{a}^{-1}$.
-This type is then judgmentally equal to $\apd{f}(\Zloop)=p$.
+This type is judgmentally equal to $\apd{f}(\Zloop)=p$.
 
 In a type theory where higher inductive types are admitted,
 one can introduce a circle $\Sc$ as a higher inductive type,
@@ -1350,7 +1350,7 @@ Since $\TorZ \to \sum_{X:\UU} (X\to X)$ is a monomorphism, this means that $\Tor
 Combining \cref{thm:torz-coeq,thm:torz-classif}, we see that any circle object in an $(\infty,1)$-topos is equivalent to $\TorZ$ and hence classifies $\ZZ$-torsors.
 
 
-\section{Conclusion and Future Research}\label{sec:conclusion}
+\section{Conclusion and future research}\label{sec:conclusion}
 We have proved, {for any type family $A\to\TorZ$,}
 the induction principle of the circle for $\TorZ$:
 \[
