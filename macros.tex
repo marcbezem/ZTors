@@ -142,8 +142,8 @@
 \newcommand{\Prop}{\mathord{\mathrm{Prop}}}
 \newcommand{\Set}{\mathord{\mathrm{Set}}}
 \newcommand{\Group}{\mathord{\mathrm{Group}}}
-\newcommand{\CircleAlg}{\mathord{\mathbb{S}\text{-}\mathrm{Alg}}}
-\newcommand{\CircleFibAlg}{\mathord{\mathbb{S}\text{-}\mathrm{Fib}\text{-}\mathrm{Alg}}}
+\newcommand{\CircleAlg}{\mathord{\mathbb{S}\textup{-}\mathrm{Alg}}}
+\newcommand{\CircleFibAlg}{\mathord{\mathbb{S}\textup{-}\mathrm{Fib}\textup{-}\mathrm{Alg}}}
 \newcommand{\AbGroup}{\mathord{\mathrm{AbGroup}}}
 \newcommand{\Bunch}{\mathord{\mathrm{Bunch}}}
 \newcommand{\AbBunch}{\mathord{\mathrm{AbBunch}}}
@@ -201,7 +201,25 @@
 
 \newcommand*{\nonempty}[1]{\Trunc{#1}}
 \newcommand*{\UniMath}{\emph{UniMath}}
-\newcommand*{\blank}{\_}
+
+\makeatletter
+\def\mathrule#1#2{%
+  \@tempdimb=\dimexpr#2
+  \@tempdimc=0.5\@tempdimb
+  \@tempdima=\dimexpr#1-\@tempdimc
+  \hbox to #1{%
+    \pdfliteral{
+      q []0 d
+      1 J %  set line cap to rounded ends
+      \strip@pt\@tempdimb\space w \strip@pt\@tempdimc\space 0 m
+      \strip@pt\@tempdima\space 0 l S Q }}}
+\makeatletter
+\newcommand*{\blank}{\mathord{\mathchoice%
+    {\mathrule{.5em}{.5pt}}% display
+    {\mathrule{.5em}{.5pt}}% text
+    {\mathrule{.4em}{.4pt}}% script
+    {\mathrule{.3em}{.3pt}}% scriptscript
+  }}
 
 \newcommand\blfootnote[1]{%
   \begingroup
