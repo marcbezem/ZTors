@@ -10,5 +10,7 @@
 *.toc
 *.dvi
 *.synctex.gz
+*.bcf
+*.run.xml
 *~
 auto/
