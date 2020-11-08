@@ -1280,7 +1280,17 @@ We now calculate:
   &= \cp{\gamma}\Bigl(r \cto \bigl(p \cto r^{-1}\bigl)\Bigr) \\
   &= r \ctop p \cto r^{-1}
 \end{align*}
-In the last step, we use a final lemma \textcolor{red}{TODO}.
+In the very last equality we used the following auxiliary lemma.
+\begin{lemma}
+  For any $X : \UU$, $B : X \to \UU$, $x,x':X$, $b,c:B(x)$,
+  $c':B(x')$, $s : x=x'$, $r : b =^B_{\refl{x}} c$, and $q : c =^B_s c'$
+  we have
+  \[
+    \cp{\gamma}(r \cto q) = r \ctop q,
+  \]
+  where $\gamma : \refl{x} \ct s = s$ is defined by induction on $s$.
+\end{lemma}
+The proof is simply by induction on $s$, $r$, and $q$, in that order.
 
 If~\cref{cond:JDE}, and not just~\cref{cond:JNE}, holds,
 then we see that $c_p(\pt)\jdeq a$, and $r=\refl{a}$,
