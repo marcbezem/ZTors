@@ -26,9 +26,9 @@
 @Misc{UniMath,
     author = {Voevodsky, Vladimir and Ahrens, Benedikt and Grayson, Daniel and others},
     title = {{UniMath --- a computer-checked library of univalent mathematics}},
-    howpublished = {{available} at \url{http://UniMath.org}}
+    url = {http://UniMath.org}
  }
-                  
+
 @Misc{Lean,
  title = {Lean theorem prover},
  howpublished = {a proof assistant together with a library of formalized proofs, available at \url{https://github.com/leanprover/lean}}}
@@ -42,15 +42,16 @@
           title = {{The HoTT Library}},
           howpublished = {a Coq library of formalized proofs, available at \url{https://github.com/HoTT/HoTT}}
         }
-                  
+
 @Misc{HoTT-Agda,
           title = {{Homotopy Type Theory in Agda}},
           howpublished = {an Agda library of formalized proofs, available at \url{https://github.com/HoTT/HoTT-Agda}}
         }
 
 @Misc{HoTT-Agda-HIT,
-          title = {{Implementation of higher inductive types in HoTT-Agda}},
-          howpublished = {available at \url{https://github.com/HoTT/HoTT-Agda/blob/master/core/lib/types/HIT_README.txt}}
+          author = {Hou, Kuen-Bang (Favonia)},
+          title = {Implementation of higher inductive types in {HoTT-Agda}},
+          url = {https://github.com/HoTT/HoTT-Agda/blob/master/core/lib/types/HIT_README.txt}
         }
 
 @article {UniMath2015,
@@ -103,7 +104,7 @@ MRREVIEWER = {Horst Luckhardt},
   MRNUMBER = {0387009 (52 \#7856)},
 MRREVIEWER = {Horst Luckhardt},
 }
-                  
+
 @incollection {39,
     AUTHOR = {Voevodsky, Vladimir},
      TITLE = {Subsystems and regular quotients of {C}-systems},
@@ -113,10 +114,9 @@ MRREVIEWER = {Horst Luckhardt},
      PAGES = {127--137},
  PUBLISHER = {Amer. Math. Soc., Providence, RI},
       YEAR = {2016},
-   MRCLASS = {03B15 (03B22 03F50 03G25)},
-  MRNUMBER = {3475277},
-MRREVIEWER = {Krzysztof R. Kapulkin},
-       URL = {https://doi-org.proxy2.library.illinois.edu/10.1090/conm/658/13124},
+       DOI = {10.1090/conm/658/13124},
+eprinttype = {arxiv},
+    eprint = {1406.7413}
 }
 
 
@@ -130,20 +130,22 @@ MRREVIEWER = {Krzysztof R. Kapulkin},
 	title = {C-system of a module over a monad on sets},
 	year = {2014},
 	author = {Voevodsky, Vladimir},
-	    note = {\arxiv{1407.3394}}
-}
+	eprinttype = {arxiv},
+  eprint = {1407.3394}}
 
 @Misc {40,
 	title = {B-systems},
 	year = {2014},
- note = {\arxiv{1410.5389}},
+  eprinttype = {arxiv},
+  eprint = {1410.5389},
 	author = {Voevodsky, Vladimir}
 }
 
 @Misc {104,
 	title = {Products of families of types in the {C}-systems defined by a universe category},
 	year = {2015},
-    note = {\arxiv{1503.07072}},
+  eprinttype = {arxiv},
+  eprint = {1503.07072},
 	author = {Voevodsky, Vladimir}
 }
 
@@ -151,21 +153,23 @@ MRREVIEWER = {Krzysztof R. Kapulkin},
 	title = {Martin-{L}\"of identity types in the {C}-systems defined by a universe category},
 	year = {2015},
 	pages = {1--51},
-    note = {\arxiv{1505.06446}},
+  eprinttype = {arxiv},
+  eprint = {1505.06446},
 	author = {Voevodsky, Vladimir}
 }
 
 @Misc {VV-UniMath-1,
-     title = {Unimath - its present and its future},
+     title = {Unimath -- its present and its future},
      author = {Voevodsky, Vladimir},
-     howpublished = {a talk, with slides and video available at \url{https://www.newton.ac.uk/seminar/20170710113012301}}
-     }     
+     howpublished = {A talk, with slides and video available at \url{https://www.newton.ac.uk/seminar/20170710113012301}}
+     }
 
 @Misc {VV-relmonad,
      title = {{C}-system of a module over a {Jf}-relative monad},
      author = {Voevodsky, Vladimir},
-     howpublished = {available at \url{https://www.math.ias.edu/Voevodsky/voevodsky-publications_abstracts.html\#1602.00352}}
-     }
+     eprinttype = {arxiv},
+     eprint = {1602.00352}
+}
 
 @article {109,
     AUTHOR = {Voevodsky, Vladimir},
@@ -176,19 +180,16 @@ MRREVIEWER = {Krzysztof R. Kapulkin},
       YEAR = {2015},
       number = {37},
      PAGES = {1181--1215},
-                      note = {\arxiv{1409.7925}},
-      ISSN = {1201-561X},
-   MRCLASS = {18Cxx (03G30)},
-  MRNUMBER = {3402489},
+   eprinttype = {arxiv},
+   eprint = {1409.7925},
   url = {http://www.tac.mta.ca/tac/volumes/30/37/30-37.pdf}
 }
 
-@article {110,
+@Misc {110,
 	title = {Lawvere theories and {J}f-relative monads},
-	journal = {arXiv:1601.02158},
 	year = {2016},
-	pages = {1--21},
-                      note = {\arxiv{1601.02158}},
+  eprinttype = {arxiv},
+  eprint = {1601.02158},
 	author = {Voevodsky, Vladimir}
 }
 
@@ -201,11 +202,7 @@ MRREVIEWER = {Krzysztof R. Kapulkin},
     VOLUME = {31},
       YEAR = {2016},
      PAGES = {Paper No. 36, 1044--1094},
-      ISSN = {1201-561X},
-   MRCLASS = {03F50 (03B15 18C50 18D15)},
-  MRNUMBER = {3584698},
-	url = {http://www.tac.mta.ca/tac/volumes/31/36/31-36.pdf},
-MRREVIEWER = {Thomas Streicher},
+	url = {http://www.tac.mta.ca/tac/volumes/31/36/31-36.pdf}
 }
 
 @article {MR3607210,
@@ -223,7 +220,7 @@ MRREVIEWER = {Thomas Streicher},
 MRREVIEWER = {Thomas Streicher},
 }
 
-	
+
 
 @article {MR3607209,
     AUTHOR = {Voevodsky, Vladimir},
@@ -233,25 +230,25 @@ MRREVIEWER = {Thomas Streicher},
     VOLUME = {32},
       YEAR = {2017},
      PAGES = {Paper No. 3, 53--112},
-      ISSN = {1201-561X},
-   MRCLASS = {18D15 (03F50)},
-  MRNUMBER = {3607209},
+   url = {http://www.tac.mta.ca/tac/volumes/32/3/32-03.pdf}
 }
-	
 
 @Misc{1211.2851,
     Author = {Kapulkin, Chris and Lumsdaine, Peter LeFanu},
-    Title = {The {S}implicial {M}odel of {U}nivalent {F}oundations (after {V}oevodsky)},
+    Title = {The Simplicial Model of {U}nivalent {F}oundations (after {V}oevodsky)},
     Year = {2012},
-    note = {\arxiv{1211.2851}}
+    note = {to appear in Journal of the European Mathematical Society},
+    eprinttype = {arxiv},
+    eprint = {1211.2851}
 }
+
 @Misc{1203.2553,
     Author = {Kapulkin, Chris and Lumsdaine, Peter LeFanu and Voevodsky, Vladimir},
     Title = {Univalence in Simplicial Sets},
     Year = {2012},
-    note = {\arxiv{1203.2553}}
+    eprinttype = {arxiv},
+    eprint = {1203.2553}
 }
-
 
 @Book{peano-principia,
                   author = {Peano, Giuseppe},
@@ -274,7 +271,7 @@ MRREVIEWER = {Thomas Streicher},
   publisher = {Springer-Verlag},
   note =   {Relevant Exercise 5 on page 133},
   year =      1988}
-                  
+
 @article {AwodeyBauer_prop_as_types,
     AUTHOR = {Awodey, Steven and Bauer, Andrej},
      TITLE = {Propositions as [types]},
@@ -324,7 +321,7 @@ MRREVIEWER = {Peter Johnstone},
        DOI = {10.1007/978-3-662-22108-2_11},
        URL = {http://dx.doi.org/10.1007/978-3-662-22108-2_11},
 }
-                  
+
 @article {MR2463991,
     AUTHOR = {Gonthier, Georges},
      TITLE = {Formal proof---the four-color theorem},
@@ -370,7 +367,7 @@ MRREVIEWER = {Solomon Marcus},
   MRNUMBER = {0066320},
 MRREVIEWER = {O. Frink},
 }
-		
+
 @article {bernays-6,
     AUTHOR = {Bernays, Paul},
      TITLE = {A system of axiomatic set theory. {VI}},
@@ -386,7 +383,7 @@ MRREVIEWER = {O. Frink},
        DOI = {10.2307/2267328},
        URL = {http://dx.doi.org/10.2307/2267328},
 }
-		
+
 @article {bernays-5,
     AUTHOR = {Bernays, Paul},
      TITLE = {A system of axiomatic set theory. {V}. {G}eneral set theory},
@@ -402,7 +399,7 @@ MRREVIEWER = {O. Frink},
        DOI = {10.2307/2271051},
        URL = {http://dx.doi.org/10.2307/2271051},
 }
-		
+
 @article {bernays-4,
     AUTHOR = {Bernays, Paul},
      TITLE = {A system of axiomatic set theory},
@@ -418,7 +415,7 @@ MRREVIEWER = {O. Frink},
        DOI = {10.2307/2268110},
        URL = {http://dx.doi.org/10.2307/2268110},
 }
-		
+
 @article {bernays-3,
     AUTHOR = {Bernays, Paul},
      TITLE = {A system of axiomatic set theory. {III}. {I}nfinity and
@@ -435,7 +432,7 @@ MRREVIEWER = {O. Frink},
        DOI = {10.2307/2266303},
        URL = {http://dx.doi.org/10.2307/2266303},
 }
-		
+
 @article {bernays-2,
     AUTHOR = {Bernays, Paul},
      TITLE = {A system of axiomatic set theory. {P}art {II}},
@@ -473,9 +470,10 @@ MRREVIEWER = {H. B. Curry},
     Author = {Bauer, Andrej and Gross, Jason and Lumsdaine, Peter LeFanu and Shulman, Mike and Sozeau, Matthieu and Spitters, Bas},
     Title = {{The HoTT Library: A formalization of homotopy type theory in Coq}},
     Year = {2016},
-    note = {\arxiv{1610.04591}},
+    eprinttype = {arxiv},
+    eprint = {1610.04591},
 }
-                  
+
 @article {IMGelfand,
     AUTHOR = {Beilinson, A.},
      TITLE = {I. {M}. {G}elfand and his seminar---a presence},
@@ -485,18 +483,17 @@ MRREVIEWER = {H. B. Curry},
       YEAR = {2016},
     NUMBER = {3},
      PAGES = {295--298},
-      ISSN = {0002-9920},
-    note = {\arxiv{1505.00710}},
-   MRCLASS = {01A70},
-  MRNUMBER = {3445168},
-       URL = {https://doi-org.proxy2.library.illinois.edu/10.1090/noti1337},
+    eprinttype = {arxiv},
+    eprint = {1505.00710},
+      doi = {10.1090/noti1337},
 }
-                  
+
 @Misc{1605.03227,
     Author = {Hou, Kuen-Bang Hou (Favonia) and Finster, Eric and Licata, Dan and Lumsdaine, Peter LeFanu},
     Title = {{A mechanization of the Blakers-Massey connectivity theorem in Homotopy Type Theory}},
     Year = {2016},
-    note = {\arxiv{1605.03227}},
+    eprinttype = {arxiv},
+    eprint = {1605.03227},
 }
 
 
@@ -511,13 +508,15 @@ MRREVIEWER = {H. B. Curry},
     Author = {Anel, Mathieu and Biedermann, Georg and Finster, Eric and Joyal, Andr\'e},
     Title = {{A Generalized Blakers-Massey Theorem}},
     Year = {2017},
-    note = {\arxiv{1703.09050}},
+    eprinttype = {arxiv},
+    eprint = {1703.09050},
 }
 @Misc{1703.09632,
     Author = {Anel, Mathieu and Biedermann, Georg and Finster, Eric and Joyal, Andr\'e},
     Title = {{Goodwillie's Calculus of Functors and Higher Topos Theory}},
     Year = {2017},
-    note = {\arxiv{1703.09632}},
+    eprinttype = {arxiv},
+    eprint = {1703.09632},
 }
 
 
@@ -525,26 +524,32 @@ MRREVIEWER = {H. B. Curry},
     Author = {Kapulkin, Chris and Szumiło, Karol},
     Title = {{Internal Language of Finitely Complete $(\infty,1)$-categories}},
     Year = {2017},
-    note = {\arxiv{1709.09519}},
+    eprinttype = {arxiv},
+    eprint = {1709.09519},
 }
 @Misc{1610.00037,
     Author = {Kapulkin, Chris and Lumsdaine, Peter LeFanu},
     Title = {{The homotopy theory of type theories}},
     Year = {2016},
-    note = {\arxiv{1610.00037}},
+    eprinttype = {arxiv},
+    eprint = {1610.00037},
 }
 
 @Misc{1606.05916,
     Author = {Brunerie, Guillaume},
     Title = {{On the homotopy groups of spheres in homotopy type theory}},
     Year = {2016},
-    note = {{Ph.D.} thesis, \arxiv{1606.05916}},
+    note = {{Ph.D.} thesis},
+    eprinttype = {arxiv},
+    eprint = {1606.05916},
 }
 @Misc{1710.10307,
     Author = {Brunerie, Guillaume},
     Title = {{The James construction and $\pi_4(\mathbb{S}^3)$ in homotopy type theory}},
     Year = {2017},
-    note = {\arxiv{1710.10307}, accepted for publication in the Journal of Automated Reasoning},
+    eprinttype = {arxiv},
+    eprint = {1710.10307},
+    note = {accepted for publication in the Journal of Automated Reasoning},
 }
 
 @Misc{cubicaltt,
@@ -556,22 +561,33 @@ MRREVIEWER = {H. B. Curry},
 @article{1611.02108,
   author = {Cohen, Cyril and Coquand, Thierry and Huber, Simon and M\"ortberg, Anders},
   title  = {{Cubical Type Theory: a constructive interpretation of the univalence axiom}},
-  note   = {To appear in the post-proceedings of TYPES 2015. Preprint avaiable at https://arxiv.org/abs/1611.02108},
+  note   = {To appear in the post-proceedings of TYPES 2015},
+  eprinttype = {arxiv},
+  eprint = {1611.02108},
   year   = 2015,
 }
 
-@Misc{1705.07088,
-    Author = {Lumsdaine, Peter LeFanu and Shulman, Mike},
-    Title = {{Semantics of higher inductive types}},
-    Year = {2017},
-    note = {\arxiv{1705.07088}}
+@Article{1705.07088,
+  title		= {Semantics of higher inductive types},
+  volume	= {169},
+  doi		= {10.1017/S030500411900015X},
+  number	= {1},
+  journal	= {Mathematical Proceedings of the Cambridge Philosophical
+		  Society},
+  publisher	= {Cambridge University Press},
+    Author = {Lumsdaine, Peter LeFanu and Shulman, Michael},
+  year		= {2020},
+  pages		= {159–208},
+      eprinttype = {arxiv},
+    eprint = {1705.07088}
 }
 
 @Misc{1703.03007,
     Author = {Shulman, Michael},
     Title = {{Homotopy type theory: the logic of space}},
     Year = {2017},
-    note = {\arxiv{1703.03007}},
+    eprinttype = {arxiv},
+    eprint = {1703.03007},
 }
 
 @article {0709.0248,
@@ -584,21 +600,19 @@ MRREVIEWER = {H. B. Curry},
       YEAR = {2009},
     NUMBER = {1},
      PAGES = {45--55},
-      ISSN = {0305-0041},
-   MRCLASS = {03B15 (03B35 18G99 55U35)},
-  MRNUMBER = {2461866},
-    note = {\arxiv{0709.0248}},
-MRREVIEWER = {Richard F. Blute},
-       URL = {https://doi-org.proxy2.library.illinois.edu/10.1017/S0305004108001783},
+    eprinttype = {arxiv},
+    eprint = {0709.0248},
+      doi = {10.1017/S0305004108001783},
 }
 
 @Misc{1509.07584,
     Author = {Michael Shulman},
     Title = {{Brouwer's fixed-point theorem in real-cohesive homotopy type theory}},
     Year = {2015},
-    note = {\arxiv{1509.07584}},
+    eprinttype = {arxiv},
+    eprint = {1509.07584},
 }
-                  
+
 @incollection {MR0274219,
     AUTHOR = {de Bruijn, N. G.},
      TITLE = {The mathematical language {AUTOMATH}, its usage, and some of
@@ -671,7 +685,7 @@ MRREVIEWER = {Thomas Streicher},
   MRNUMBER = {3323808},
 MRREVIEWER = {Thomas John Hunter},
 }
-	
+
 @incollection {MR3281415,
     AUTHOR = {Bezem, Marc and Coquand, Thierry and Huber, Simon},
      TITLE = {A model of type theory in cubical sets},
@@ -737,28 +751,32 @@ eprint = {/oup/backfile/content_public/journal/philmat/pap/10.1093_philmat_nkw03
    AUTHOR = {Angiuli, Carlo and Harper, Robert and Wilson, Todd},
    TITLE = {{Computational higher type theory I: Abstract cubical realizability}},
    year = {2016},
-    note = {\arxiv{1604.08873}}
+    eprinttype = {arxiv},
+    eprint = {1604.08873}
    }
 
 @Misc {harper-et-al-2,
    AUTHOR = {Angiuli, Carlo and Harper, Robert},
    TITLE = {{Computational higher type theory II: Dependent cubical realizability}},
    year = {2016},
-    note = {\arxiv{1606.09638}}
+    eprinttype = {arxiv},
+    eprint = {1606.09638}
    }
 
 @Misc {harper-et-al-3,
    AUTHOR = {Angiuli, Carlo and Hou, Kuen-Bang and Harper, Robert},
    TITLE = {{Computational Higher Type Theory III: Univalent Universes and Exact Equality}},
    year = {2017},
-    note = {\arxiv{1712.01800}}
+    eprinttype = {arxiv},
+    eprint = {1712.01800}
    }
 
 @Misc {harper-et-al-4,
    AUTHOR = {Cavallo, Evan and Harper, Robert},
    TITLE = {{Computational Higher Type Theory IV: Inductive Types}},
    year = {2018},
-    note = {\arxiv{1801.01568}}
+    eprinttype = {arxiv},
+    eprint = {1801.01568}
    }
 
 @Misc {cart-cube,
@@ -795,7 +813,7 @@ eprint = {/oup/backfile/content_public/journal/philmat/pap/10.1093_philmat_nkw03
 MRREVIEWER = {Frank Allaire},
        URL = {http://projecteuclid.org/euclid.ijm/1256049012},
 }
-		
+
 @article {MR0543792,
     AUTHOR = {Appel, K. and Haken, W.},
      TITLE = {Every planar map is four colorable. {I}. {D}ischarging},
@@ -811,7 +829,7 @@ MRREVIEWER = {Frank Allaire},
 MRREVIEWER = {Frank Allaire},
        URL = {http://projecteuclid.org/euclid.ijm/1256049011},
 }
-		
+
 @InProceedings{10.1007/978-3-642-39634-2_14,
 author="Gonthier, Georges
 and Asperti, Andrea
@@ -856,20 +874,23 @@ isbn="978-3-642-39634-2"
   pages     = {122--129},
   doi       = {10.1145/2854065.2854076},
   year      = {2016},
-  note = {\arxiv{1512.02274}}
+  eprinttype = {arxiv},
+  eprint = {1512.02274}
 }
 
 @Misc{1802.01170,
  title = {{On Higher Inductive Types in Cubical Type Theory}},
  author = {Thierry, Coquand and Huber, Simon and M\"ortberg, Anders},
  year = {2018},
- note = {\arxiv{1802.01170}}}
+ eprinttype = {arxiv},
+ eprint = {1802.01170}}
 
 @Misc{1802.02191,
  title = {{Cellular Cohomology in Homotopy Type Theory}},
  author = {Buchholtz, Ulrik and Hou, Kuen-Bang (Favonia)},
- year = {February, 2018}, 
- note = {\arxiv{1802.02191}}}
+ date = {2018-02},
+ eprinttype = {arxiv},
+ eprint = {1802.02191}}
 
 @article{Kleiner-group-survey,
     AUTHOR = {Kleiner, Israel},
@@ -974,8 +995,8 @@ isbn="978-3-642-39634-2"
  author = {Grayson, Dan},
  title = {The formalization of the symmetric integer induction principle},
  howpublished = {\url{https://github.com/UniMath/UniMath/blob/c856a5/UniMath/SyntheticHomotopyTheory/AffineLine.v\#L167}}
-}   
-                  
+}
+
 @Misc{Z-induction-torsor-formalized,
  author = {Grayson, Dan},
  title = {The formalization of the symmetric integer induction principle for torsors},
@@ -986,12 +1007,13 @@ isbn="978-3-642-39634-2"
  author = {Grayson, Dan},
  title = {The formalization of auxiliary results on paths over a path},
  howpublished = {\url{https://github.com/UniMath/UniMath/blob/c856a5/UniMath/MoreFoundations/PathsOver.v}}
-}   
+}
 
 @Unpublished{shulman:univinj,
 	author = 			 {Michael Shulman},
 	title = 			 {All $(\infty,1)$-toposes have strict univalent universes},
-	note = 				 {arXiv:1904.07004},
+	eprinttype = {arXiv},
+  eprint = {1904.07004},
 	year = 		 2019}
 
 @Misc{voevodsky:not-interp,
@@ -1010,10 +1032,9 @@ isbn="978-3-642-39634-2"
 author = {Sojakova, Kristina},
 title = {Higher Inductive Types as Homotopy-Initial Algebras},
 year = {2015},
-isbn = {9781450333009},
 publisher = {Association for Computing Machinery},
 address = {New York, NY, USA},
-eprint-type = {arxiv},
+eprinttype = {arxiv},
 eprint = {1402.0761},
 doi = {10.1145/2676726.2676983},
 booktitle = {Proceedings of the 42nd Annual ACM SIGPLAN-SIGACT Symposium on Principles of Programming Languages},
@@ -1031,7 +1052,9 @@ series = {POPL '15}
   volume = 	 17,
   number = 	 2,
   pages = 	 {81--106},
-  note = 	 {arXiv:1307.6248}}
+  eprinttype  = {arXiv},
+  eprint = {1307.6248},
+  doi = {10.4310/HHA.2015.v17.n2.a6}}
 
 @BOOK{lurie:higher-topoi,
   title = {Higher topos theory},
@@ -1040,8 +1063,8 @@ series = {POPL '15}
   author = {Jacob Lurie},
   number = {170},
   series = {Annals of Mathematics Studies},
-  eprint-type = {arxiv},
-  eprint = {math.CT/0608040}
+  eprinttype = {arxiv},
+  eprint = {math/0608040}
 }
 
 % Local Variables:

@@ -1,6 +1,5 @@
 %% packages
 \usepackage{amssymb,amsthm}
-\usepackage[numbers]{natbib}
 \usepackage{mathtools}          %to get \vcentcolon
 \usepackage{thmtools}
 \usepackage{letltxmacro}        %to rename \equiv
@@ -34,9 +33,18 @@
 %      decorate
 %    }}}
 
+\usepackage{hyphenat}
+\usepackage[backref=true,
+            bibstyle=numeric-dashed,
+            citestyle=numeric,
+            maxnames=10,
+            dashed=true,
+            backend=biber,
+            bibencoding=utf8]{biblatex}
+\addbibresource{papers.bib}
+
 % hyperref should be the package loaded last
-\usepackage[backref=page,
-            colorlinks,
+\usepackage[colorlinks,
             citecolor=linkcolor,
             linkcolor=linkcolor,
             urlcolor=linkcolor,
