@@ -207,10 +207,16 @@ directly from $s: \zet\equiv\zet$ by applying the univalence axiom
 In order to explain our main result,
 that $\TorZ$ behaves like the circle understood as a higher inductive type
 with constructors $\pt : \TorZ$ and $\Zloop : pt = \pt$,
-we introduce the type of \emph{circle algebras},
+we introduce, following \cite{sojakova:hits-hias}, the type of \emph{circle algebras},
 consisting of a type together with a point and a loop at that point.
 \[
   \CircleAlg \defeq \sum_{C:\UU}~\sum_{c:C}~ c = c.
+\]
+The type of \emph{fibered circle algebras} over a circle algebra
+$\mathcal C \jdeq (C,c,s)$ is defined to be the dependent version thereof.
+\[
+  \CircleFibAlg(\mathcal C) \defeq
+  \sum_{A : C \to \UU}~\sum_{a:A(c)}~ a=^A_s a.
 \]
 As explained in \cite{sojakova:hits-hias},
 given a circle algebra $\mathcal C \jdeq (C,c,s)$,
@@ -223,7 +229,7 @@ including:
   is contractible, where this type of algebra homomorphisms is
   \begin{equation}\label{eq:circle-hom}
     \Shom(\mathcal C,\mathcal A) \defeq
-    \sum_{f : C \to A}\sum_{r:f(c)=a} \ap{f}(s)=r \ct p \ct r^{-1}.
+    \sum_{f : C \to A}~\sum_{r:f(c)=a}~ \ap{f}(s)=r \ct p \ct r^{-1}.
   \end{equation}
 \item[Universal property]
   For any type $A:\UU$, the map that evaluates a function $f : C \to A$
@@ -235,13 +241,13 @@ including:
   \end{equation}
   is an equivalence.
 \item[Induction principle]
-  Any fibered circle algebra $\mathcal A$ over $\mathcal C$ has an algebra section,
-  where $\mathcal A\jdeq (A,a,p)$ with $A : C \to \UU$, $a : A(c)$
-  and $p : a=^A_s a$, and the type of algebra sections is
+  Any fibered circle algebra $\mathcal A\jdeq (A,a,p)$
+  over $\mathcal C$ has an algebra section,
+  where the type of algebra sections is
   \begin{equation}\label{eq:circle-sect}
     \Ssect(\mathcal A) \defeq
-    \sum_{f: \prod_{z:C} A(z)}
-    \sum_{r: f(c) = a}
+    \sum_{f: \prod_{z:C} A(z)}~
+    \sum_{r: f(c) = a}~
     {\apd{f}(s) = r\cto' p \cto r^{-1}}.
   \end{equation}
   (Here $\apd{}$ is as defined in \cite[2.3]{hottbook};
@@ -257,7 +263,8 @@ including:
   \end{equation}
   has a section.
 \end{description}
-From the equivalence of the types encoding the 4 principles above, it also follows that the type of induction terms
+From the equivalence of the types encoding the four principles above,
+it also follows that the type of induction terms
 for $\mathcal C$,
 \begin{equation}
   \label{eq:circle-induction-gen}
@@ -271,6 +278,22 @@ for all families $A$, is a proposition.
 
 The type of circles, then, is the subtype of $\CircleAlg$
 corresponding to any of these definitions.
+As in~\cite[Sec.~9.8]{hottbook},
+we can prove a structure identity principle for circle algebras and circles,
+viz., for circle algebras $\mathcal C\jdeq(C,c,s)$ and
+$\mathcal C'\jdeq(C',c',s')$, the canonical function
+\[
+  (\mathcal C =_{\CircleAlg} \mathcal C')
+  \to
+  \sum_{f : C \to C'}~\sum_{r:f(c)=c'}~(\ap{f}(s)=r \ct s' \ct r^{-1})
+  \times \isEq(f)
+\]
+is an equivalence.
+By homotopy initiality for circles,
+it then follows straight-forwardly that the type of circles
+is a proposition, i.e.,
+independently of whether there are any circles,
+any two circles are uniquely identifiable.
 
 \subsection{$\TorZ$ is a circle}\label{sec:TorZ-circle}
 
