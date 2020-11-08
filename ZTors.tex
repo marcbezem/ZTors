@@ -248,11 +248,11 @@ including:
     \Ssect(\mathcal A) \defeq
     \sum_{f: \prod_{z:C} A(z)}~
     \sum_{r: f(c) = a}~
-    {\apd{f}(s) = r\cto' p \cto r^{-1}}.
+    {\apd{f}(s) = r \ctop p \cto r^{-1}}.
   \end{equation}
   (Here $\apd{}$ is as defined in \cite[2.3]{hottbook};
-  we recall the basics of paths over a path and $\apd{}$
-  in \cref{sec:pathovers} below.)
+  we recall the basics of paths over a path, and the accompanying
+  operations, in \cref{sec:pathovers} below.)
 \item[Dependent universal property]
   For any type family $A : C \to \UU$, the map that evaluates a function
   $f : \prod_{z:C} A(z)$ at $c$ and $s$,
@@ -331,12 +331,12 @@ function of the following type:
   \prod_{p: a=^A_{\Zloop} a}
   \sum_{f: \prod_{z:\TorZ} A(z)}
   \sum_{r: f(\pt)= a}
-  {\apd{f}(\Zloop) = r\cto' p \cto r^{-1}}
+  {\apd{f}(\Zloop) = r\ctop p \cto r^{-1}}
 \end{equation}
 Note that $r$ above is a path between two elements of the same fiber $A(\pt)$.
 Hence $r$ and $r^{-1}$ are paths over $\refl{\pt}$ and can be composed with $p$.
 To simplify the statement, we use both the \emph{left recursive}
-composition $\cto'$ and the \emph{right recursive} $\cto$ composition
+composition $\ctop$ and the \emph{right recursive} $\cto$ composition
 of paths over paths.
 (A composition operation is called \emph{left recursive} if it computes to its right-hand argument when its
  left-hand argument is given by reflexivity; similarly with \emph{left} replaced by \emph{right}.)
@@ -388,7 +388,7 @@ in order to make clearer diagrams.
 We draw the type family $A$ as a periodic fibration over this circle,
 and the goal is then to produce from the point $a$ and the path $p$ over $\Sloop$,
 the section $f$, the path $r$, and a final element inhabiting
-the type $\apd{f}(\Zloop) = r\cto' p \cto r^{-1}$, which is equivalent to
+the type $\apd{f}(\Zloop) = r\ctop p \cto r^{-1}$, which is equivalent to
 $\apd{f}(\Zloop) =^{\lambda z, z=^A_{\Zloop}z}_r p$,
 and which corresponds to filling the inside of the curvilinear quadrilateral in \cref{fig:circle-induction}.
 
@@ -417,10 +417,10 @@ then our construction for the induction principle in \cref{eq:circle-induction} 
 Its application to $A,a,p$ of appropriate types
 is a triple $(f,r,q)$ where $f$ is a section of $A$ and $r : f(\pt)= a$.
 In this case, $f(\pt)\jdeq a$, but in general we won't have $r \jdeq \refl{a}$.
-However, the expression $\bar r\cto' p \cto \bar r^{-1}$ is well-typed
+However, the expression $\bar r\ctop p \cto \bar r^{-1}$ is well-typed
 for all $\bar r : a=a$, and we'll have that $r = \refl{a}$,
 so we may transport $q$ to obtain an element of type
-$\apd{f}(\Zloop) = \refl{a} \cto' p \cto \refl{a}^{-1}$.
+$\apd{f}(\Zloop) = \refl{a} \ctop p \cto \refl{a}^{-1}$.
 This type is judgmentally equal to $\apd{f}(\Zloop)=p$.
 
 In a type theory where higher inductive types are admitted,
@@ -497,11 +497,18 @@ We define the unit path over a path, composition of paths over paths, and revers
   Let $A : \UU$, $B : A \to \UU$, $a_i:A$, $b_i:B(a_i)$ for $i=1,2,3$, and
   $p_i : a_i = a_{i+1}$ for $i=1,2$. We define:
   \begin{enumerate}[topsep=3pt]
-  \item \emph{Unit} $\refl{b_1} : b_1 =^B_{\refl{a_1}} b_1$;
-  \item \emph{Composition of paths over paths} $\cto : b_1 =^B_{p_1} b_2 \to b_2 =^B_{p_2} b_3 \to b_1 =^B_{p_1 \ct p_2} b_3$,
+  \item \emph{Unit} $\reflo{b_1} : b_1 =^B_{\refl{a_1}} b_1$;
+  \item \emph{Composition of paths over paths}
+    $\cto : b_1 =^B_{p_1} b_2 \to b_2 =^B_{p_2} b_3 \to b_1 =^B_{p_1 \ct p_2} b_3$,
     defined by induction first on $p_2$ and then on $r: b_2 = b_3$, by
-    setting $q \cto \refl{b_2} \defeq q$ for all $q: b_1 =^B_{p_1} b_2$;
-  \item \emph{Reversal of paths over paths} $({\blank})^{-o} : b_1 =^B_{p_1} b_2 \to b_2 =^B_{(p_1)^{-1}} b_1$,
+    setting $q \cto \reflo{b_2} \defeq q$ for all $q: b_1 =^B_{p_1} b_2$;
+  \item \emph{Left-recursive composition of paths over paths}
+    $\ctop : b_1 =^B_{p_1} b_2 \to b_2 =^B_{p_2} b_3 \to b_1 =^B_{p_1 \ct' p_2} b_3$,
+    where $\ct'$ is the left-recursive variant of $\ct$,
+    is similarly defined by induction on the left-hand arguments, by setting
+    $\reflo{b_1} \ctop q \defeq q$ for all $q: b_1 =^B_{p_1} b_2$;
+  \item \emph{Reversal of paths over paths}
+    $(\blank)\invo : b_1 =^B_{p_1} b_2 \to b_2 =^B_{(p_1)^{-1}} b_1$,
     defined by induction first on $p_1$ and then on $r: b_1 = b_2$, by
     setting $\refloi{b_1} \defeq \refl{b_1}$.
   \end{enumerate}
@@ -556,7 +563,7 @@ The proof is by induction on $\beta$ (for right-recursive composition).
 \begin{lemma}\label{lem:inv2-change-path}
   For every  $p,q:a_1=a_2$ and 2-path $\alpha : p = q$, taking
   $\alpha^- \defeq \ap{(\blank)^{-1}}(\alpha)$, we have
-  $(\cp{\alpha}(\hat p))^{-o} = \cp{\alpha^-}(\hat p^{-o})$
+  $(\cp{\alpha}(\hat p))\invo = \cp{\alpha^-}(\hat p\invo)$
   for every $\hat p: b_1=^B_p b_2$.
 \end{lemma}
  The proof is by induction on $\alpha$.
@@ -564,7 +571,7 @@ The proof is by induction on $\beta$ (for right-recursive composition).
 \begin{lemma}\label{lem:invlaw-change-path}
   For every  $p :a_1 = a_2$ define $\iota(p): p^{-1}\ct p = \refl{a_2}$
   by induction on $p$, by setting $\iota(\refl{a_1})\defeq \refl{\refl{a_1}}$.
-  Then we have $\cp{\iota(p)}(\hat p^{-o} \cto {\hat p}) = \refl{b_2}$
+  Then we have $\cp{\iota(p)}(\hat p\invo \cto {\hat p}) = \refl{b_2}$
   for every $\hat p: b_1=^B_p b_2$.
 \end{lemma}
  The proof is by induction on first $p$, and then on $\hat p$.
@@ -1083,7 +1090,7 @@ Fix $A:\TorZ\to\UU$, $a:A(\pt)$, and $p: a=^A_{\Zloop} a$.
 On the basis of this input data, we will construct a function $f$ of
 type $\prod_{Z:\TorZ} A(Z)$ that maps $\pt$ to $a$,
 as witnessed by some $r : f(\pt) = a$,
-and maps $\Zloop$ to $r \cto' p \cto r^{-1}$ (by dependent action on paths).
+and maps $\Zloop$ to $r \ctop p \cto r^{-1}$ (by dependent action on paths).
 We follow the pattern of the non-dependent case
 in \cref{sec:TorZ-recursion}, but keep in mind that
 $A$ is now not constant and $p$ is a \emph{path over a path}.
@@ -1157,11 +1164,11 @@ both $s^Z$ and $\delta^Z$.
     \prod_{z:\zet} h(z+1) = \cp{\delta^\pt_z}(p \cto h(z)).
   \]
   We show that $\sum_{a':A(\pt)} (a =^A_{s^\pt_0} {a'})$ is contractible.
-  Let $\rrfl$ be the reflexivity path at $a$ over $\refl{\pt}$.
+  Let $\reflo{a}$ be the reflexivity path at $a$ over $\refl{\pt}$.
   Note that $\sum_{a':A(\pt)} (a =^A_{\refl{\pt}} a') \jdeq \sum_{a':A(\pt)} (a = a')$
-  is contractible with center $(a,\rrfl)$. By \cref{lem:s-pt-zero}
+  is contractible with center $(a,\reflo{a})$. By \cref{lem:s-pt-zero}
   $\sum_{a':A(\pt)} (a =^A_{s^\pt_0} {a'})$ is contractible with center
-  $(a,\cp{\gamma_0}(\rrfl))$.
+  $(a,\cp{\gamma_0}(\reflo{a}))$.
 
   Thus, to show that $Q_p(\pt)$ is contractible,
   it suffices to define an equivalence
@@ -1192,7 +1199,7 @@ for the components, where
                = \cp{\delta^X_x}(p \cto \tilde c_p(X,x)).
 \end{align*}
 In particular, $q\defeq \tilde c_p(\pt,0) : a =^A_{s^\pt_0} c_p(\pt)$,
-so we can define $r\defeq \cp{(\gamma_0^-)^{-1}}(q^{-o}) : c_p(\pt) = a$
+so we can define $r\defeq \cp{(\gamma_0^-)^{-1}}(q\invo) : c_p(\pt) = a$
 (recall~\cref{lem:inv2-change-path}).
 We now proceed to elaborate $\apd{c_p}(\Zloop)$.
 
@@ -1213,7 +1220,7 @@ with $\iota$ as in \cref{lem:invlaw-change-path}.
 \begin{lemma}\label{lem:apd-c-tilde-c}
 For all $X,Y:\TorZ$, $e: X=Y$ and $x:X$ we have
 $\apd{c_p}(e) = \cp{\varepsilon_{e,x}}
-(\tilde c_p(X,x)^{-o}\cto \tilde c_p(Y,e(x)))$.
+(\tilde c_p(X,x)\invo\cto \tilde c_p(Y,e(x)))$.
 \end{lemma}
 \begin{proof}
 Induction on $e$ reduces the proof to the case $e\jdeq\refl{X}: X=X$,
@@ -1223,16 +1230,16 @@ We have the following paths over paths.
 \begin{align*}
 \apd{c_p}(e) &: c_p(X) =^A_e c_p(Y)\\
 \tilde c_p(Y,e(x)) &:  a =^A_{s^Y_{e(x)}} c_p(Y)\\
-\tilde c_p(X,x)^{-o} &: c_p(X) =^A_{(s^X_x)^{-1}} a\\
-\tilde c_p(X,x)^{-o} \cto c_p(Y,e(x)) &:
+\tilde c_p(X,x)\invo &: c_p(X) =^A_{(s^X_x)^{-1}} a\\
+\tilde c_p(X,x)\invo \cto c_p(Y,e(x)) &:
      c_p(X) =^A_{(s^X_x)^{-1}\ct s^Y_{e(x)}} c_p(Y)
 \end{align*}
 In order to make ends meet between the first and the fourth typing
 we invoke \cref{lem:s-X-x-*-e} and \cref{def:pathover-change-path}.
 \end{proof}
 
-We're now ready to check that $\apd{c_p}(\Zloop) = r \cto' p \cto r^{-1}$,
-where we recall that $r\jdeq\cp{\gamma_0^-}(q^{-o})$ and $q\jdeq\tilde c_p(\pt,0)$.
+We're now ready to check that $\apd{c_p}(\Zloop) = r \ctop p \cto r^{-1}$,
+where we recall that $r\jdeq\cp{\gamma_0^-}(q\invo)$ and $q\jdeq\tilde c_p(\pt,0)$.
 A great simplification is obtained by using that $\TorZ$ is a groupoid:
 all $2$-paths having the same endpoints are equal.
 Hence the functions $\cp{\alpha}$ only depend on the (path-)type
@@ -1259,11 +1266,11 @@ We now calculate:
 \begin{align*}
   \apd{c_p}(\Zloop)
   &= \cp{\varepsilon_{\Zloop,0}}
-    \bigl(\tilde c_p(\pt,0)^{-o} \cto \tilde c_p(\pt,1)\bigr) \\
+    \bigl(\tilde c_p(\pt,0)\invo \cto \tilde c_p(\pt,1)\bigr) \\
   &= \cp{\alpha\ct\beta\ct\gamma}
-    \bigl(q^{-o} \cto \cp{\delta_0}(p \cto q)\bigr) \\
+    \bigl(q\invo \cto \cp{\delta_0}(p \cto q)\bigr) \\
   &= \cp{\gamma}\biggl(\cp{\beta}\Bigl(\cp{\alpha}
-    \bigl(q^{-o} \cto \cp{\delta_0}(p \cto q)\bigr)\Bigr)\biggr) \\
+    \bigl(q\invo \cto \cp{\delta_0}(p \cto q)\bigr)\Bigr)\biggr) \\
   &= \cp{\gamma}\biggl(\cp{\beta}\Bigl(
     r \cto \cp{\delta_0^{-1}}\bigl(\cp{\delta_0}(p \cto q)\bigr)
     \Bigr)\biggr) \\
@@ -1271,15 +1278,15 @@ We now calculate:
     r \cto (p \cto q)\bigr)\Bigr) \\
   &= \cp{\gamma}\Bigl(r \cto \bigl(p \cto \cp{\gamma_0^{-1}}(q)\bigl)\Bigr) \\
   &= \cp{\gamma}\Bigl(r \cto \bigl(p \cto r^{-1}\bigl)\Bigr) \\
-  &= r \cto' p \cto r^{-1}
+  &= r \ctop p \cto r^{-1}
 \end{align*}
 In the last step, we use a final lemma \textcolor{red}{TODO}.
 
 If~\cref{cond:JDE}, and not just~\cref{cond:JNE}, holds,
 then we see that $c_p(\pt)\jdeq a$, and $r=\refl{a}$,
 since $\vec c_P(\pt)$ reduces to
-$\varphi_{a}^{-1}(a,\cp{\gamma_0}(\rrfl))$,
-which is a triple $(a,h,q)$, where $h(0)=\refl{a}$.
+$\varphi_{a}^{-1}(a,\cp{\gamma_0}(\reflo{a}))$,
+which is a triple $(a,h,q)$, where $h(0)=\cp{\gamma_0}(\reflo{a})$.
 
 \section{Interpretation in higher toposes}
 \label{sec:topos}
