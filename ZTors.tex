@@ -1406,9 +1406,9 @@ a set of generators, $S$, with decidable equality.
 Explicitly, we expect that it is possible in our setting to
 prove that $BG$ satisfies the induction principle for a higher inductive
 type with a point constructor $\pt : BG$ and a path constructor
-$\Zloop_{\blank} : S \to \pt =_{BG} \pt$:
+$\Zloop_{\blank} : S \to (\pt =_{BG} \pt)$:
 \[
-  \prod_{A: \TorZ\to\UU}
+  \prod_{A: BG\to\UU}
   \prod_{a: A(\pt)}
   \prod_{p: \prod_{s:S} a=^A_{\Zloop_s} a}
   \sum_{f: \prod_{z:BG} A(z)}
