@@ -1401,8 +1401,20 @@ with ${\ind}_A$ mapping $(a,p)$ to $c_p$ satisfying $c_p(\pt) \jdeq a$
 and $\apd{c_p}(\Zloop) = p$.
 
 It would be interesting to see whether our method can be generalised
-from $\TorZ$ to the type of $G$-torsors, where $G$ is a free group with
-a set of generators with decidable equality.
+from $\TorZ$ to the type $BG$ of $G$-torsors, where $G$ is a free group with
+a set of generators, $S$, with decidable equality.
+Explicitly, we expect that it is possible in our setting to
+prove that $BG$ satisfies the induction principle for a higher inductive
+type with a point constructor $\pt : BG$ and a path constructor
+$\Zloop_{\blank} : S \to \pt =_{BG} \pt$:
+\[
+  \prod_{A: \TorZ\to\UU}
+  \prod_{a: A(\pt)}
+  \prod_{p: \prod_{s:S} a=^A_{\Zloop_s} a}
+  \sum_{f: \prod_{z:BG} A(z)}
+  \sum_{r: f(\pt)= a}
+  \prod_{s:S}{\apd{f}(\Zloop_s) = r\ctop p_s \cto r^{-1}}.
+\]
 
 \section{Acknowledgements}
 Bezem, Buchholtz, and Grayson acknowledge the support of the Centre for Advanced Study (CAS)
