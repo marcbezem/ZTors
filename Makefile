@@ -2,4 +2,4 @@ all : ZTors.pdf
 ZTors.pdf : ZTors.tex papers.bib
 	latexmk -pdf ZTors
 clean :
-	latexmk -c ZTors ; rm ZTors.run.xml
+	rm -f *.fls *.log *.fdb_latexmk *.blg *.bbl *.brf *.aux *.toc *.out *.synctex*
