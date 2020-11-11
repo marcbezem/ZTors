@@ -234,6 +234,11 @@ including\footnote{%
     \Shom(\mathcal C,\mathcal A) \defeq
     \sum_{f : C \to A}~\sum_{r:f(c)=a}~ \ap{f}(s)=r \ct p \ct r^{-1}.
   \end{equation}
+  (The type $\Shom(\mathcal C,\mathcal A)$ is equivalent to the type
+  $$
+    \sum_{f : C \to A} (f(c),\ap{f}(s)) = (a,p),
+  $$
+  where the pairs are regarded as elements of $\sum_{a:A} a=a$.)
 \item[Universal property]
   For any type $A:\UU$, the map that evaluates a function $f : C \to A$
   at $c$ and $s$,
@@ -255,7 +260,12 @@ including\footnote{%
   \end{equation}
   (Here $\apd{}$ is as defined in \cite[2.3]{hottbook};
   we recall the basics of paths over a path, and the accompanying
-  operations, in \cref{sec:pathovers} below.)
+  operations, in \cref{sec:pathovers} below.
+  The type $\Ssect(\mathcal A)$ is equivalent to the type
+  $$
+    \sum_{f : C \to A} (f(c),\apd{f}(s)) = (a,p),
+  $$
+  where the pairs are regarded as elements of $\sum_{a:A} a=^A_s a$.)
 \item[Dependent universal property]
   For any type family $A : C \to \UU$, the map that evaluates a function
   $f : \prod_{z:C} A(z)$ at $c$ and $s$,
