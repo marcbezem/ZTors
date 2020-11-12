@@ -63,10 +63,14 @@ In standard homotopy theory it is well known that the \emph{classifying space} o
 homotopy equivalent to the circle.  We aim to reproduce that result in synthetic homotopy theory in a way that doesn't presuppose the existence of a circle.
 
 The traditional algebraic notion of $\ZZ$-torsor yields a category whose objects are the $\ZZ$-torsors.
-Moreover, all the arrows of this category are isomorphisms, and
-one specific object---namely $\ZZ$ itself---is the trivial $\ZZ$-torsor, whose automorphism group is $\ZZ$.
-Due to univalence, the type $\TorZ$ of all $\ZZ$-torsors
-is a connected pointed type whose fundamental group is $\ZZ$; we may call it the \emph{classifying type} of $\ZZ$.
+Moreover, this category is a groupoid (all arrows are isomorphisms), and
+one specific object---namely $\ZZ$ itself---is the trivial $\ZZ$-torsor,
+whose automorphism group is $\ZZ$,
+and to which every other object is merely isomorphic.
+In univalent type theory, this category is thus
+completely captured by the type $\TorZ$ of all $\ZZ$-torsors, which
+is a connected pointed $1$-type whose fundamental group is $\ZZ$;
+we may call it the \emph{classifying type} of $\ZZ$.
 In this paper we show that $\TorZ$ behaves the way a circle ought to behave,
 by establishing that maps from it to other types (or families of types) are freely determined
 by the destinations of the base point and the canonical loop at the base point (corresponding to the element $1$ of $\ZZ$).
