@@ -323,7 +323,7 @@ which states that, given a type $A$, an element $a$ of $A$ and a
 path $p:a=_A a$, one can construct a function $f:\TorZ\to A$
 with a path $r:f(\pt)=a$ such that $\ap{f}(\Zloop)=r \ct l \ct r^{-1}$.
 This construction was formalised by Grayson
-in 2014, see \cite{circlerec-Dan}.\footnote{Our construction here uses the
+in 2014, see \cite[\href{https://github.com/UniMath/UniMath/blob/master/UniMath/SyntheticHomotopyTheory/Circle.v}{Circle.v}]{UniMath}.\footnote{Our construction here uses the
 same basic idea but manages the computations involved in establishing the
 induction principle differently.}
 This however only proves \emph{weak} initiality, or equivalently,
@@ -336,7 +336,7 @@ Shulman sketched an approach to the induction principle, see \cite{circleind-Mik
 Independently of this, but also departing from Grayson's proof of the
 recursion principle, Buchholtz and Bezem found the construction
 presented in this paper, which has subsequently been formalized
-by Grayson \cite{circleind-Dan,circleind-Dan-theorem} in \UniMath.
+by Grayson \cite[\href{https://github.com/UniMath/UniMath/blob/d5e570/UniMath/SyntheticHomotopyTheory/Circle2.v\#L268}{Circle2.v, line 268}]{UniMath} in \UniMath.
 
 Spelling out the induction principle, we have to construct a
 function of the following type:
@@ -483,7 +483,7 @@ In this section we present some additional results that are needed in the sequel
 
 
 All proofs in this subsection are by (nested) induction as indicated in the text,
-and can moreover be found in \cite{paths-over-formalized}.
+and can moreover be found in \cite[\href{https://github.com/UniMath/UniMath/blob/master/UniMath/MoreFoundations/PathsOver.v}{PathsOver.v}]{paths-over-formalized}.
 
 Let $A : \UU$, $B : A \to \UU$, $a_i:A$, $b_i:B(a_i)$ for $i=1,2$, and $p : a_1 = a_2$.
 We are interested in identifications of $b_1$ and $b_2$ relative to this data.
@@ -543,7 +543,8 @@ Since they are of different types, they cannot be compared directly, but there i
 equivalence $\varepsilon$ of type $\left( b_1 =^B_{p_1\ct (p_2\ct p_3)} b_4 \right) \equiv \left( b_1 =^B_{(p_1\ct p_2) \ct p_3} b_4 \right)$
 constructed from the associativity law for paths of type $p_1\ct(p_2\ct p_3) = (p_1\ct p_2)\ct p_3$.
 The associativity law for composition of paths over paths is an easily constructed identity of type $\varepsilon(q_1 \cto (q_2 \cto q_3)) = (q_1 \cto q_2)\cto q_3$.
-For more information we refer the reader to the repositories with formalized proofs \cite{circleind-Dan}.
+For more information we refer the reader to the repositories with formalized proofs
+\cite[\href{https://github.com/UniMath/UniMath/blob/master/UniMath/SyntheticHomotopyTheory/Circle2.v}{Circle2.v}]{UniMath}.
 
 In the rest of this section we work in a context with
 $A : \UU$, $B : A \to \UU$, $a_i:A$, $b_i:B(a_i)$ for $i=1,2,3$,
@@ -860,8 +861,10 @@ We formulate this precisely as follows.
   that sends $(h,q)$ to $h(0)$ is an equivalence.
 \end{theorem}
 
-See \cite{Z-induction-formalized,Z-induction-torsor-formalized} for the formalization of the proof,
-as well as the formalization of a version for $\zet$-torsors.
+See \cite[\href{https://github.com/UniMath/UniMath/blob/c856a5/UniMath/SyntheticHomotopyTheory/AffineLine.v\#L167}{AffineLine.v, line 167}]{UniMath}
+for the formalization of the proof, and
+see \cite[\href{https://github.com/UniMath/UniMath/blob/c856a5/UniMath/SyntheticHomotopyTheory/AffineLine.v\#L242}{AffineLine.v, line 242}]{UniMath}
+for the formalization of a version for $\zet$-torsors.
 
 \begin{proof}
   We prove that the fiber over any $p : P(0)$ is contractible.
@@ -903,8 +906,8 @@ In this section, pairs $(X,f)$ will be of type $\sum_{X:\UU}(X\to X)$.
 Moreover, nested pairs will be written as tuples.
 With these notational simplifications, we rephrase some definitions from
 \cref{sec:preview-Z-tors}.
-The formalization of \cref{sec:TorZ-recursion} can be found in \cite{circlerec-Dan},
-and that of \cref{sec:TorZ-induction} can be found in in \cite{circleind-Dan}.
+The formalization of \cref{sec:TorZ-recursion} can be found in \cite[\href{https://github.com/UniMath/UniMath/blob/master/UniMath/SyntheticHomotopyTheory/Circle.v}{Circle.v}]{UniMath},
+and that of \cref{sec:TorZ-induction} can be found in in \cite[\href{https://github.com/UniMath/UniMath/blob/master/UniMath/SyntheticHomotopyTheory/Circle2.v}{Circle2.v}]{UniMath}.
 
 \begin{definition}\label{def:TorZ}
   The pointed type of $\zet$-torsors is defined by
