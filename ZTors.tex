@@ -937,7 +937,7 @@ Let $P(Z)$ be a proposition for all $Z:\TorZ$, and assume we have a proof
 $p:P(\pt)$. Let $(X,f,t):\TorZ$, then $t :\Trunc{(\zet,s)=(X,f)}$.
 Since $P(X,f,t)$ is a proposition, it suffices by \cref{lem:proptruncind}
 to prove $P(X,f,\trunc{e})$ for all $e:(\zet,s)=(X,f)$.
-By induction on $e$ we reduce the task to proving $P(\zet,s,\trunc{\refl{(Z,s)}})$, which is
+By induction on $e$ we reduce the task to proving $P(\zet,s,\trunc{\refl{(\zet,s)}})$, which is
 the same as $P(\pt)$, so $p$ provides the proof.
 \end{proof}
 
@@ -1121,7 +1121,7 @@ and $s: \zet\to\zet$ is an equivalence.
 
 Note that for fixed $x:X$ the expression $\ptoe{q}^{-1}(x)+n$ can be seen as
 the function shifting $n:\zet$ by $\ptoe{q}^{-1}(x)$ positions, indeed an equivalence.
-Hence $f^n(x)$ as a function of $n$ is an equivalence from $Z$ to $X$.
+Hence $f^n(x)$ as a function of $n$ is an equivalence from $\zet$ to $X$.
 For simplicity, we may denote $f^n(x)$ by $x+n$.
 
 \begin{definition}\label{def:loop-s-iterated}
