@@ -236,13 +236,16 @@ including\footnote{%
   is contractible, where this type of algebra homomorphisms is
   \begin{equation}\label{eq:circle-hom}
     \Shom(\mathcal C,\mathcal A) \defeq
-    \sum_{f : C \to A}~\sum_{r:f(c)=a}~ \ap{f}(s)=r \ct p \ct r^{-1}.
+    \sum_{f : C \to A}~\sum_{r:f(c)=a}~ \ap{f}(s)=^{\tilde A}_r p,
   \end{equation}
+  where $\tilde A(y) \defeq (y=y)$;
+  we recall the basics of paths over a path, and the accompanying
+  operations, in \cref{sec:pathovers} below.
   (The type $\Shom(\mathcal C,\mathcal A)$ is equivalent to the type
-  $$
+  \[
     \sum_{f : C \to A} (f(c),\ap{f}(s)) = (a,p),
-  $$
-  where the pairs are regarded as elements of $\sum_{a:A} a=a$.)
+  \]
+  where the pairs are regarded as elements of $\sum_{y:A} \tilde A(y)$.)
 \item[Universal property]
   For any type $A:\UU$, the map that evaluates a function $f : C \to A$
   at $c$ and $s$,
@@ -260,16 +263,15 @@ including\footnote{%
     \Ssect(\mathcal A) \defeq
     \sum_{f: \prod_{z:C} A(z)}~
     \sum_{r: f(c) = a}~
-    {\apd{f}(s) = r \ctop p \cto r^{-1}}.
+    \apd{f}(s) =^{\tilde A}_r p,
   \end{equation}
+  where $\tilde A(y) \defeq (y =^A_s y)$.
   (Here $\apd{}$ is as defined in \cite[2.3]{hottbook};
-  we recall the basics of paths over a path, and the accompanying
-  operations, in \cref{sec:pathovers} below.
-  The type $\Ssect(\mathcal A)$ is equivalent to the type
-  $$
+  the type $\Ssect(\mathcal A)$ is equivalent to the type
+  \[
     \sum_{f: \prod_{z:C} A(z)} (f(c),\apd{f}(s)) = (a,p),
-  $$
-  where the pairs are regarded as elements of $\sum_{a:A} a=^A_s a$.)
+  \]
+  where the pairs are regarded as elements of $\sum_{y:A(c)}\tilde A(y)$.)
 \item[Dependent universal property]
   For any type family $A : C \to \UU$, the map that evaluates a function
   $f : \prod_{z:C} A(z)$ at $c$ and $s$,
@@ -302,9 +304,10 @@ $\mathcal C'\jdeq(C',c',s')$, the canonical function
 \[
   (\mathcal C =_{\CircleAlg} \mathcal C')
   \to
-  \sum_{f : C \to C'}~\sum_{r:f(c)=c'}~(\ap{f}(s)=r \ct s' \ct r^{-1})
-  \times \isEq(f)
+  \sum_{f : C \to C'}~\sum_{r:f(c)=c'}~(\ap{f}(s)=_r^{\tilde C'} s')
+  \times \isEq(f),
 \]
+where $\tilde C'(y) \defeq (y=y)$,
 is an equivalence.
 By homotopy initiality for circles,
 it then follows straight-forwardly that the type of circles
@@ -321,7 +324,8 @@ As a warm-up, we first prove in \cref{sec:TorZ-recursion}
 the \emph{recursion principle},
 which states that, given a type $A$, an element $a$ of $A$ and a
 path $p:a=_A a$, one can construct a function $f:\TorZ\to A$
-with a path $r:f(\pt)=a$ such that $\ap{f}(\Zloop)=r \ct l \ct r^{-1}$.
+with a path $r:f(\pt)=a$ such that $\ap{f}(\Zloop)=^{\tilde A}_r p$,
+or, equivalently, $\ap{f}(\Zloop) = r \ct (p \ct r^{-1})$.
 This construction was formalised by Grayson
 in 2014, see \cite[\href{https://github.com/UniMath/UniMath/blob/master/UniMath/SyntheticHomotopyTheory/Circle.v}{Circle.v}]{UniMath}.\footnote{Our construction here uses the
 same basic idea but manages the computations involved in establishing the
@@ -348,15 +352,9 @@ function of the following type:
   \prod_{p: a=^A_{\Zloop} a}
   \sum_{f: \prod_{z:\TorZ} A(z)}
   \sum_{r: f(\pt)= a}
-  {\apd{f}(\Zloop) = r\ctop p \cto r^{-1}}
+  \apd{f}(\Zloop) =^{\tilde A}_r p
 \end{equation}
-Note that $r$ above is a path between two elements of the same fiber $A(\pt)$.
-Hence $r$ and $r^{-1}$ are paths over $\refl{\pt}$ and can be composed with $p$.
-To simplify the statement, we use both the \emph{left recursive}
-composition $\ctop$ and the \emph{right recursive} $\cto$ composition
-of paths over paths.
-(A composition operation is called \emph{left recursive} if it computes to its right-hand argument when its
- left-hand argument is given by reflexivity; similarly with \emph{left} replaced by \emph{right}.)
+(Recall that $\tilde A(y) \jdeq (y =^A_\Zloop y)$ for $y : A(\pt)$.)
 
 \begin{figure}
   \centering
@@ -405,9 +403,10 @@ in order to make clearer diagrams.
 We draw the type family $A$ as a periodic fibration over this circle,
 and the goal is then to produce from the point $a$ and the path $p$ over $\Sloop$,
 the section $f$, the path $r$, and a final element inhabiting
-the type $\apd{f}(\Zloop) = r\ctop p \cto r^{-1}$, which is equivalent to
-$\apd{f}(\Zloop) =^{\lambda z, z=^A_{\Zloop}z}_r p$,
-and which corresponds to filling the inside of the curvilinear quadrilateral in \cref{fig:circle-induction}.
+the type $\apd{f}(\Zloop) =^{\tilde A}_r p$,
+which corresponds to filling the inside of the curvilinear quadrilateral in \cref{fig:circle-induction}.
+(This will be made precise in course of the argument below,
+in terms of compositions of paths over paths.)
 
 Our construction uses the propositional truncation operation $\Trunc{\blank}$,
 as in \cite[6.9]{hottbook},
@@ -434,10 +433,10 @@ then our construction for the induction principle in \cref{eq:circle-induction} 
 Its application to $A,a,p$ of appropriate types
 is a triple $(f,r,q)$ where $f$ is a section of $A$ and $r : f(\pt)= a$.
 In this case, $f(\pt)\jdeq a$, but in general we won't have $r \jdeq \refl{a}$.
-However, the expression $\bar r\ctop p \cto \bar r^{-1}$ is well-typed
+However, the type $\apd{f}(\Zloop) =^{\tilde A}_{\bar r} p$ makes sense
 for all $\bar r : a=a$, and we'll have that $r = \refl{a}$,
 so we may transport $q$ to obtain an element of type
-$\apd{f}(\Zloop) = \refl{a} \ctop p \cto \refl{a}^{-1}$.
+$\apd{f}(\Zloop) =^{\tilde A}_{\refl{a}} p$.
 This type is judgmentally equal to $\apd{f}(\Zloop)=p$.
 
 In a type theory where higher inductive types are admitted,
@@ -519,11 +518,6 @@ We define the unit path over a path, composition of paths over paths, and revers
     $\cto : b_1 =^B_{p_1} b_2 \to b_2 =^B_{p_2} b_3 \to b_1 =^B_{p_1 \ct p_2} b_3$,
     defined by induction first on $p_2$ and then on $r: b_2 = b_3$, by
     setting $q \cto \reflo{b_2} \defeq q$ for all $q: b_1 =^B_{p_1} b_2$;
-  \item \emph{Left-recursive composition of paths over paths}
-    $\ctop : b_1 =^B_{p_1} b_2 \to b_2 =^B_{p_2} b_3 \to b_1 =^B_{p_1 \ct' p_2} b_3$,
-    where $\ct'$ is the left-recursive variant of $\ct$,
-    is similarly defined by induction on the left-hand arguments, by setting
-    $\reflo{b_1} \ctop q \defeq q$ for all $q: b_1 =^B_{p_1} b_2$;
   \item \emph{Reversal of paths over paths}
     $(\blank)\invo : b_1 =^B_{p_1} b_2 \to b_2 =^B_{(p_1)^{-1}} b_1$,
     defined by induction first on $p_1$ and then on $r: b_1 = b_2$, by
@@ -584,7 +578,7 @@ The proof is by induction on $\beta$ (for right-recursive composition).
   $(\cp{\alpha}(\hat p))\invo = \cp{\alpha^-}(\hat p\invo)$
   for every $\hat p: b_1=^B_p b_2$.
 \end{lemma}
- The proof is by induction on $\alpha$.
+The proof is by induction on $\alpha$.
 
 \begin{lemma}\label{lem:invlaw-change-path}
   For every  $p :a_1 = a_2$ define $\iota(p): p^{-1}\ct p = \refl{a_2}$
@@ -592,8 +586,14 @@ The proof is by induction on $\beta$ (for right-recursive composition).
   Then we have $\cp{\iota(p)}(\hat p\invo \cto {\hat p}) = \refl{b_2}$
   for every $\hat p: b_1=^B_p b_2$.
 \end{lemma}
- The proof is by induction on first $p$, and then on $\hat p$.
+The proof is by induction on first $p$, and then on $\hat p$.
 
+\begin{lemma}\label{lem:unitlaw-change-path}
+  For every  $p :a_1 = a_2$ define $\gamma(p): \refl{a_1} \ct\, p = p$
+  by induction on $p$, setting $\gamma(\refl{a_1})\defeq \refl{\refl{a_1}}$.
+  Then we have $\cp{\gamma(p)}(\reflo{b_1} \cto {\hat p}) = \hat p$
+  for every $\hat p: b_1=^B_p b_2$.
+\end{lemma}
 
 \begin{definition}\label{lem:compo-ap-ap}
   For every  $p,p':a_1=a_2$, $q,q':a_2=a_3$ and 2-paths
@@ -874,8 +874,9 @@ for the formalization of a version for $\zet$-torsors.
   with $h_0 : P(0)$, $h_+ : \prod_{n:\NN}P(n+1)$,  and $h_- : \prod_{n:\NN} P(-n-1)$.
   Since $h(0)=p$ only depends on $h_0$ the pair $(h_0,r)$ with  $r : h_0 = p$
   contracts away, so we're left with the type
-  $$ \varphi^{-1}(p) \equiv \psi_+(p) \times \psi_-(p), $$
-  \bgroup
+  \[
+    \varphi^{-1}(p) \equiv \psi_+(p) \times \psi_-(p),
+  \]
   where $\psi_+(p)$ and $\psi_-(p)$ are defined as follows.
   \begin{align*}
     \psi_+(p) & \defeq  \sum_{h_+ : \prod_{n:\NN}P(n+1)}  \bigl((h_+(0) = f_0(p))         \\
@@ -888,7 +889,6 @@ for the formalization of a version for $\zet$-torsors.
   specifies that this function has a certain value at $0$,
   and prescribes the value of the function at all successors.
   Such a specification is unique by the universal property (induction) of $\NN$.
-  \egroup
 \end{proof}
 
 Let us spell out the inverse function produced in the proof.
@@ -912,8 +912,8 @@ and that of \cref{sec:TorZ-induction} can be found in in \cite[\href{https://git
 \begin{definition}\label{def:TorZ}
   The pointed type of $\zet$-torsors is defined by
   \begin{align*}
-    \TorZ &\defeq \sum_{(X,f)}\Trunc{(\zet,s)=(X,f)}  \\
-    \pt & \defeq (\zet,s,\trunc{\refl{(\zet,s)}}) : \TorZ
+    \TorZ &\defeq \sum_{(X,f)}\Trunc{(\zet,s)=(X,f)},  \\
+    \pt & \defeq (\zet,s,\trunc{\refl{(\zet,s)}}) : \TorZ .
   \end{align*}
   The variables $X,Y,Z$ will be used for elements of $\TorZ$,
   as well as, by an abuse of notation, for their the first components.
@@ -962,7 +962,7 @@ namely that there is a function of the following type:
   \prod_{p: a=_A a}
   \sum_{f: \TorZ \to A}
   \sum_{r: f(\pt)= a}
-  {\ap{f}(\Zloop) = r\ct p \ct r^{-1}}.
+  \ap{f}(\Zloop) =^{\tilde A}_r p.
 \end{equation}
 
 Although the same method works to derive both the recursion and the induction principles,
@@ -974,7 +974,12 @@ and prepares the way for the more complicated induction principle.
 Fix $A:\UU$, $a:A$ and $p: a=_A a$.
 We want to construct a function $f$ from $\TorZ$ to $A$
 that maps $\pt$ to $a$, as witnessed by some $r : f(\pt) = a$,
-and maps $\Zloop$ to $r\ct p\ct r^{-1}$ (by action on paths).
+such that $\ap{f}(\Zloop) =^{\tilde A}_r p$.
+As mentioned in \cref{sec:TorZ-circle},
+the last requirement is equivalent to $\ap{f}(\Zloop) = r \ct (p \ct r^{-1})$.
+This is because $\trp{\tilde A,r^{-1}}(p) = r \ct (p \ct r^{-1})$,
+which in turns follows from the groupoid law $p = \refl{} \ct\, p$
+upon induction on $r$.
 
 All input data is present in $p$ and its type.
 When defining types and functions depending on the input data,
@@ -1079,7 +1084,7 @@ In any case, let $r \defeq \tilde c_p(\pt,0)^{-1} : c_p(\pt) = a$,
 which reduces under~\cref{cond:JNE} to $\refl{a}$.
 %The situation is depicted in \cref{fig:TorZ-recursion}.
 We will now deal with the other goal,
-namely that $c_p$ acting on $\Zloop$ yields $r \ct p \ct r^{-1}$.
+namely that $c_p$ acting on $\Zloop$ yields $r \ct (p \ct r^{-1})$.
 
 \begin{lemma}\label{lem:ap-c-tilde-c}
 For all $X,Y:\TorZ$, $e: X=Y$ and $x:X$ we have
@@ -1100,7 +1105,7 @@ Note that $\hat c_p(\pt,0) : \tilde c_p(\pt,1) = p \ct \tilde c_p(\pt,0)$.
 Hence, taking $z\defeq 0$ in \cref{lem:ap-c-tilde-c}, it follows that
 \[
   \ap{c_p}(\Zloop) = \tilde c_p(\pt,0)^{-1} \ct \tilde c_p(\pt,1)
-  = r \ct p \ct r^{-1}.
+  = r \ct (p \ct r^{-1}).
 \]
 This means we have achieved our second goal as well,
 and we've produced an element of the type \eqref{eq:circle-recursion}.
@@ -1111,7 +1116,7 @@ Fix $A:\TorZ\to\UU$, $a:A(\pt)$, and $p: a=^A_{\Zloop} a$.
 On the basis of this input data, we will construct a function $f$ of
 type $\prod_{Z:\TorZ} A(Z)$ that maps $\pt$ to $a$,
 as witnessed by some $r : f(\pt) = a$,
-and maps $\Zloop$ to $r \ctop p \cto r^{-1}$ (by dependent action on paths).
+such that $\apd{f}(\Zloop) =^{\tilde A}_r p$.
 We follow the pattern of the non-dependent case
 in \cref{sec:TorZ-recursion}, but keep in mind that
 $A$ is now not constant and $p$ is a \emph{path over a path}.
@@ -1222,7 +1227,9 @@ for the components, where
 In particular, $q\defeq \tilde c_p(\pt,0) : a =^A_{s^\pt_0} c_p(\pt)$,
 so we can define $r\defeq \cp{(\gamma_0^{-1})^-}(q\invo) : c_p(\pt) = a$
 (recall~\cref{lem:inv2-change-path}).
-We now proceed to elaborate $\apd{c_p}(\Zloop)$.
+
+We now proceed to establish that $\apd{c_p}(\Zloop) =^{\tilde A}_r p$.
+Again we work be elaborating $\apd{c_p}(\Zloop)$.
 
 \begin{lemma}\label{lem:s-X-x-*-e}
   For all $X,Y:\TorZ$, $e: X=Y$ and $x:X$ we have a path
@@ -1259,8 +1266,7 @@ In order to make ends meet between the first and the fourth typing
 we invoke \cref{lem:s-X-x-*-e} and \cref{def:pathover-change-path}.
 \end{proof}
 
-We're now ready to check that $\apd{c_p}(\Zloop) = r \ctop p \cto r^{-1}$,
-where we recall that $r\jdeq\cp{(\gamma_0^{-1})^-}(q\invo)$ and $q\jdeq\tilde c_p(\pt,0)$.
+We're now ready to calculate $\apd{c_p}(\Zloop)$.
 A great simplification is obtained by using that $\TorZ$ is a groupoid:
 all $2$-paths having the same endpoints are equal.
 Hence the functions $\cp{\alpha}$ only depend on the (path-)type
@@ -1282,8 +1288,8 @@ s_0^{-1} \ct s_1 \stackrel{\alpha}{=}
 Here $\alpha\defeq\apc((\gamma_0^{-1})^-,\delta_0^{-1})$ and
 $\beta\defeq\apc(\refl{\refl{\pt}},\apc(\refl{\Zloop},\gamma_0^{-1}))$ are constructed with $\apc$ so as to
 enable the application of \cref{lem:compo-change-path}.
-We now calculate:
-
+We now calculate, recalling that $r\jdeq\cp{(\gamma_0^{-1})^-}(q\invo)$
+and $q\jdeq\tilde c_p(\pt,0)$:
 \begin{align*}
   \apd{c_p}(\Zloop)
   &= \cp{\varepsilon_{\Zloop,0}}
@@ -1298,20 +1304,24 @@ We now calculate:
   &= \cp{\gamma}\Bigl(\cp{\beta}\bigl(
     r \cto (p \cto q)\bigr)\Bigr) \\
   &= \cp{\gamma}\Bigl(r \cto \bigl(p \cto \cp{\gamma_0^{-1}}(q)\bigl)\Bigr) \\
-  &= \cp{\gamma}\Bigl(r \cto \bigl(p \cto r^{-1}\bigl)\Bigr) \\
-  &= r \ctop p \cto r^{-1}
+  &= \cp{\gamma}\Bigl(r \cto \bigl(p \cto r^{-1}\bigl)\Bigr)
 \end{align*}
-In the very last equality we used the following auxiliary lemma.
+To conclude that $\apd{c_p}(\Zloop) =^{\tilde A}_r p$, we only need
+a final auxiliary lemma.
+
 \begin{lemma}
-  For any $X : \UU$, $B : X \to \UU$, $x,x':X$, $b,c:B(x)$,
-  $c':B(x')$, $s : x=x'$, $r : b =^B_{\refl{x}} c$, and $q : c =^B_s c'$
+  For any $X : \UU$, $B : X \to \UU$, $x:X$, $b,c:B(x)$,
+  $s : x=x$, $r : b =^B_{\refl{x}} c$, and $q : c =^B_s c$
   we have
   \[
-    \cp{\gamma}(r \cto q) = r \ctop q,
+    \trp{\tilde B,r^{-1}}(q) =
+    \cp{\gamma(s)}(r \cto (q \cto r^{-1})),
   \]
-  where $\gamma : \refl{x} \ct s = s$ is defined by induction on $s$.
+  where $\tilde B(y) \defeq (y =^B_s y)$,
+  and $\gamma(s)$ is as in~\cref{lem:unitlaw-change-path}.
 \end{lemma}
-The proof is simply by induction on $s$, $r$, and $q$, in that order.
+The proof is by induction on $r$, reducing to the conclusion
+of~\cref{lem:unitlaw-change-path}.
 
 If~\cref{cond:JDE}, and not just~\cref{cond:JNE}, holds,
 then we see that $c_p(\pt)\jdeq a$, and $r=\refl{a}$,
@@ -1429,19 +1439,20 @@ prove that $BG$ satisfies the induction principle for a higher inductive
 type with a point constructor $\pt : BG$ and a path constructor
 $\Zloop_{\blank} : S \to (\pt =_{BG} \pt)$:
 \[
-  \prod_{A: BG\to\UU}
-  \prod_{a: A(\pt)}
-  \prod_{p: \prod_{s:S} a=^A_{\Zloop_s} a}
-  \sum_{f: \prod_{z:BG} A(z)}
-  \sum_{r: f(\pt)= a}
-  \prod_{s:S}{\apd{f}(\Zloop_s) = r\ctop p_s \cto r^{-1}}.
+  \prod_{A: BG\to\UU}~
+  \prod_{a: A(\pt)}~
+  \prod_{p: \prod_{s:S} a=^A_{\Zloop_s} a}~
+  \sum_{f: \prod_{z:BG} A(z)}~
+  \sum_{r: f(\pt)= a}~
+  \prod_{s:S}\apd{f}(\Zloop_s) =^{\tilde A_s}_r p_s,
 \]
+where $\tilde A_s(y) \defeq (y =^A_{\Zloop_s} y)$.
 
 \section{Acknowledgements}
 Bezem, Buchholtz, and Grayson acknowledge the support of the Centre for Advanced Study (CAS)
 at the Norwegian Academy of Science and Letters
 in Oslo, Norway, which funded and hosted the research project Homotopy Type Theory and Univalent Foundations during the academic year 2018/19.
-Grayson also acknowledges the support of the Air Force Office of Scientific Research, through a grant to Carnegie Mellon University. 
+Grayson also acknowledges the support of the Air Force Office of Scientific Research, through a grant to Carnegie Mellon University.
 Shulman was supported by The United States Air Force Research
     Laboratory under agreement number FA9550-15-1-0053.  The
     U.S. Government is authorized to reproduce and distribute reprints
