@@ -146,13 +146,10 @@ If the operation in the group $G$ is written additively, we'll echo that by writ
 
 In the case where $G$ is $\ZZ$, then since $\ZZ$ is a free group with one generator, an action of $\ZZ$ on a set $X$ is completely
 determined by the action of the integer $1$---it is a bijection $X \xrightarrow{\cong} X$ which we denote by $f$.
-Fixing $x_0\in X$, the corresponding bijection $e$ then satisfies
+Fixing $x_0\in X$, the corresponding bijection $e : \ZZ \to X$ then satisfies
   $e(s(n)) = (1+n) + x_0 = 1 + (n + x_0) = f(e(n))$ for all
 integers $n$.
-So the following diagram commutes.\footnote{%
-  For clarity, we distinguish between the \emph{group} $\ZZ$
-  and the \emph{underlying set} $\zet$.}
-% the transport of $s$ along (the path coming by univalence from) $e$ equals $f$.
+So the following diagram commutes.
 \[
 \begin{tikzpicture} %\large
    \matrix (m)
@@ -173,8 +170,8 @@ define an action of $\ZZ$ on $X$ by setting $n + x := f^n(x)$ for any $n \in \ZZ
 action is free and transitive.
 
 With the above considerations in mind, and recalling that, in the presence of univalence, isomorphisms correspond to identities,
-we consider pairs $(X,f)$ of type $\sum_{X:\UU}(X\to X)$,
-and we introduce \emph{the pointed type of $\ZZ$-torsors} by adopting the following definitions
+we consider pairs $(X,f)$ of type $\sum_{X:\UU}(X\to X)$
+and introduce \emph{the pointed type of $\ZZ$-torsors} by adopting the following definitions
 (cf.~\cref{def:TorZ}).
 \begin{align*}
   \TorZ &\defeq \sum_{(X,f)}\Trunc{(\zet,s)=(X,f)}  \\
@@ -586,7 +583,6 @@ The proof is by induction on $\alpha$.
   Then we have $\cp{\iota(p)}(\hat p\invo \cto {\hat p}) = \refl{b_2}$
   for every $\hat p: b_1=^B_p b_2$.
 \end{lemma}
-The proof is by induction on first $p$, and then on $\hat p$.
 
 \begin{lemma}\label{lem:unitlaw-change-path}
   For every  $p :a_1 = a_2$ define $\gamma(p): \refl{a_1} \ct\, p = p$
@@ -594,6 +590,8 @@ The proof is by induction on first $p$, and then on $\hat p$.
   Then we have $\cp{\gamma(p)}(\reflo{b_1} \cto {\hat p}) = \hat p$
   for every $\hat p: b_1=^B_p b_2$.
 \end{lemma}
+
+The proof is in both cases by induction on first $p$, and then on $\hat p$.
 
 \begin{definition}\label{lem:compo-ap-ap}
   For every  $p,p':a_1=a_2$, $q,q':a_2=a_3$ and 2-paths
@@ -1041,7 +1039,8 @@ The type $Q_p(X,f)$ is contractible for all $(X,f,t):\TorZ$.
   Thus, to show that $Q_p(\zet,s)$ is contractible,
   it suffices to define an equivalence
   \[
-    \varphi_{a'} : \biggl(\sum_{h:\zet \to a=a'}\prod_{z:\zet} h(z+1)=p\ct h(z)\biggr) \xrightarrow{\sim}{} (a=a')
+    \varphi_{a'} : \biggl(\sum_{h:\zet \to a=a'}\prod_{z:\zet} h(z+1)=p\ct h(z)\biggr)
+    \xrightarrow{\sim}{} (a=a')
   \]
   for each $a':A$.
   The intention is now to invoke \cref{thm:integers-univ-symm}.
@@ -1135,7 +1134,8 @@ and $s: \zet\to\zet$ is an equivalence.
 Note that for fixed $x:X$ the expression $\ptoe{q}^{-1}(x)+n$ can be seen as
 the function shifting $n:\zet$ by $\ptoe{q}^{-1}(x)$ positions, indeed an equivalence.
 Hence $f^n(x)$ as a function of $n$ is an equivalence from $\zet$ to $X$.
-For simplicity, we may denote $f^n(x)$ by $x+n$.
+Recall that we may denote $f^n(x)$ by $n+x$,
+as $X$ is a $\ZZ$-torsor via $f$.
 
 \begin{definition}\label{def:loop-s-iterated}
   For every $Z\defeq(X,f,t):\TorZ$ and $x:X$,
@@ -1221,7 +1221,7 @@ for the components, where
 \begin{align*}
          c_p &: \prod_{X:\TorZ} A(X),\\
   \tilde c_p &: \prod_{X:\TorZ}\prod_{x:X} a =^A_{s^X_x} c_p(X), \\
-    \hat c_p &: \prod_{X:\TorZ}\prod_{x:X} \tilde c_p(X,x+1)
+    \hat c_p &: \prod_{X:\TorZ}\prod_{x:X} \tilde c_p(X,1+x)
                = \cp{\delta^X_x}(p \cto \tilde c_p(X,x)).
 \end{align*}
 In particular, $q\defeq \tilde c_p(\pt,0) : a =^A_{s^\pt_0} c_p(\pt)$,
@@ -1248,7 +1248,8 @@ with $\iota$ as in \cref{lem:invlaw-change-path}.
 \begin{lemma}\label{lem:apd-c-tilde-c}
 For all $X,Y:\TorZ$, $e: X=Y$ and $x:X$ we have
 $\apd{c_p}(e) = \cp{\varepsilon_{e,x}}
-(\tilde c_p(X,x)\invo\cto \tilde c_p(Y,e(x)))$.
+(\tilde c_p(X,x)\invo\cto \tilde c_p(Y,\ptoe e(x)))$,
+where $\ptoe e$ is as above.
 \end{lemma}
 \begin{proof}
 Induction on $e$ reduces the proof to the case $e\jdeq\refl{X}: X=X$,
@@ -1257,10 +1258,10 @@ It remains to check that the general statement of the lemma is well-typed.
 We have the following paths over paths.
 \begin{align*}
 \apd{c_p}(e) &: c_p(X) =^A_e c_p(Y)\\
-\tilde c_p(Y,e(x)) &:  a =^A_{s^Y_{e(x)}} c_p(Y)\\
+\tilde c_p(Y,\ptoe e(x)) &:  a =^A_{s^Y_{\ptoe e(x)}} c_p(Y)\\
 \tilde c_p(X,x)\invo &: c_p(X) =^A_{(s^X_x)^{-1}} a\\
-\tilde c_p(X,x)\invo \cto c_p(Y,e(x)) &:
-     c_p(X) =^A_{(s^X_x)^{-1}\ct s^Y_{e(x)}} c_p(Y)
+\tilde c_p(X,x)\invo \cto c_p(Y,\ptoe e(x)) &:
+     c_p(X) =^A_{(s^X_x)^{-1}\ct s^Y_{\ptoe e(x)}} c_p(Y)
 \end{align*}
 In order to make ends meet between the first and the fourth typing
 we invoke \cref{lem:s-X-x-*-e} and \cref{def:pathover-change-path}.
@@ -1269,10 +1270,8 @@ we invoke \cref{lem:s-X-x-*-e} and \cref{def:pathover-change-path}.
 We're now ready to calculate $\apd{c_p}(\Zloop)$.
 A great simplification is obtained by using that $\TorZ$ is a groupoid:
 all $2$-paths having the same endpoints are equal.
-Hence the functions $\cp{\alpha}$ only depend on the (path-)type
-of $\alpha$, and we may replace the subscript $\alpha$ by its type.
-However, if $\alpha$ is shorter than its type we may
-prefer to keep $\alpha$ in $\cp{\alpha}$.
+Hence the functions $\cp{\alpha}$ only depend on the path-type
+of $\alpha$.
 Also, as $\cp{\refl{}}$ is the identity, so is any $\cp{\alpha}$
 when the endpoints of $\alpha$ are definitionally equal.
 We make extensive use of this simplification.
@@ -1320,8 +1319,8 @@ a final auxiliary lemma.
   where $\tilde B(y) \defeq (y =^B_s y)$,
   and $\gamma(s)$ is as in~\cref{lem:unitlaw-change-path}.
 \end{lemma}
-The proof is by induction on $r$, reducing to the conclusion
-of~\cref{lem:unitlaw-change-path}.
+The proof is by induction on $r$, followed by an appeal
+to~\cref{lem:unitlaw-change-path}.
 
 If~\cref{cond:JDE}, and not just~\cref{cond:JNE}, holds,
 then we see that $c_p(\pt)\jdeq a$, and $r=\refl{a}$,
@@ -1437,7 +1436,7 @@ a set of generators, $S$, with decidable equality.
 Explicitly, we expect that it is possible in our setting to
 prove that $BG$ satisfies the induction principle for a higher inductive
 type with a point constructor $\pt : BG$ and a path constructor
-$\Zloop_{\blank} : S \to (\pt =_{BG} \pt)$:
+$\Zloop_{\blank} : S \to (\pt =_{BG} \pt)$,
 \[
   \prod_{A: BG\to\UU}~
   \prod_{a: A(\pt)}~
