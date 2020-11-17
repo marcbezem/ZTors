@@ -97,10 +97,10 @@ $\pt : \Sc$, a path $\Sloop : \pt = \pt$, an induction principle (for defining f
 %
 Adding higher inductive types to the system would give another construction of the circle, equivalent to the one described above.
 %
-Voevodsky chose not to include higher inductive types, nor inductive types\footnote{\UniMath{} accepts just a few specific types
+Voevodsky chose not to include higher inductive types, nor inductive types,\footnote{\UniMath{} accepts just a few specific types
   and type formers that can be introduced as inductive types, namely: the finite types of cardinality at most 2, the natural numbers, binary
   coproducts, sums of families of types, and identity types.},
-to \UniMath{} for two chief reasons.
+in \UniMath{} for two chief reasons.
 %
 Firstly, it was (and still is) not clear how to specify precisely what a definition of a higher inductive type consists of: see
 \cite{HoTT-Agda-HIT,1705.07088} for two approaches.
@@ -115,6 +115,11 @@ At his death the series was well underway but far from complete: \cite{103,109,V
 His approach in the series is to interpret each of the basic constructions of the formal system as a traditional mathematical construction: a
 context is interpreted as a fibrant simplicial set, a type in a context is interpreted as a fibration of fibrant simplicial sets, an element of
 a type in a context is interpreted as a section of such a fibration, and so on.
+
+More recent work \cite{initiality-formalization,initiality}, unpublished but formalized, has established the initiality principle for the type
+theory used in \UniMath, which Voevodsky had emphasized as a crucial unproven step.  That, together with the simplicial set model described in
+\cite{1211.2851}, a paper which Voevodsky intended to rewrite completely, may arguably be regarded as establishing the consistency result that
+Voevodsky sought.
 
 We turn now to the content of this paper.
 
