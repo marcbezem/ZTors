@@ -1,6 +1,10 @@
 Answer to the reviewer who wrote BBG-Report.
 
-Thanks for all the constructive criticism! We have brought in Mike Shulman
+Thanks for all the constructive criticism!
+
+Regarding point (1), we now have this expanded discussion on p. 3,
+and we have added a new subsection 2.2 covering detailed aspects of
+the type of circles. We have brought in Mike Shulman
 as a co-author to help us address point (2).
 
 The few points that have not led to changes in the text are addressed below.
