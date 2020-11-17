@@ -8,25 +8,27 @@
 {
     \author{Marc Bezem}
     \address{Department of Informatics, University of Bergen}
-    \email{marc.bezem@uib.no}
-    \urladdr{https://www.ae-info.org/ae/Member/Bezem\_Marc}
+    \email{\href{mailto:marc.bezem@uib.no}{marc.bezem@uib.no}}
+    \urladdr{\url{https://www.ae-info.org/ae/Member/Bezem\_Marc}}
 }
 {
     \author{Ulrik Buchholtz}
-    \address{Department of Mathematics, Technische Universit\"at Darmstadt}
-    \email{ulrikbuchholtz@gmail.com}
-    \urladdr{https://www2.mathematik.tu-darmstadt.de/~buchholtz/}
+    \address{Department of Mathematics, Technical University of Darmstadt}
+    \email{\href{mailto:ulrikbuchholtz@gmail.com}{ulrikbuchholtz@gmail.com}}
+    \urladdr{\url{https://www2.mathematik.tu-darmstadt.de/~buchholtz/}}
 }
 {
     \author{Daniel R. Grayson}
-    \email{danielrichardgrayson@gmail.com}
-    \urladdr{http://dangrayson.com/}
+    \address{Department of Mathematics, University of Illinois at Urbana-Champaign}
+    \email{\href{mailto:danielrichardgrayson@gmail.com}%
+      {danielrichardgrayson@gmail.com}}
+    \urladdr{\url{http://dangrayson.com/}}
 }
 {
     \author{Michael Shulman}
     \address{Department of Mathematics, University of San Diego}
-    \email{shulman@sandiego.edu}
-    \urladdr{http://www.sandiego.edu/~shulman}
+    \email{\href{mailto:shulman@sandiego.edu}{shulman@sandiego.edu}}
+    \urladdr{\url{http://www.sandiego.edu/~shulman/}}
 }
 
 \date{\today}
@@ -136,9 +138,10 @@ In \cref{sec:topos} we discuss the interpretation of the main result
 in higher toposes, before we conclude in \cref{sec:conclusion}.
 
 
-\section{Precise formulation and discussion}\label{sec:statement}
+\section{Precise formulation and discussion}
+\label{sec:statement}
 
-\subsection{Preview of the type of $\ZZ$-torsors}
+\subsection{Preview of the type of \texorpdfstring{$\ZZ$}{Z}-torsors}
 \label{sec:preview-Z-tors}
 
 Recall that for a group $G$, a \emph{$G$-torsor} consists of a nonempty set $X$ and
@@ -308,7 +311,7 @@ $\mathcal C'\jdeq(C',c',s')$, the canonical function
   \sum_{f : C \to C'}~\sum_{r:f(c)=c'}~(\ap{f}(s)=_r^{\tilde C'} s')
   \times \isEq(f),
 \]
-where $\tilde C'(y) \defeq (y=y)$,
+where $\tilde C'(y) \defeq (y=y)$ for $y:C'$,
 is an equivalence.
 By homotopy initiality for circles,
 it then follows straight-forwardly that the type of circles
@@ -316,7 +319,8 @@ is a proposition, i.e.,
 independently of whether there are any circles,
 any two circles are uniquely identifiable.
 
-\subsection{$\TorZ$ is a circle}\label{sec:TorZ-circle}
+\subsection{\texorpdfstring{$\TorZ$}{TZ} is a circle}
+\label{sec:TorZ-circle}
 
 With this in hand, we can outline our route to proving
 that the circle algebra $(\TorZ,\pt,\Zloop)$ is a circle.
@@ -420,7 +424,7 @@ In the \UniMath{} formalization, propositional truncation is constructed as
   \Trunc X \defeq \prod_{P:\Prop}((X \to P) \to P),
 \end{equation}
 where $\Prop$ is the type of all propositions (in a chosen universe).
-From this construction, the corresponding non-dependent eliminator
+Using this construction, the corresponding non-dependent eliminator
 will compute judgmentally on the point constructor,
 but the dependent eliminator will not.
 As we explain below, this has the consequence that
@@ -473,7 +477,8 @@ the new model will not contain a $2$-sphere.
 The restricted model also shows that one cannot construct a circle in
 the lowest universe in \UniMath{}.
 
-\section{Auxiliary results}\label{sec:auxiliaries}
+\section{Auxiliary results}
+\label{sec:auxiliaries}
 
 In this section we present some additional results that are needed in the sequel.
 % and that cannot be found in \cite{hottbook}.
@@ -613,9 +618,10 @@ The proof is in both cases by induction on first $p$, and then on $\hat p$.
    \cp{\alpha}(\hat p) \cto  \cp{\beta}(\hat q),$
   for every $\hat p: b_1=^B_p b_2$ and $\hat q: b_2=^B_q b_3$.
 \end{lemma}
- The proof is by induction first on $\beta$, then on $q$, and finally on $\hat q$.
+The proof is by induction first on $\beta$, then on $q$, and finally on $\hat q$.
 
-\subsection{Dependent elimination for propositional truncation}\label{sec:proptrunc}
+\subsection{Dependent elimination for propositional truncation}
+\label{sec:proptrunc}
 
 One extra piece of knowledge we need is the \emph{dependent} elimination
 principle for propositional truncation, mentioned in \cite[6.9]{hottbook},
@@ -642,7 +648,7 @@ or using the impredicative encoding~\eqref{eq:trunc-impred}, as we verify below.
 
 \begin{lemma}\label{lem:proptruncind}
   If $A$ is a type and $B(x)$ is a family of propositions
-  parametrized by the elements $x$ of $\Trunc A$,
+  indexed by the elements $x$ of $\Trunc A$,
   and we are given $g : \prod_{a:A} B(\trunc a)$,
   then there is a function $f : \prod_{x:\Trunc A} B(x)$.
 \end{lemma}
@@ -814,7 +820,7 @@ $f : \prod_{n:\NN}(P(n) \to P(n+1))$ and
 $g : \prod_{n:\NN}(P(-n) \to P(-n-1))$,
 as illustrated in \cref{fig:integers-induction-asymmetric}.
 
-The function $h:\prod_{z:\ZZ}(P(z))$ thus defined satisfies
+The function $h:\prod_{z:\ZZ}(P(z))$ defined in this way satisfies
 $h(n+1)\jdeq f(n,h(n))$ and $h(-n-1)\jdeq g(n,h(-n))$ for all $n:\NN$.
 
 It is possible to give a more symmetric, but less general induction principle,
@@ -823,7 +829,7 @@ In that case we can reorient the $g$'s to point in the same direction as the $f$
 allowing us to combine them into a single family $f : \prod_{z:\zet}P(z) \equiv P(z+1)$ of equivalences,
 as illustrated in \cref{fig:integers-induction-symmetric}.
 
-\begin{figure}[h]
+\begin{figure}[b]
   \centering
   \begin{tikzpicture}
     \foreach \x in {-2,-1,0,1,2} {
@@ -866,7 +872,7 @@ We formulate this precisely as follows.
 See \cite[\href{https://github.com/UniMath/UniMath/blob/c856a5/UniMath/SyntheticHomotopyTheory/AffineLine.v\#L167}{AffineLine.v, commit c856a5, line 167}]{UniMath}
 for the formalization of the proof, and
 see \cite[\href{https://github.com/UniMath/UniMath/blob/c856a5/UniMath/SyntheticHomotopyTheory/AffineLine.v\#L242}{AffineLine.v, commit c856a5, line 242}]{UniMath}
-for the formalization of a version for $\zet$-torsors.
+for the formalization of a version for arbitrary $\zet$-torsors.
 
 \begin{proof}
   We prove that the fiber over any $p : P(0)$ is contractible.
@@ -902,7 +908,8 @@ is the function that takes $z:\zet$ to $f^z(p):P(z)$, where
   f^{-n-1}(p) &\defeq f_{-n-1}^{-1}(f^{-n}(p)),&\quad&\text{for $n:\NN$.}
 \end{alignat*}
 
-\section{Main results}\label{sec:ZTorsors}
+\section{Main results}
+\label{sec:ZTorsors}
 
 In this section, pairs $(X,f)$ will be of type $\sum_{X:\UU}(X\to X)$.
 Moreover, nested pairs will be written as tuples.
@@ -971,7 +978,8 @@ Although the same method works to derive both the recursion and the induction pr
 we opt to do the recursion principle first, as it is slightly simpler,
 and prepares the way for the more complicated induction principle.
 
-\subsection{Recursion in $\TorZ$}\label{sec:TorZ-recursion}
+\subsection{Recursion in \texorpdfstring{$\TorZ$}{TZ}}
+\label{sec:TorZ-recursion}
 
 Fix $A:\UU$, $a:A$ and $p: a=_A a$.
 We want to construct a function $f$ from $\TorZ$ to $A$
@@ -992,9 +1000,9 @@ The idea is to find a correspondence\footnote{%
   A \emph{correspondence} (or \emph{span})
   from a type $T$ to a type $T'$ is a type $C$
   with projections $\pr_1 : C \to T$ and $\pr_2 : C \to T'$.}
-from $\TorZ$ to $A$ whose first projection is an equivalence, thereby yielding a map from $\TorZ$ to $A$.
+from $\TorZ$ to $A$ whose first projection is an equivalence, thereby yielding a map from $\TorZ$ to $A$, cf.~\cref{fig:TorZ-recursion}.
 
-\begin{figure}
+\begin{figure}[t]
   \begin{tikzpicture}[commutative diagrams/every diagram,
     execute at begin node=$, execute at end node=$]
   \node (C) {%
@@ -1113,7 +1121,8 @@ Hence, taking $z\defeq 0$ in \cref{lem:ap-c-tilde-c}, it follows that
 This means we have achieved our second goal as well,
 and we've produced an element of the type \eqref{eq:circle-recursion}.
 
-\subsection{Induction in $\TorZ$}\label{sec:TorZ-induction}
+\subsection{Induction in \texorpdfstring{$\TorZ$}{TZ}}
+\label{sec:TorZ-induction}
 
 Fix $A:\TorZ\to\UU$, $a:A(\pt)$, and $p: a=^A_{\Zloop} a$.
 On the basis of this input data, we will construct a function $f$ of
@@ -1293,6 +1302,7 @@ $\beta\defeq\apc(\refl{\refl{\pt}},\apc(\refl{\Zloop},\gamma_0^{-1}))$ are const
 enable the application of \cref{lem:compo-change-path}.
 We now calculate, recalling that $r\jdeq\cp{(\gamma_0^{-1})^-}(q\invo)$
 and $q\jdeq\tilde c_p(\pt,0)$:
+\allowdisplaybreaks
 \begin{align*}
   \apd{c_p}(\Zloop)
   &= \cp{\varepsilon_{\Zloop,0}}
@@ -1425,7 +1435,9 @@ Since $\TorZ \to \sum_{X:\UU} (X\to X)$ is a monomorphism, this means that $\Tor
 Combining \cref{thm:torz-coeq,thm:torz-classif}, we see that any circle object in an $(\infty,1)$-topos is equivalent to $\TorZ$ and hence classifies $\ZZ$-torsors.
 
 
-\section{Conclusion and future research}\label{sec:conclusion}
+\section{Conclusion and future research}
+\label{sec:conclusion}
+
 We have proved, {for any type family $A\to\TorZ$,}
 the induction principle of the circle for $\TorZ$:
 \[
@@ -1449,9 +1461,10 @@ $\Zloop_{\blank} : S \to (\pt =_{BG} \pt)$,
   \sum_{r: f(\pt)= a}~
   \prod_{s:S}\apd{f}(\Zloop_s) =^{\tilde A_s}_r p_s,
 \]
-where $\tilde A_s(y) \defeq (y =^A_{\Zloop_s} y)$.
+where $\tilde A_s(y) \defeq (y =^A_{\Zloop_s} y)$ for $y : A(\pt)$.
 
-\section{Acknowledgements}
+\section*{Acknowledgements}
+
 Bezem, Buchholtz, and Grayson acknowledge the support of the Centre for Advanced Study (CAS)
 at the Norwegian Academy of Science and Letters
 in Oslo, Norway, which funded and hosted the research project Homotopy Type Theory and Univalent Foundations during the academic year 2018/19.
