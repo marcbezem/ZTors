@@ -1300,6 +1300,8 @@ s_0^{-1} \ct s_1 \stackrel{\alpha}{=}
 Here $\alpha\defeq\apc((\gamma_0^{-1})^-,\delta_0^{-1})$ and
 $\beta\defeq\apc(\refl{\refl{\pt}},\apc(\refl{\Zloop},\gamma_0^{-1}))$ are constructed with $\apc$ so as to
 enable the application of \cref{lem:compo-change-path}.
+Also, for $\gamma$ we may take $\gamma(\Zloop)$
+from~\cref{lem:unitlaw-change-path}.
 We now calculate, recalling that $r\jdeq\cp{(\gamma_0^{-1})^-}(q\invo)$
 and $q\jdeq\tilde c_p(\pt,0)$:
 \allowdisplaybreaks
@@ -1316,12 +1318,12 @@ and $q\jdeq\tilde c_p(\pt,0)$:
     \Bigr)\biggr) \\
   &= \cp{\gamma}\Bigl(\cp{\beta}\bigl(
     r \cto (p \cto q)\bigr)\Bigr) \\
-  &= \cp{\gamma}\Bigl(r \cto \bigl(p \cto \cp{\gamma_0^{-1}}(q)\bigl)\Bigr) \\
-  &= \cp{\gamma}\Bigl(r \cto \bigl(p \cto r^{-1}\bigl)\Bigr)
+  &= \cp{\gamma}\Bigl(r \cto \bigl(p \cto \cp{\gamma_0^{-1}}(q)\bigl)\Bigr)
+   = \cp{\gamma}\Bigl(r \cto \bigl(p \cto r^{-1}\bigl)\Bigr)
 \end{align*}
 To conclude that $\apd{c_p}(\Zloop) =^{\tilde A}_r p$, we only need
-a final auxiliary lemma.
-
+a final auxiliary lemma that describes what happens when we
+transport $p$ backwards along $r$ in the family $\tilde A$.
 \begin{lemma}
   For any $X : \UU$, $B : X \to \UU$, $x:X$, $b,c:B(x)$,
   $s : x=x$, $r : b =^B_{\refl{x}} c$, and $q : c =^B_s c$
