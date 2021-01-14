@@ -316,7 +316,7 @@ $\mathcal C'\jdeq(C',c',s')$, the canonical function
 where $\tilde C'(y) \defeq (y=y)$ for $y:C'$,
 is an equivalence.
 By homotopy initiality for circles,
-it then follows straight-forwardly that the type of circles
+it then follows straightforwardly that the type of circles
 is a proposition, i.e.,
 independently of whether there are any circles,
 any two circles are uniquely identifiable.
@@ -706,11 +706,11 @@ that is an equivalence.
 Let $\zet$ be the inductive type with the following three constructors:
 \begin{enumerate}[topsep=0pt]
 \item $\zzero: \zet$ for the integer number zero,
-$0 \defeq \zzero$
+$0 \defeq \zzero$\ ;
 \item $\zpos: \NN \to \zet$ for positive {integers},
-$1 \defeq \zpos(0),\ldots$.
+$1 \defeq \zpos(0),\ldots$\ ;
 \item $\zneg: \NN \to \zet$ for negative {integers},
-$-1 \defeq \zneg(0),\ldots$
+$-1 \defeq \zneg(0),\ldots$\ .
 \end{enumerate}
 \end{definition}
 
@@ -905,9 +905,9 @@ Let us spell out the inverse function produced in the proof.
 It maps $p : P(0)$ to a pair whose first component
 is the function that takes $z:\zet$ to $f^z(p):P(z)$, where
 \begin{alignat*}2
-  f^0(p) &\defeq p, && \\
-  f^{n+1}(p) &\defeq f_n(f^n(p)),&\quad&\text{for $n:\NN$,} \\
-  f^{-n-1}(p) &\defeq f_{-n-1}^{-1}(f^{-n}(p)),&\quad&\text{for $n:\NN$.}
+  f^0(p) &\jdeq p, && \\
+  f^{n+1}(p) &\jdeq f_n(f^n(p)),&\quad&\text{for $n:\NN$,} \\
+  f^{-n-1}(p) &\jdeq f_{-n-1}^{-1}(f^{-n}(p)),&\quad&\text{for $n:\NN$.}
 \end{alignat*}
 
 \section{Main results}
@@ -1172,11 +1172,11 @@ Applying the univalence axiom gives thus the first result.
 For the second result, note that prefixing $s^Z_x$ by ${\Zloop}$
 amounts to precomposing the equivalence $e_x$ with $s$.
 We have $(e_x\circ s)(n) = e_x(n+1) = f^{n+1}(x) = f^n(f(x)) =e_{f(x)}(n)$,
-so $e_x\circ s = e_{x+1}$. Applying the univalence axiom we get:
+so $e_x\circ s = e_{1+x}$. Applying the univalence axiom we get:
 
 \begin{lemma}\label{lem:loop-s-iterated}
   For every $Z\defeq(X,f,t):\TorZ$ and $x:X$, we have a path
-  ${\delta^Z_x}: {\Zloop} \ct s^Z_x = s^Z_{x+1}$.
+  ${\delta^Z_x}: {\Zloop} \ct s^Z_x = s^Z_{1+x}$.
 \end{lemma}
 
 Now we are ready to derive the induction principle using the same
